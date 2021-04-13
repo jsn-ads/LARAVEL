@@ -2,7 +2,7 @@
 
     cmd->
 
-        raiz do projeto instalar laravel
+        raiz do projeto instalar laravel apenas uma vez , apos isso e so criar projetos em outras pastas
             - composer global require laravel/installer
 
         caso peça extensao php.zip

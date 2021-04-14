@@ -17,10 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/config/permicoes', function(){
-    echo "Configuração Permições";
-})->name('permicoes');
+Route::prefix('/user')->group(function(){
 
-Route::get('/config',function(){
-    return  redirect()->route('permicoes');
+    Route::get('/', function(){
+        echo "Painel Usuario";
+    });
+
+    Route::get('/add/{id}', function($id){
+        echo "Adicionar Usuario id : ".$id;
+    });
+
+    Route::get('/del/{id}', function($id){
+        echo "Delete Usuario id : ".$id;
+    });
+
 });

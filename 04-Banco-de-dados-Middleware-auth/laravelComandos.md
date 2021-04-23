@@ -9,3 +9,9 @@
 
 -Criando um controller
     php artisan make:controller "nome do Controller"
+    
+    "cria controller com metodos e rotas ja pre definidas"
+    php artisan make:controller "nome do Controller" --resource
+    
+-Criando um Model
+    php artisan make:model "nome do Model"

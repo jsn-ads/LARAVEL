@@ -15,3 +15,14 @@
     
 -Criando um Model
     php artisan make:model "nome do Model"
+
+-Instalando Composer
+    composer install
+    composer init
+    composer update
+
+    - Caso o Laravel nao tenha Auth na Pasta controller faça esse comando
+        compose require laravel/ui
+        php artisan ui vue --auth
+        ou 
+        php artisan ui bootstrap --auth

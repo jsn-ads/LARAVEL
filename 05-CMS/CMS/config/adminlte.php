@@ -187,10 +187,10 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => false,
     'logout_url' => 'logout',
-    'login_url' => 'painel/login',
-    'register_url' => 'painel/register',
+    'login_url' => 'login',
+    'register_url' => 'register',
     'password_reset_url' => null,//'password/reset',
     'password_email_url' => 'password/email',
     'profile_url' => false,
@@ -224,87 +224,126 @@ return [
     */
 
     'menu' => [
+
         [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
+            'text'        => 'Dashboard',
+            'url'         => 'painel',
+            'icon'        => 'far fa-fw fa-file'
         ],
+
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text'        => 'Páginas',
+            'url'         => 'painel/pages',
+            'icon'        => 'far fa-fw fa-file'
         ],
+
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'        => 'Usuarios',
+            'url'         => 'painel/users',
+            'icon'        => 'far fa-fw fa-file'
         ],
+
+
         ['header' => 'account_settings'],
+
+
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
+
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            //busca
+
+            // 'text' => 'search',
+            // 'search' => true,
+            // 'topnav' => true,
         ],
+        
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
+            // 'text' => 'blog',
+            // 'url'  => 'admin/blog',
+            // 'can'  => 'manage-blog',
         ],
-        ['header' => 'labels'],
+
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            // 'text'        => 'Dashboard',
+            // 'url'         => 'painel',
+            // 'icon'        => 'far fa-fw fa-file'
+            // 'label'       => 4,
+            // 'label_color' => 'success',
         ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+
+        [  
+            //campo redefinir senha
+
+            //     'text' => 'change_password',
+            //     'url'  => 'admin/settings',
+            //     'icon' => 'fas fa-fw fa-lock',
         ],
+
         [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            //campo de subselect 
+
+            // 'text'    => 'multilevel',
+            // 'icon'    => 'fas fa-fw fa-share',
+            // 'submenu' => [
+            //     [
+            //         'text' => 'level_one',
+            //         'url'  => '#',
+            //     ],
+            //     [
+            //         'text'    => 'level_one',
+            //         'url'     => '#',
+            //         'submenu' => [
+            //             [
+            //                 'text' => 'level_two',
+            //                 'url'  => '#',
+            //             ],
+            //             [
+            //                 'text'    => 'level_two',
+            //                 'url'     => '#',
+            //                 'submenu' => [
+            //                     [
+            //                         'text' => 'level_three',
+            //                         'url'  => '#',
+            //                     ],
+            //                     [
+            //                         'text' => 'level_three',
+            //                         'url'  => '#',
+            //                     ],
+            //                 ],
+            //             ],
+            //         ],
+            //     ],
+            //     [
+            //         'text' => 'level_one',
+            //         'url'  => '#',
+            //     ],
+            // ],
+        ],
+
+        [
+            // 'header' => 'labels'
+        ],
+
+        [
+            // 'text'       => 'important',
+            // 'icon_color' => 'red',
+            // 'url'        => '#',
+        ],
+
+        [
+            // 'text'       => 'warning',
+            // 'icon_color' => 'yellow',
+            // 'url'        => '#',
+        ],
+
+        [
+            // 'text'       => 'information',
+            // 'icon_color' => 'cyan',
+            // 'url'        => '#',
         ],
     ],
 

@@ -4,6 +4,8 @@
 use App\Http\Controllers\CMS\HomeController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
+use App\Http\Controllers\Admin\UserController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Facade;
@@ -23,9 +25,18 @@ Auth::routes();
 
 //Rota do Sistema
 
-//Rota inicial
+//Rota inicial e Login
 Route::prefix('/')->group(function(){
+
     Route::get('/', [HomeController::class,'index'])->name('home');
+
+    Route::get('login',     [LoginController::class, 'index'])->name('login');
+    Route::post('login',    [LoginController::class, 'authenticate']);
+    Route::post('logout',   [LoginController::class, 'logout'])->name('logout');
+
+    Route::get('register',  [RegisterController::class, 'index'])->name('register');
+    Route::post('register', [RegisterController::class, 'register']);
+
 });
 
 
@@ -33,13 +44,12 @@ Route::prefix('/')->group(function(){
 Route::prefix('/painel')->group(function(){
     
     Route::get('/', [\App\Http\Controllers\Admin\HomeController::class,'index'])->name('painel');
+    Route::resource('users', UserController::class);
     
-    Route::get('/login', [LoginController::class, 'index'])->name('login');
-    Route::post('/login', [LoginController::class, 'authenticate']);
-
-    Route::get('/register', [RegisterController::class, 'index'])->name('register');
-    Route::post('/register', [RegisterController::class, 'register']);
 });
+
+
+
 
 
 

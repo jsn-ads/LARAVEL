@@ -14,7 +14,7 @@ class User extends Authenticatable
     /*
      * para evitar de criar update_at & create_at no banco de dados
      */
-    protected $timestamps = false;
+    public $timestamps = false;
 
 
     
@@ -32,7 +32,7 @@ class User extends Authenticatable
 
     /**
      * The attributes that should be hidden for arrays.
-     *
+     * usando para campo de login no checkbox lembre-me
      * @var array
      */
     protected $hidden = [

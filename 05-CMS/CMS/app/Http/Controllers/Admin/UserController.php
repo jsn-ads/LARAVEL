@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(10);
 
         return view('admin.users.index',[
             'users' => $users
@@ -86,7 +86,15 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $user = User::find($id);
+
+        if($user){
+            return view('admin.users.edit',['user'=>$user]);
+        }
+
+        return redirect()->route('users.index');
+
     }
 
     /**
@@ -98,7 +106,66 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //veridica se usuario existe no banco de dados
+        $user = User::find($id);
+
+        if($user){
+
+            //recupera dos dados do formulario
+
+            $dados = $request->only(['name','email','password','password_confirmation']);
+
+            //valida dos dados
+
+            $validator = Validator::make($dados,[
+                'name'=>['required','string','max:100'],
+                'email'=>['required','string','email','max:200']
+            ]);
+
+            $user->name = ucwords(strtolower($dados['name']));
+
+            //verifica se o email foi alterado
+
+            if($user->email != $dados['email']){
+
+                //caso seja alterado , verifica se esse email ja esta em uso
+
+                $hasEmail = User::where('email',$dados['email'])->get();
+
+                if(count($hasEmail) > 0){
+                    $validator->errors()->add('email','O email já esta sendo utilizado.');
+                }
+
+                $user->email = strtolower($dados['email']);
+
+            }
+
+            //verifica a senha foi alterada
+
+            if(!empty($dados['password'])){
+
+                // caso seja alterada , verifica se atende os requisitos
+
+                if(strlen($dados['password']) < 4){
+                    $validator->errors()->add('password','O password deve ser pelo menos 4 caracteres.');
+                }
+
+                if($dados['password'] != $dados['password_confirmation']){
+                    $validator->errors()->add('password','O password a confirmação não corresponde.');
+                }
+
+                $user->password = Hash::make($dados['password']);
+            }
+
+            if(count($validator->errors()) > 0){
+                return redirect()->route('users.edit',['user'=>$id])->withErrors($validator);
+            }
+
+            $user->save();
+
+        }
+
+        return redirect()->route('users.index');
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title','Salvar Usuário')
+@section('title','Editar Usuário')
 
 @section('css')
     <link rel="stylesheet" href="style.css">
@@ -8,7 +8,7 @@
 
 @section('content_header')
     <h1>
-        Adicionar Usuário
+        Editar Usuário
     </h1>
 @endsection
 
@@ -17,8 +17,8 @@
 <div class="card">
     <div class="card-body">
 
-    <form action="{{route('users.store')}}" method="post" class="form-horizontal">
-
+    <form action="{{route('users.update',['user'=>$user->id])}}" method="post" class="form-horizontal">
+        @method('PUT')
         @csrf
 
         @if ($errors->any())
@@ -34,19 +34,19 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Nome Completo</label>
             <div class="col-sm-10">
-                <input class="form-control @error('name') is-invalid  @enderror" type="text" name="name" value="{{old('name')}}">
+                <input class="form-control @error('name') is-invalid  @enderror" type="text" name="name" value="{{$user->name}}">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">E-Mail</label>
             <div class="col-sm-10">
-                <input class="form-control @error('email') is-invalid  @enderror" type="email" name="email" value="{{old('email')}}">
+                <input class="form-control @error('email') is-invalid  @enderror" type="email" name="email" value="{{$user->email}}">
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Senha</label>
+            <label class="col-sm-2 col-form-label">Nova Senha</label>
             <div class="col-sm-6">
                 <input class="form-control @error('password') is-invalid  @enderror" type="password" name="password">
             </div>
@@ -62,7 +62,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
-                <input type="submit" class="btn btn-success btn-sm" value="Cadastrar">
+                <input type="submit" class="btn btn-primary btn-sm" value="Atualizar">
             </div>
         </div>
 

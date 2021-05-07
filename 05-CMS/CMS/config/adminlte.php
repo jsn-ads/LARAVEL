@@ -245,12 +245,17 @@ return [
         ],
 
 
-        ['header' => 'account_settings'],
-
+        ['header' => 'Configurações'],
 
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
+            'text' => 'Configuração do Sistema',
+            'url'  => 'painel/settings',
+            'icon' => 'fas fa-fw fa-cog',
+        ],
+
+        [
+            'text' => 'Configuração do Perfil',
+            'url'  => 'painel/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
 

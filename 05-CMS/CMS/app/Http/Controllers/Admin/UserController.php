@@ -14,9 +14,17 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
+    /**
+     * middleware('can:edit-users')-> para que somente adm tenha acesso ao controlle ->  basicamente vc ira criar tres passos
+     *  1 criar um metodo dentro Providers/AuthServiceProvider/ function boot
+     *  2 dentro de Config/Adminlte adiciona em Menu 'can'=>'autorizaçao'
+     *  3 dentro de construct adiciona middleware('can:autorização')
+     */
+
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:edit-users');
     }
 
     /**

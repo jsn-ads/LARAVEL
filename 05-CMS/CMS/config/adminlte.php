@@ -240,7 +240,8 @@ return [
         [
             'text'        => 'Usuarios',
             'url'         => 'painel/users',
-            'icon'        => 'far fa-fw fa-file'
+            'icon'        => 'far fa-fw fa-file',
+            'can'         => 'edit-users'
         ],
 
 
@@ -260,7 +261,7 @@ return [
             // 'search' => true,
             // 'topnav' => true,
         ],
-        
+
         [
             // 'text' => 'blog',
             // 'url'  => 'admin/blog',
@@ -275,7 +276,7 @@ return [
             // 'label_color' => 'success',
         ],
 
-        [  
+        [
             //campo redefinir senha
 
             //     'text' => 'change_password',
@@ -284,7 +285,7 @@ return [
         ],
 
         [
-            //campo de subselect 
+            //campo de subselect
 
             // 'text'    => 'multilevel',
             // 'icon'    => 'fas fa-fw fa-share',

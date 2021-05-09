@@ -33,21 +33,21 @@
 
             <tbody>
                 @foreach ($users as $user)
+                @if ($loggedId != $user->id)
                     <tr>
                         <td>{{$user->id}}</td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>
                             <a href="{{route('users.edit',['user'=>$user->id])}}" class="btn btn-sm btn-primary">Editar</a>
-                            @if ($loggedId != $user->id)
-                                <form class="d-inline" action="{{route('users.destroy',['user'=>$user->id])}}" method="post" onsubmit="return confirm('Deseja deletar {{$user->name}}?')">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button class="btn btn-sm btn-danger">Excluir</button>
-                                </form>
-                            @endif
+                            <form class="d-inline" action="{{route('users.destroy',['user'=>$user->id])}}" method="post" onsubmit="return confirm('Deseja deletar {{$user->name}}?')">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-sm btn-danger">Excluir</button>
+                            </form>
                         </td>
                     </tr>
+                @endif
                 @endforeach
             </tbody>
         </table>

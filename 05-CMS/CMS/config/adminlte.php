@@ -240,7 +240,7 @@ return [
         [
             'text'        => 'Usuarios',
             'url'         => 'painel/users',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-fw fa-users',
             'can'         => 'edit-users'
         ],
 

@@ -7,7 +7,7 @@ use App\Models\Page;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
@@ -40,7 +40,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.create');
     }
 
     /**
@@ -51,7 +51,28 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dados = $request->only(['title','body']);
+
+        $dados['slug'] = Str::slug($dados['title'], '-');
+
+        $validator = Validator::make($dados,[
+            'title'=>['required','string','max:100'],
+            'slug'=> ['string','max:100','unique:pages'],
+            'body'=> ['required','string']
+        ]);
+
+        if ($validator->fails()){
+            return redirect()->route('pages.create')->withErrors($validator)->withInput();
+        }
+
+        $page = new Page();
+
+        $page->title = ucwords(strtolower($dados['title']));
+        $page->slug = $dados['slug'];
+        $page->body = $dados['body'];
+        $page->save();
+
+        return redirect()->route('pages.index');
     }
 
     /**
@@ -73,7 +94,13 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $page = Page::find($id);
+
+        if($page){
+            return view('admin.pages.edit',['page'=>$page]);
+        }
+
+        return redirect()->route('pages.index');
     }
 
     /**
@@ -85,7 +112,49 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       //veridica se a pagina existe no banco de dados
+       $page = Page::find($id);
+
+       if($page){
+
+           //recupera dos dados do formulario
+
+           $dados = $request->only(['title','slug','body']);
+
+            //valida dos dados
+
+           if(strtolower($dados['title']) != strtolower($page['title'])){
+
+                $dados['slug'] = Str::slug($dados['title'], '-');
+
+                $validator = Validator::make($dados,[
+                    'title'=>['required','string','max:100'],
+                    'slug' =>['string','max:100','unique:pages'],
+                    'body' =>['required','string']
+                ]);
+
+           }else{
+
+                $validator = Validator::make($dados,[
+                    'title'=>['required','string','max:100'],
+                    'body' =>['required','string']
+                ]);
+           }
+
+           if ($validator->fails()){
+                return redirect()->route('pages.edit',['page'=>$id])->withErrors($validator)->withInput();
+           }
+
+           if(!empty($dados['slug'])){
+               $page->slug = $dados['slug'];
+           }
+           $page->title = $dados['title'];
+           $page->body =  $dados['body'];
+           $page->save();
+
+       }
+
+       return redirect()->route('pages.index');
     }
 
     /**
@@ -96,6 +165,8 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $page = Page::find($id);
+        $page->delete();
+        return redirect()->route('pages.index');
     }
 }

@@ -23,10 +23,12 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `slug` varchar(100) NOT NULL,
   `body` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela cms.pages: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela cms.pages: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
+INSERT INTO `pages` (`id`, `title`, `slug`, `body`) VALUES
+	(1, 'Novo Sistema', 'novo-sistema', 'esse e o pimeiro sistema');
 /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela cms.settings
@@ -37,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela cms.settings: ~5 rows (aproximadamente)
+-- Copiando dados para a tabela cms.settings: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
 INSERT INTO `settings` (`id`, `name`, `content`) VALUES
 	(1, 'title', 'Sistemas Jsn'),

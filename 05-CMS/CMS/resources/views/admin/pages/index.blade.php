@@ -33,9 +33,10 @@
             <tbody>
                 @foreach ($pages as $page)
                 <tr>
-                    <td>{{$page->id}}</td>
+                    <td width='50px'>{{$page->id}}</td>
                     <td>{{$page->title}}</td>
-                    <td>
+                    <td width='250px'>
+                        <a href="" target="_blank" class="btn btn-sm btn-warning">Visualizar</a>
                         <a href="{{route('pages.edit',['page'=>$page->id])}}" class="btn btn-sm btn-primary">Editar</a>
                         <form class="d-inline" action="{{route('pages.destroy',['page'=>$page->id])}}" method="post" onsubmit="return confirm('Deseja deletar {{$page->title}}?')">
                             @method('DELETE')

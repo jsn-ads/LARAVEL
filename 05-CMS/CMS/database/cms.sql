@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
 -- Copiando dados para a tabela cms.pages: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
 INSERT INTO `pages` (`id`, `title`, `slug`, `body`) VALUES
-	(1, 'Novo Sistema', 'novo-sistema', 'esse e o pimeiro sistema');
+	(1, 'Novo Sistema', 'novo-sistema', '<p><span style="background-color: #f1c40f;"><strong><img src="http://localhost/media/images/1620782087.png" alt="" width="NaN" height="NaN" />esse e o pimeiro sistema</strong></span></p>\r\n<p>t1&nbsp;</p>\r\n<p>t2</p>\r\n<p>t3<img src="http://localhost/media/image/1620786863.png" alt="" width="64" height="64" /></p>\r\n<p><img src="http://localhost/media/images/1620783642.jpg" alt="" width="NaN" height="NaN" /></p>\r\n<p><span style="background-color: #f1c40f;"><strong>corpo&nbsp;</strong></span></p>\r\n<p>c1</p>\r\n<p>c2</p>\r\n<p>c3</p>');
 /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela cms.settings
@@ -75,6 +75,19 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `adm`)
 	(13, 'Usuario', 'usuario@usuario', '$2y$10$yv3xxpXSDF6KUeTkijAP1O2L/DkonWGVda9.229FLcWzEPE1M0GCi', NULL, 0),
 	(14, 'Cms Cms', 'cms@cms', '$2y$10$JYv/E3iFKH57ThyLP.CQheG2p4IK39ZW2H8GssH6YfCIvu41xNF5a', NULL, 0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+-- Copiando estrutura para tabela cms.visitors
+CREATE TABLE IF NOT EXISTS `visitors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip` varchar(100) DEFAULT NULL,
+  `date_access` datetime DEFAULT NULL,
+  `page` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Copiando dados para a tabela cms.visitors: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `visitors` DISABLE KEYS */;
+/*!40000 ALTER TABLE `visitors` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

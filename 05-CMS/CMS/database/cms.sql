@@ -1,5 +1,5 @@
 -- --------------------------------------------------------
--- Servidor:                     localhost
+-- Servidor:                     127.0.0.1
 -- Versão do servidor:           5.7.24 - MySQL Community Server (GPL)
 -- OS do Servidor:               Win64
 -- HeidiSQL Versão:              10.2.0.5599
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela cms.pages: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela cms.pages: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
 INSERT INTO `pages` (`id`, `title`, `slug`, `body`) VALUES
 	(1, 'Novo Sistema', 'novo-sistema', '<p><span style="background-color: #f1c40f;"><strong><img src="http://localhost/media/images/1620782087.png" alt="" width="NaN" height="NaN" />esse e o pimeiro sistema</strong></span></p>\r\n<p>t1&nbsp;</p>\r\n<p>t2</p>\r\n<p>t3<img src="http://localhost/media/image/1620786863.png" alt="" width="64" height="64" /></p>\r\n<p><img src="http://localhost/media/images/1620783642.jpg" alt="" width="NaN" height="NaN" /></p>\r\n<p><span style="background-color: #f1c40f;"><strong>corpo&nbsp;</strong></span></p>\r\n<p>c1</p>\r\n<p>c2</p>\r\n<p>c3</p>');
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela cms.settings: ~4 rows (aproximadamente)
+-- Copiando dados para a tabela cms.settings: ~5 rows (aproximadamente)
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
 INSERT INTO `settings` (`id`, `name`, `content`) VALUES
 	(1, 'title', 'Sistemas Jsn'),
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela cms.users: ~11 rows (aproximadamente)
+-- Copiando dados para a tabela cms.users: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `adm`) VALUES
 	(1, 'Jose Neto', 'jsn@gmail.com', '$2y$10$lgWQTAUOrlnhNZZP7wYE0uZ70lY2bqZDNGFbV/bQb/Y4pOmq7K/R6', NULL, 0),
@@ -83,10 +83,13 @@ CREATE TABLE IF NOT EXISTS `visitors` (
   `date_access` datetime DEFAULT NULL,
   `page` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela cms.visitors: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `visitors` DISABLE KEYS */;
+INSERT INTO `visitors` (`id`, `ip`, `date_access`, `page`) VALUES
+	(1, '1', '2021-05-12 13:29:33', '1'),
+	(2, '2', '2021-05-12 13:29:52', '2');
 /*!40000 ALTER TABLE `visitors` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

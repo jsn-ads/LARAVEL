@@ -61,17 +61,29 @@
 @endsection
 
 @section('js')
+
+    <!-- Baixa a Api do cdn tiny-->
+
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+
+    <!-- Utililiza cnd incorporando no text area(bodyfield) baixando os plugins(plugins:) e montando menu(toolbar) e adicionando css(content_css)-->
+
     <script>
         tinymce.init({
             selector:'textarea.bodyfield',
             height:300,
             menubar:false,
-            plugins:['link','table','image','autoresiza','lists'],
-            toolbar:'undo redo | formatselect | bold italic backcolor | alignleft alignright aligncenter alignjustify | table | bullist numlist',
+            plugins:['link','table','image','autoresize','lists'],
+            toolbar:'undo redo | formatselect | bold italic backcolor | alignleft alignright aligncenter alignjustify | table | link image | bullist numlist',
             content_css:[
                 '{{asset('assets/css/content.css')}}'
-            ]
+            ],
+
+            //processo para salvar imagens definindo a rota para salvar na pasta routes(api.php) pois estamos utilizando api
+
+            images_upload_url:'{{route('imageupload')}}',
+            images_upload_credentials:true,
+            convert_urls:false
         });
     </script>
 @endsection

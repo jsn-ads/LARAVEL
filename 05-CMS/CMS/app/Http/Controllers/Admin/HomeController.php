@@ -39,11 +39,25 @@ class HomeController extends Controller
         //Contagem de Usuários
         $userCount = User::count();
 
+        //Dados do grafico de Pizza
+
+        $pageGrafico = [
+            'PC' => 200,
+            'Xbox' => 50,
+            'PS4' => 400
+        ];
+
+        $values = json_encode(array_values($pageGrafico));
+        $labels = json_encode(array_keys($pageGrafico));
+
         return view('admin.home',[
             'visitorsCount'  =>$visitorsCount,
             'userOnlineCount' =>$userOnlineCount,
             'paginasCount'   =>$paginasCount,
-            'userCount'     =>$userCount
+            'userCount'     =>$userCount,
+            'values' => $values,
+            'labels' => $labels
+
         ]);
     }
 

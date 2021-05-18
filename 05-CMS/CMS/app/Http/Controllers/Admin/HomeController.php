@@ -23,8 +23,11 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+
+        $interval = intval($request->input('interval',30));
+
 
         //Contagem de Visitantes
         $visitorsCount = Visitor::count();
@@ -39,13 +42,15 @@ class HomeController extends Controller
         //Contagem de Usuários
         $userCount = User::count();
 
-        //Dados do grafico de Pizza
+        //quantidade total de visitantes
+        $visitsAll = Visitor::selectRaw('page, count(page) as c')->groupBy('page')->get();
 
-        $pageGrafico = [
-            'PC' => 200,
-            'Xbox' => 50,
-            'PS4' => 400
-        ];
+        //Dados do grafico de Pizza
+        $pageGrafico = [];
+
+        foreach($visitsAll as $item){
+            $pageGrafico[$item['page']] = intval($item['c']);
+        }
 
         $values = json_encode(array_values($pageGrafico));
         $labels = json_encode(array_keys($pageGrafico));
@@ -56,7 +61,8 @@ class HomeController extends Controller
             'paginasCount'   =>$paginasCount,
             'userCount'     =>$userCount,
             'values' => $values,
-            'labels' => $labels
+            'labels' => $labels,
+            'datainterval' => $interval
 
         ]);
     }

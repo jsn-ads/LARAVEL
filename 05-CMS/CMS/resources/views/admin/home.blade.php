@@ -9,7 +9,21 @@
 @endsection
 
 @section('content_header')
-    <h1>Painel de Controle</h1>
+    <div class="row">
+        <div class="col-sm-9"><h1>Painel de Controle</h1></div>
+        <div class="col-sm-3">
+            <form action="" method="get">
+                <div class="form-group">
+                    <select onchange="this.form.submit()" id="my-select" class="form-control" name="interval">
+                        <option {{ $datainterval == 30?'selected="selected"':''}} value="30">30 dias</option>
+                        <option {{ $datainterval == 60?'selected="selected"':''}} value="60">2 meses</option>
+                        <option {{ $datainterval == 90?'selected="selected"':''}} value="90">3 meses</option>
+                        <option {{ $datainterval == 120?'selected="selected"':''}} value="120">6 meses</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection
 
 @section('content')

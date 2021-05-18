@@ -32,7 +32,7 @@ TECNOLOGIAS:
         VISITOR
 
     -CONTROLLERS
-        [ADMIN]         [B1]    HomeController    -> Responsavel pelo inicio do painel 
+        [ADMIN]         [B1]    HomeController    -> Responsavel pelo inicio do painel , trazendo informaçoes sobre o sistema
         [ADMIN]         [B2]    PageController    -> Responsavel pelas paginas dos usuarios
         [ADMIN]         [B3]    ProfileController -> Responsavel pelo perfil do usuario
         [ADMIN]         [B4]    SettingController -> Responsavel pela configuração do titulo , cor e email do sistema

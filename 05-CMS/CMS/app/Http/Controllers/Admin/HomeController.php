@@ -27,10 +27,15 @@ class HomeController extends Controller
     {
 
         $interval = intval($request->input('interval',30));
+        if($interval > 120){
+            $interval = 120;
+        }
+
 
 
         //Contagem de Visitantes
-        $visitorsCount = Visitor::count();
+        $dateInterval = date('Y-m-d H:i:s', strtotime('-'.$interval.'days'));
+        $visitorsCount = Visitor::where('date_access','>=',$dateInterval)->count();
 
         //Contagem de Visitantes Online
         $datalimite = date('Y-m-d H:i:s', strtotime('-5 minutes'));
@@ -43,7 +48,7 @@ class HomeController extends Controller
         $userCount = User::count();
 
         //quantidade total de visitantes
-        $visitsAll = Visitor::selectRaw('page, count(page) as c')->groupBy('page')->get();
+        $visitsAll = Visitor::selectRaw('page, count(page) as c')->where('date_access','>=',$dateInterval)->groupBy('page')->get();
 
         //Dados do grafico de Pizza
         $pageGrafico = [];

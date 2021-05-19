@@ -91,7 +91,7 @@ https://templatemo.com/tm-550-diagoona
                 <footer class="tm-site-footer text-right">
                     <p class="mb-0">JSNSystemas
 
-                    | Design: <a rel="nofollow" target="_parent" href="https://jsn.ads@gmail.com" class="tm-text-link">jsn.ads@gmail.com</a></p>
+                    | Administrativo: <a rel="nofollow" target="_parent" href="{{route('painel')}}" class="tm-text-link">Painel</a></p>
                 </footer>
             </div>
         </div>

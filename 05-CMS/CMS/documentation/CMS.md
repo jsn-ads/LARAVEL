@@ -6,6 +6,7 @@ Versão: 1.0
 TECNOLOGIAS: 
     FrontEnd
         Painel - adminLTE
+        Template - bootstrap 4.0
         Bootstrap
         JavaScript
     BackEnd
@@ -50,6 +51,7 @@ TECNOLOGIAS:
 
     -PROVIDERS
         AUTHSERVICEPROVIDER     -> Responsavel por criar permissoes 
+        APPSERVICEPROVIDER      -> Responsavel com criar variaveis globais , (trazendo menu) 
 
     -CONFIG
         ADMINLTE -> configuração do painel adminlte
@@ -74,7 +76,7 @@ TECNOLOGIAS:
         [ADMIN][USERS]      [B6]            INDEX | CREATE | EDIT
         [ADMIN][HOME]       [B1]            HOME
 
-        [CMS][HOME]
+        [CMS][HOME]         [APPSERVICEPROVIDER]               LAYOUT| HOME
 
     -ROUTES
         API ->rotas de api

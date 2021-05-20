@@ -10,6 +10,12 @@
     <link href="{{asset('assets/css/bootstrap.min.css')}}"       rel="stylesheet" />                         <!-- https://getbootstrap.com/ -->
     <link href="{{asset('assets/fontawesome/css/all.min.css')}}" rel="stylesheet" />                   <!-- https://fontawesome.com/ -->
     <link href="{{asset('assets/css/templatemo-diagoona.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/layout.css')}}" rel="stylesheet" />
+    <style type="text/css">
+        body{
+            color:{{$config["textcolor"]}};
+        }
+    </style>
 <!--
 
 TemplateMo 550 Diagoona
@@ -26,8 +32,8 @@ https://templatemo.com/tm-550-diagoona
                     <div class="tm-site-header media">
                         <i class="fas fa-laptop fa-3x mt-1 tm-logo"></i>
                         <div class="media-body">
-                            <h1 class="tm-sitename text-uppercase">Sistema CMS</h1>
-                            <p class="tm-slogon">Feito em Laravel</p>
+                            <h1 class="tm-sitename text-uppercase">{{$config['title']}}</h1>
+                            <p class="tm-slogon">{{$config['subtitle']}}</p>
                         </div>
                     </div>
                 </div>
@@ -89,7 +95,7 @@ https://templatemo.com/tm-550-diagoona
             </div>
             <div class="tm-col-right tm-col-footer">
                 <footer class="tm-site-footer text-right">
-                    <p class="mb-0">JSNSystemas
+                    <p class="mb-0">{{$config['email']}}
 
                     | Administrativo: <a rel="nofollow" target="_parent" href="{{route('painel')}}" class="tm-text-link">Painel</a></p>
                 </footer>

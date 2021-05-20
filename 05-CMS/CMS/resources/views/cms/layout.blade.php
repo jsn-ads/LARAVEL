@@ -13,7 +13,11 @@
     <link href="{{asset('assets/css/layout.css')}}" rel="stylesheet" />
     <style type="text/css">
         body{
-            color:{{$config["textcolor"]}};
+            background-color: {{$config['bgcolor']}}
+        }
+
+        body{
+            color:{{$config['textcolor']}};
         }
     </style>
 <!--

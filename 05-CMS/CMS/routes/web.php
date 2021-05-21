@@ -4,11 +4,12 @@
 use App\Http\Controllers\CMS\HomeController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
-
+use App\Http\Controllers\CMS\PageController as CMSPageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Facade;
@@ -46,7 +47,7 @@ Route::prefix('/')->group(function(){
 //Rota do Painel de Controle
 Route::prefix('/painel')->group(function(){
 
-    Route::get('/', [\App\Http\Controllers\Admin\HomeController::class,'index'])->name('painel');
+    Route::get('/', [AdminHomeController::class, 'index'])->name('painel');
     Route::resource('users', UserController::class);
     Route::resource('profile', ProfileController::class);
     Route::resource('settings', SettingController::class);
@@ -54,7 +55,7 @@ Route::prefix('/painel')->group(function(){
     Route::resource('pages', PageController::class);
 });
 
-
+Route::fallback([CMSPageController::class, 'index']);
 
 
 

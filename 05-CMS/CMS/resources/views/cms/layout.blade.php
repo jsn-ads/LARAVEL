@@ -36,8 +36,8 @@ https://templatemo.com/tm-550-diagoona
                     <div class="tm-site-header media">
                         <i class="fas fa-laptop fa-3x mt-1 tm-logo"></i>
                         <div class="media-body">
-                            <h1 class="tm-sitename text-uppercase">{{$config['title']}}</h1>
-                            <p class="tm-slogon">{{$config['subtitle']}}</p>
+                            <h1 class="tm-sitename text-uppercase">@yield('Cabeçalho')</h1>
+                            <p class="tm-slogon">@yield('subcabeçalho')</p>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ https://templatemo.com/tm-550-diagoona
                             @yield('contentTitle')
                         </h2>
                         <p class="mb-5">
-                            @yield('contentA')
+                            <h2>@yield('contentA')</h2>
                         </p>
 
                         <hr class="mb-5">
@@ -83,19 +83,19 @@ https://templatemo.com/tm-550-diagoona
                             @yield('ContentB')
                         </p>
 
-                        <a href="#" class="btn btn-primary">Continue...</a>
+                        <!--<a href="#" class="btn btn-primary">Continue...</a-->
                     </section>
                 </main>
             </div>
         </div>
 
         <div class="tm-row">
-            <div class="tm-col-left text-center">
-                <ul class="tm-bg-controls-wrapper">
+          <div class="tm-col-left text-center">
+                 <!-- <ul class="tm-bg-controls-wrapper">
                     <li class="tm-bg-control active" data-id="0"></li>
                     <li class="tm-bg-control" data-id="1"></li>
                     <li class="tm-bg-control" data-id="2"></li>
-                </ul>
+                </ul> -->
             </div>
             <div class="tm-col-right tm-col-footer">
                 <footer class="tm-site-footer text-right">

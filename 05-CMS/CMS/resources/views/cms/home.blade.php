@@ -1,7 +1,17 @@
 @extends('cms.layout')
 
-@section('title','SISTEMA CMS')
+@section('title',$config['title'])
 
-@section('contentTitle')
-    <h1>Bem vindo</h1>
+@section('Cabeçalho',$config['title'])
+
+@section('subcabeçalho',$config['subtitle'])
+
+
+
+@section('contentA')
+    <h1>Sobre</h1>
+@endsection
+
+@section('ContentB')
+    <h6>Empresa de desenvolvimento de sistemas criada 1989</h6>
 @endsection

@@ -41,7 +41,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Corpo</label>
             <div class="col-sm-10">
-                <textarea name="body" id="body" cols="30" rows="10" class="form-control @error('body') is-invalid @enderror">{{old('body')}}</textarea>
+                <textarea name="body" id="body" cols="30" rows="10" class="form-control bodyfield @error('body') is-invalid @enderror">{{old('body')}}</textarea>
             </div>
         </div>
 
@@ -60,5 +60,29 @@
 @endsection
 
 @section('js')
-    <script src=""></script>
+
+    <!-- Baixa a Api do cdn tiny-->
+
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+
+    <!-- Utililiza cnd incorporando no text area(bodyfield) baixando os plugins(plugins:) e montando menu(toolbar) e adicionando css(content_css)-->
+
+    <script>
+        tinymce.init({
+            selector:'textarea.bodyfield',
+            height:300,
+            menubar:false,
+            plugins:['link','table','image','autoresize','lists'],
+            toolbar:'undo redo | formatselect | bold italic backcolor | alignleft alignright aligncenter alignjustify | table | link image | bullist numlist',
+            content_css:[
+                '{{asset('assets/css/content.css')}}'
+            ],
+
+            //processo para salvar imagens definindo a rota para salvar na pasta routes(api.php) pois estamos utilizando api
+
+            images_upload_url:'{{route('imageupload')}}',
+            images_upload_credentials:true,
+            convert_urls:false
+        });
+    </script>
 @endsection

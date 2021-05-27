@@ -11,13 +11,13 @@ TECNOLIGIAS:
         php
         laravel
 SOBRE: 
-    criação de uma API de anotações
+    criação de uma API de anotações e testando no https://resttesttest.com/
 
 FRONDEND:
 
 BACKEND:
     Controllers:
-        NodeController
+        NodeController -> crud de anotaçoes
     Models:
         Node
     Routes:

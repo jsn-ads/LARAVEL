@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NoteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,24 +19,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/ping', function(Request $request){
-    return ['pong'=>true];
-});
 
 //listar
-Route::get('/notes', '');
-
+Route::get('/notes', [NoteController::class, 'all']);
 //edit
-Route::get('/note/{id}', '');
+Route::get('/note/{id}', [NoteController::class, 'one']);
 
-//adicionar
-Route::post('/note', '');
+// //adicionar
+// Route::post('/note', '');
 
-//atualizar edit
-Route::put('/note/{id}', '');
+// //atualizar edit
+// Route::put('/note/{id}', '');
 
-//deletar
-Route::delete('/note/{id}','');
+// //deletar
+// Route::delete('/note/{id}','');
 
 
 

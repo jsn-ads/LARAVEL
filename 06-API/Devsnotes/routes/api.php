@@ -20,19 +20,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-//listar
+//visualizar listar
 Route::get('/notes', [NoteController::class, 'all']);
-//edit
+//visualizar post
 Route::get('/note/{id}', [NoteController::class, 'one']);
 
-// //adicionar
-// Route::post('/note', '');
+//adicionar
+Route::post('/note', [NoteController::class, 'new']);
 
-// //atualizar edit
-// Route::put('/note/{id}', '');
+//atualizar edit
+Route::put('/note/{id}', [NoteController::class, 'edit']);
 
-// //deletar
-// Route::delete('/note/{id}','');
+//deletar
+Route::delete('/note/{id}',[NoteController::class, 'delete']);
 
 
 

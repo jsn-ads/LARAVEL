@@ -20,6 +20,12 @@
 -criando um projeto
     laravel new "nome do projeto" --auth
 
+-verificando verão do laravel
+    php artisan -V
+
+-alerando a porta 
+    php artisan serve --port=9000
+
 -criando key do banco de dados no arquivo (.env)
     php artisan key:generate
 

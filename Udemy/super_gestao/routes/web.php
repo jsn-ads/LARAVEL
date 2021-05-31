@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('/')->group(function () {
+    Route::get('/', function () {
+        return "Bem vindo";
+    })->name('index');
+
+    Route::get('/sobre-nos', function () {
+        return "Sobre Nós";
+    })->name('sobre');
+
+    Route::get('/contato', function () {
+        return "Contados";
+    })->name('contatos');
 });
+

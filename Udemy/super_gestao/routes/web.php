@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\PrincipalController;
+use App\Http\Controllers\SobreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,17 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('/')->group(function () {
-    Route::get('/', function () {
-        return "Bem vindo";
-    })->name('index');
+Route::get('/',[PrincipalController::class, 'index'])->name('/');
 
-    Route::get('/sobre-nos', function () {
-        return "Sobre Nós";
-    })->name('sobre');
+Route::get('/sobre',[SobreController::class, 'index'])->name('sobre');
 
-    Route::get('/contato', function () {
-        return "Contados";
-    })->name('contatos');
-});
+Route::get('/contato',[ContatoController::class, 'index'])->name('contato');
 

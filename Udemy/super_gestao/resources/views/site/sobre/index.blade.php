@@ -1,10 +1,11 @@
 <h1>Sobre</h1>
 <li>
-    <a href="/">Principal</a>
+    <a href="{{ route('inicio')}}">Principal</a>
 </li>
 <li>
-    <a href="/contato">Contato</a>
+    <a href="{{ route('contato')}}">Contato</a>
 </li>
 <li>
-    <a href="/sobre">Sobre</a>
+    <a href="{{ route('sobre')}}">Sobre</a>
 </li>
+

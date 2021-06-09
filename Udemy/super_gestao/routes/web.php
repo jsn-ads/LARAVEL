@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[PrincipalController::class, 'index'])->name('/');
+Route::get('/',[PrincipalController::class, 'index'])->name('inicio');
 
 Route::get('/sobre',[SobreController::class, 'index'])->name('sobre');
 
@@ -29,11 +29,11 @@ Route::get('/login', function(){
 
 Route::prefix('/app')->group( function(){
 
-    Route::get('/clientes', function(){ echo "Clientes";});
+    Route::get('/clientes', function(){ echo "Clientes";})->name('app.clientes');
 
-    Route::get('/fornecedores', function(){ echo "Fornecedores";});
+    Route::get('/fornecedores', function(){ echo "Fornecedores";})->name('app.fornecedores');
 
-    Route::get('/produtos', function(){ echo "Produtos";});
+    Route::get('/produtos', function(){ echo "Produtos";})->name('app.produtos');
 
 });
 

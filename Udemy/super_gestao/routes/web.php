@@ -22,3 +22,20 @@ Route::get('/sobre',[SobreController::class, 'index'])->name('sobre');
 
 Route::get('/contato',[ContatoController::class, 'index'])->name('contato');
 
+Route::get('/login', function(){
+    echo "Login";
+});
+
+Route::get('/clientes', function(){
+    echo "Clientes";
+});
+
+Route::get('/fornecedores', function(){
+    echo "Fornecedores";
+});
+
+Route::get('/produtos', function(){
+    echo "Produtos";
+});
+
+

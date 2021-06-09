@@ -45,6 +45,9 @@
 -Criando um Model
     php artisan make:model "nome do Model"
 
+-Visualizando Rotas do projeto
+     php artisan route:list
+
 -Instalando Painel AdminLTE 
     composer require jeroennoten/laravel-adminlte
     php artisan adminlte:install --force

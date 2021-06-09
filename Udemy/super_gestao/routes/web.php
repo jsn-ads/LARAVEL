@@ -26,16 +26,16 @@ Route::get('/login', function(){
     echo "Login";
 });
 
-Route::get('/clientes', function(){
-    echo "Clientes";
+
+Route::prefix('/app')->group( function(){
+
+    Route::get('/clientes', function(){ echo "Clientes";});
+
+    Route::get('/fornecedores', function(){ echo "Fornecedores";});
+
+    Route::get('/produtos', function(){ echo "Produtos";});
+
 });
 
-Route::get('/fornecedores', function(){
-    echo "Fornecedores";
-});
-
-Route::get('/produtos', function(){
-    echo "Produtos";
-});
 
 

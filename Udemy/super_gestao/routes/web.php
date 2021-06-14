@@ -37,5 +37,7 @@ Route::prefix('/app')->group( function(){
 
 });
 
-
+Route::fallback(function(){
+    echo "Pagina não encontrada <a href=".route('inicio')."> clique aqui </a> para voltar a tela inicial";
+});
 

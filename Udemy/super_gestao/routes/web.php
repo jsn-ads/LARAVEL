@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreController;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +32,7 @@ Route::prefix('/app')->group( function(){
 
     Route::get('/clientes', function(){ echo "Clientes";})->name('app.clientes');
 
-    Route::get('/fornecedores', function(){ echo "Fornecedores";})->name('app.fornecedores');
+    Route::get('/fornecedores', [FornecedorController::class,'index'])->name('app.fornecedores');
 
     Route::get('/produtos', function(){ echo "Produtos";})->name('app.produtos');
 

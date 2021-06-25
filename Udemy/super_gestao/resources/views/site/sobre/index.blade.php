@@ -1,5 +1,7 @@
 @extends('site.template.basic')
 
+@section('title','Sobre')
+
 @section('conteudo')
     <div class="conteudo-pagina">
         <div class="titulo-pagina">

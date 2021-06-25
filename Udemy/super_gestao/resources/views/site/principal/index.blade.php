@@ -1,5 +1,7 @@
 @extends('site.template.basic')
 
+@section('title','Home')
+
 @section('conteudo')
     <div class="conteudo-destaque">
         <div class="esquerda">

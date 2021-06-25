@@ -21,10 +21,14 @@ Route::get('/',[PrincipalController::class, 'index'])->name('inicio');
 
 Route::get('/sobre',[SobreController::class, 'index'])->name('sobre');
 
-Route::get('/contato',[ContatoController::class, 'index'])->name('contato');
-
 Route::get('/login', function(){
     echo "Login";
+});
+
+
+Route::prefix('/contato')->group(function(){
+    Route::get('/', [ContatoController::class, 'index'])->name('contato');
+    Route::post('/',[ContatoController::class, 'add'])->name('contato');
 });
 
 

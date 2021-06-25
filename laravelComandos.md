@@ -47,7 +47,8 @@
 
 -Visualizando Rotas do projeto
      php artisan route:list
-
+-Limpando cash das views
+	php artisan view:clear
 -Instalando Painel AdminLTE 
     composer require jeroennoten/laravel-adminlte
     php artisan adminlte:install --force

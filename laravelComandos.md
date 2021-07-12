@@ -37,18 +37,29 @@
     php artisan serve
 
 -Criando um controller
-    php artisan make:controller "nome do Controller"
+	php artisan make:controller "nomeController"
     
-    "cria controller com metodos e rotas ja pre definidas"
-    php artisan make:controller "nome do Controller" --resource
+-Criando controller com metodos e rotas ja pre definidas
+    	php artisan make:controller "nomeController" --resource
     
 -Criando um Model
-    php artisan make:model "nome do Model"
+    	php artisan make:model "nome do Model"
+
+-Criando um Model com Migrations
+	php artisan make:model "nome" -m
+
+-Criando uma Migrations aparti de um model ja criado
+	php artisan make:migration create_"nome"_table	
+
+-Executando uma migrations
+	php artisan migrate
 
 -Visualizando Rotas do projeto
      php artisan route:list
+
 -Limpando cash das views
 	php artisan view:clear
+
 -Instalando Painel AdminLTE 
-    composer require jeroennoten/laravel-adminlte
-    php artisan adminlte:install --force
+    	composer require jeroennoten/laravel-adminlte
+    	php artisan adminlte:install --force

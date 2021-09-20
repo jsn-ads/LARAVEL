@@ -35,31 +35,49 @@
 
 -start no projeto
     php artisan serve
-
--Criando um controller
-	php artisan make:controller "nomeController"
-    
--Criando controller com metodos e rotas ja pre definidas
-    	php artisan make:controller "nomeController" --resource
-    
--Criando um Model
-    	php artisan make:model "nome do Model"
-
--Criando um Model com Migrations
-	php artisan make:model "nome" -m
-
--Criando uma Migrations aparti de um model ja criado
-	php artisan make:migration create_"nome"_table	
-
--Executando uma migrations
-	php artisan migrate
-
+ 
 -Visualizando Rotas do projeto
      php artisan route:list
 
 -Limpando cash das views
 	php artisan view:clear
 
+----------------------------------------------------------------------------------------
+PAINEL 
 -Instalando Painel AdminLTE 
     	composer require jeroennoten/laravel-adminlte
     	php artisan adminlte:install --force
+
+----------------------------------------------------------------------------------------
+CONTROLLERS
+-Criando um controller
+	php artisan make:controller "nomeController"
+    
+-Criando controller com metodos e rotas ja pre definidas
+    	php artisan make:controller "nomeController" --resource
+
+----------------------------------------------------------------------------------------
+MODEL 
+-Criando um Model
+    	php artisan make:model "nome do Model"
+
+-Criando um Model com Migrations
+	php artisan make:model "nome" -m
+
+----------------------------------------------------------------------------------------
+MIGRATES , comandos utiliados para cria tabelas no banco de dados 
+
+-Cria uma migrate
+    php artisan make:migration | (create"_nome_"table) (update"_nome_"table)
+
+-Executado a migrate para cria as tabelas nos bancos
+    php artisan migrate
+
+-Voltando estado anterior desfazendo o ultimo migrate
+    php artisan migrate:rollback
+
+-Visualiza o status da Migrations ex: se ja foi executado no banco ou se esta pendente
+    php artisan migrate:status
+
+-Remover todas a tabelas do banco
+    php artisan migrate:reset

@@ -20,14 +20,15 @@ class CreateUnidadesTable extends Migration
             $table->timestamps();
         });
 
+
         //adiciona o relacionamento com a tabela produtos
-        Schema::table('produtos', function (Blueprint $table) {
+        Schema::table('produto_detalhes', function (Blueprint $table) {
             $table->unsignedBigInteger('id_unidade');
             $table->foreign('id_unidade')->references('id')->on('unidades');
         });
 
-        //adiciona o relacionamento com a tabela produto_detalhes
-        Schema::table('produto_detalhes', function (Blueprint $table) {
+        //adiciona o relacionamento com a tabela produtos
+        Schema::table('produtos', function (Blueprint $table) {
             $table->unsignedBigInteger('id_unidade');
             $table->foreign('id_unidade')->references('id')->on('unidades');
         });
@@ -40,16 +41,15 @@ class CreateUnidadesTable extends Migration
      */
     public function down()
     {
+         //remove o relacionamento com a tabela produtos
+         Schema::table('produtos', function (Blueprint $table) {
+            $table->dropForeign('produtos_id_unidade_foreign');
+            $table->dropColumn('id_unidade');
+        });
 
         //remove o relacionamento com a tabela produto_detalhes
         Schema::table('produto_detalhes', function (Blueprint $table) {
             $table->dropForeign('produto_detalhes_id_unidade_foreign');
-            $table->dropColumn('id_unidade');
-        });
-
-        //remove o relacionamento com a tabela produtos
-        Schema::table('produtos', function (Blueprint $table) {
-            $table->dropForeign('produto_id_unidade_foreign');
             $table->dropColumn('id_unidade');
         });
 

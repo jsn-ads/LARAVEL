@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Fornecedor extends Model
 {
     use HasFactory;
+
+    //o atributo table sobrepoem a nomeação automatica do eloquent
+
+    protected $table = 'fornecedores';
 }

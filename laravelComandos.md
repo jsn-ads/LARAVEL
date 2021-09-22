@@ -143,7 +143,11 @@ Eloquent ORM
     )->get();
 
 ----------------------------------------------------------------------------------------
+<<<<<<< HEAD
 Collection
+=======
+Eloquent Collection
+>>>>>>> c2b7af313a30b595e7a73a5436570fae54e9036e
 
     $dados = valor::all();
 
@@ -161,3 +165,10 @@ Collection
 
     [converte em Json]
     $dados->toJson();
+
+    [retorna um atributo especifico de todos objetos da lista]
+    $dados->all()->pluck('email');
+
+    [retorna um atributo como valor e outro como chave ]
+    $dados->all()->pluck('email','nome');
+                         [valor]  [key]

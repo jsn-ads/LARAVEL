@@ -90,9 +90,27 @@ MIGRATES , comandos utiliados para cria tabelas no banco de dados
 
 -Deleta o banco e cria novamente
     php artisan migrate:fresh
+----------------------------------------------------------------------------------------
+Eloquent ORM 
+
+    [Metodo de Salvar e Update]
+    $dados->save();
+
+    [Metodo que preeche o objeto , obs: para utiliza esse metodo e necessario que os campos sejam registrados no $fillable]
+    $dados->fill(['campo'=>'value', 'campo2'=>'value', 'campo3'=>'value']);
+
+    [Metodo para atualizar Diretamente]
+    Tabela::whereIn('id',[1,2])->update(['column'=>'value', 'column'=>'value'])
+
+    [Metodo de deletar]
+    $dados->delete();
+    Tabela::where('id','value')->delete()
+    Tabela::destroy('id')
+
+    
 
 ----------------------------------------------------------------------------------------
-Eloquent ORM
+Eloquent ORM Condicionais
 
     [retorna todos os dados]
     all();

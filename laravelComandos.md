@@ -42,6 +42,9 @@
 -Limpando cash das views
 	php artisan view:clear
 
+-Console interativo para testes
+    php artisan tinker
+
 ----------------------------------------------------------------------------------------
 PAINEL 
 -Instalando Painel AdminLTE 
@@ -81,3 +84,80 @@ MIGRATES , comandos utiliados para cria tabelas no banco de dados
 
 -Remover todas a tabelas do banco
     php artisan migrate:reset
+
+-Recriar o banco de dados limpo sem informaçoes
+    php artisan migrate:refresh
+
+-Deleta o banco e cria novamente
+    php artisan migrate:fresh
+
+----------------------------------------------------------------------------------------
+Eloquent ORM
+
+    [retorna todos os dados]
+    all();
+    orderBy('column','asc')->get();
+    orderBy('column','desc')->get();
+    orderBy('column','asc')->orderBy('column','desc')->get();
+
+    [retorna um dado de acordo valor passado]
+    find('valor(id)');
+
+    [retorna os dados de acordo com a paramentro]
+    where('column', 'operador', 'valor')->get();
+
+    [retorna os dados de acordo com parametro e com array pode coloca mais de parametro]
+    whereIn('column','[array valor]')->get();
+    whereNotIn('column','[array valor]')->get();
+
+    [retorna os dados de acordo com parametro com o array pode vai validar de um intervalo a outro ex: parans(1 , 4)->{1 2 3 4} ]
+    whereBetween('column', [array valor])->get();
+    whereNotBetween('column', [array valor])->get();
+
+    [operador OU]
+    orWhere('column', 'operador', 'valor')->get();
+
+    [valor nulo]
+    whereNull('column')->get();
+    whereNotNull('column')->get();
+
+    [valor tipo data]
+    whereDate('column','valor')->get();
+    whereDay('column','valor')->get();
+    whereMonth('column','valor')->get();
+    whereYear('column','valor')->get();
+    whereTime('column', 'operador' ,'valor')->get();
+
+    [retorna dados de acordo valores da colunas]
+    whereColumn('column','operador','column')->get();
+
+    [metodo para executar em grupo separado de outro]
+    where(
+        function($query){
+            $query->where('column','valor')->orWhere('column','valor');
+        }
+    )->where(
+        function($query){
+            $query->whereIn('column',[array valor])->orWhereBetween('column',[array valor])
+        }
+    )->get();
+
+----------------------------------------------------------------------------------------
+Collection
+
+    $dados = valor::all();
+
+    [recupera primeiro dado da lista]
+    $dados->first();
+
+    [recupera o ultimo dado da lista]
+    $dados->last();
+
+    [inverte a lista]
+    $dados->reverse();
+
+    [converte em array]
+    $dados->toArray();
+
+    [converte em Json]
+    $dados->toJson();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Contato;
 
 class ContatoController extends Controller
 {
@@ -10,7 +11,12 @@ class ContatoController extends Controller
         return view('site.contato.index');
     }
 
-    public function add(){
-        var_dump($_POST);
+    public function add(Request $request){
+
+        $contato = new Contato();
+        $contato->fill($request->all());
+        $contato->save();
+
+        return view('site.contato.index');
     }
 }

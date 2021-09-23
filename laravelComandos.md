@@ -107,7 +107,18 @@ Eloquent ORM
     Tabela::where('id','value')->delete()
     Tabela::destroy('id')
 
-    
+    [metodo delete permanente obs: quando usado softdelete na model e migrations , a funçoes de delete não deletam definitivamente os registros entap e utilizando este metodo]
+    $dados->forceDelete();
+
+    [metodo que recupera todos registros mesmos aqueles deletados com softDelete]
+    Tabela::withTrashed()->get();
+
+    [metodo que recupera apenas registros deletados softDelete]
+    Tabela::onlyTrashed()->get();
+
+    [metodo de restaurar o registro deletado pelo softDelete]
+    $registros = Tabela::onlyTrashed()->get();
+    $registros['posição do registro']->restore();
 
 ----------------------------------------------------------------------------------------
 Eloquent ORM Condicionais
@@ -190,3 +201,9 @@ Eloquent Collection
     [retorna um atributo como valor e outro como chave ]
     $dados->all()->pluck('email','nome');
                          [valor]  [key]
+
+----------------------------------------------------------------------------------------
+Seeders
+
+    [executar uma seeders]
+    php artisan db:seed

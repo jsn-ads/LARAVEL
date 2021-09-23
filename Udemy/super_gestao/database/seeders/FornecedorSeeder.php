@@ -14,7 +14,6 @@ class FornecedorSeeder extends Seeder
      */
     public function run()
     {
-        //para utiliza a classe "estatica" Fornecedor e necessario configurar $fillable
         $dados = new Fornecedor();
         $dados->nome = 'Coelgo Engenharia';
         $dados->site = 'www.coelgo.com.br';

@@ -14,7 +14,7 @@ class Fornecedor extends Model
     use HasFactory;
 
     //o atributo table sobrepoem a nomeação automatica do eloquent
-
     protected $table = 'fornecedores';
+
     protected $fillable = ['nome','site','uf','email'];
 }

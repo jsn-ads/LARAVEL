@@ -68,7 +68,7 @@ MODEL
 	php artisan make:model "nome" -m
 
 ----------------------------------------------------------------------------------------
-MIGRATES , comandos utiliados para cria tabelas no banco de dados 
+MIGRATES "comandos utiliados para cria tabelas no banco de dados"
 
 -Cria uma migrate
     php artisan make:migration | (create"_nome_"table) (update"_nome_"table)
@@ -91,7 +91,7 @@ MIGRATES , comandos utiliados para cria tabelas no banco de dados
 -Deleta o banco e cria novamente
     php artisan migrate:fresh
 ----------------------------------------------------------------------------------------
-Eloquent ORM 
+Eloquent ORM "Metodos"
 
     [Metodo de Salvar e Update]
     $dados->save();
@@ -121,7 +121,7 @@ Eloquent ORM
     $registros['posição do registro']->restore();
 
 ----------------------------------------------------------------------------------------
-Eloquent ORM Condicionais
+Eloquent ORM Condicionais "Medotos condicionais do Eloquent"
 
     [retorna todos os dados]
     all();
@@ -172,10 +172,7 @@ Eloquent ORM Condicionais
     )->get();
 
 ----------------------------------------------------------------------------------------
-<<<<<<< HEAD
-Collection
-=======
-Eloquent Collection
+Eloquent Collection "São Array de Objetos recuperados do bando de dados"
 >>>>>>> c2b7af313a30b595e7a73a5436570fae54e9036e
 
     $dados = valor::all();
@@ -203,7 +200,19 @@ Eloquent Collection
                          [valor]  [key]
 
 ----------------------------------------------------------------------------------------
-Seeders
+Seeders "São classes que tem a função de popular o banco de dados"
 
-    [executar uma seeders]
+    [Criar uma classe seeder]
+    php artisan make:seeder "Nome"Seeder
+
+    [executar todas seeders]
     php artisan db:seed
+    
+    [executar uma seeder especifica]
+    php artisan db:seed --class=classeSeeder
+
+----------------------------------------------------------------------------------------
+Factory "Classe responsavel por gerar dados em massa e passa para Seeders"
+
+    [Criando uma classe Factory]
+    php artisan make:factory ClasseFactory --model=classe

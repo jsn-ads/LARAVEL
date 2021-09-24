@@ -11,12 +11,20 @@ class ContatoController extends Controller
         return view('site.contato.index');
     }
 
+    //funcao para adicionar contato
     public function add(Request $request){
 
-        $contato = new Contato();
-        $contato->fill($request->all());
-        $contato->save();
+        //metodo validação
+        $request->validate([
+            'nome'              => 'required|min:3|max:40',
+            'telefone'          => 'required|max:14',
+            'email'             => 'required|max:100',
+            'motivo_contato'    => 'required',
+            'mensagem'          => 'required|max:250'
+        ]);
 
-        return view('site.contato.index');
+        Contato::create($request->all());
+
+        return redirect()->route('contato');
     }
 }

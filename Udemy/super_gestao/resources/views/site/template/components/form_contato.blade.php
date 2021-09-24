@@ -15,7 +15,11 @@
         <option value="3">Reclamação</option>
     </select>
     <br>
-    <textarea name="msg" class="{{$classe}}">Preencha aqui a sua mensagem</textarea>
+    <textarea name="mensagem" class="{{$classe}}" placeholder="Preencha aqui a sua mensagem"></textarea>
     <br>
     <button type="submit" class="{{$classe}}">ENVIAR</button>
 </form>
+
+<div>
+    {{print_r($errors)}}
+</div>

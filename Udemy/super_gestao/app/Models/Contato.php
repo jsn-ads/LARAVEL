@@ -13,7 +13,7 @@ class Contato extends Model
         'nome',
         'telefone',
         'email',
-        'motivo_contato',
+        'id_motivo_contatos',
         'mensagem'
     ];
 }

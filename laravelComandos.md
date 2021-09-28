@@ -216,3 +216,8 @@ Factory "Classe responsavel por gerar dados em massa e passa para Seeders"
 
     [Criando uma classe Factory]
     php artisan make:factory ClasseFactory --model=classe
+
+----------------------------------------------------------------------------------------
+Midddleware
+    [Criando uma Middleware]
+    php artisan make:middleware "nome"Middleware

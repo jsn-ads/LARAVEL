@@ -4,6 +4,9 @@ use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreController;
+
+use App\Http\Middleware\LogAcessoMiddleware;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[PrincipalController::class, 'index'])->name('inicio');
+Route::middleware(LogAcessoMiddleware::class)->get('/',[PrincipalController::class, 'index'])->name('inicio');
 
 Route::get('/sobre',[SobreController::class, 'index'])->name('sobre');
 

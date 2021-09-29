@@ -1,5 +1,7 @@
 <?php
 
+// para que a middleware tenha acesso toda as rotas , chame a classe dentro do KERNEL , caso contrario pode chama classe das controllers no metodo construtor
+
 namespace App\Http\Middleware;
 
 use Closure;
@@ -31,8 +33,14 @@ class LogAcessoMiddleware
         ]);
 
         // request recebe a requisição do navegador e manipula antes de chegar no servidor
-        return $next($request);
+
+        $resposta = $next($request);
+
+        $resposta->setStatusCode(201, "retornado resposta alterando codigo");
+
         // retorna a resposa do servidor
-        // Response('resposta do middleware');
+
+        return $resposta;
+
     }
 }

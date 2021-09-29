@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(LogAcessoMiddleware::class)->get('/',[PrincipalController::class, 'index'])->name('inicio');
+Route::get('/',[PrincipalController::class, 'index'])->name('inicio');
 
 Route::get('/sobre',[SobreController::class, 'index'])->name('sobre');
 
@@ -35,7 +35,7 @@ Route::prefix('/contato')->group(function(){
 });
 
 
-Route::prefix('/app')->group( function(){
+Route::middleware('autenticacao: padrao , usuario')->prefix('/app')->group( function(){
 
     Route::get('/clientes', function(){ echo "Clientes";})->name('app.clientes');
 

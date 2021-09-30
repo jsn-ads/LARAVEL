@@ -22,10 +22,12 @@ class AutenticacaoMiddleware
             "executa metodo";
         }
 
-        if(!true){
+        session_start();
+
+        if(isset($_SESSION['email']) && !empty($_SESSION['email'])){
             return $next($request);
         }else{
-            return Response('Acesso negado , Requer autenticação');
+            return redirect()->route('login',['valor' => 2]);
         }
 
     }

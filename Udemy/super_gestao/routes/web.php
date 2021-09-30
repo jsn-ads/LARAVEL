@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\AppClienteController;
+use App\Http\Controllers\AppFornecedorController;
+use App\Http\Controllers\AppHomeController;
+use App\Http\Controllers\AppProdutoController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreController;
@@ -24,10 +30,10 @@ Route::get('/',[PrincipalController::class, 'index'])->name('inicio');
 
 Route::get('/sobre',[SobreController::class, 'index'])->name('sobre');
 
-Route::get('/login', function(){
-    echo "Login";
+Route::prefix('/login')->group(function(){
+    Route::get('/{valor?}', [LoginController::class, 'index'])->name('login');
+    Route::post('/',[LoginController::class, 'autenticar'])->name('login');
 });
-
 
 Route::prefix('/contato')->group(function(){
     Route::get('/', [ContatoController::class, 'index'])->name('contato');
@@ -36,13 +42,11 @@ Route::prefix('/contato')->group(function(){
 
 
 Route::middleware('autenticacao: padrao , usuario')->prefix('/app')->group( function(){
-
-    Route::get('/clientes', function(){ echo "Clientes";})->name('app.clientes');
-
-    Route::get('/fornecedores', [FornecedorController::class,'index'])->name('app.fornecedores');
-
-    Route::get('/produtos', function(){ echo "Produtos";})->name('app.produtos');
-
+    Route::get('/', [AppHomeController::class, 'index'])->name('app');
+    Route::get('/cliente', [AppClienteController::class, 'index'])->name('app.cliente');
+    Route::get('/fornecedor', [AppFornecedorController::class,'index'])->name('app.fornecedor');
+    Route::get('/produto',[AppProdutoController::class, 'index'])->name('app.produto');
+    Route::get('/sair', [LoginController::class,'sair'])->name('app.sair');
 });
 
 Route::fallback(function(){

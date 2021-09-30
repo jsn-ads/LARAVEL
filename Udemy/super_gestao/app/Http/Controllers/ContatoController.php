@@ -31,13 +31,16 @@ class ContatoController extends Controller
         ];
 
         $msg = [
+            //generico
             'required'      => 'o campo :attribute e obrigatorio',
+            //especifico
             'nome.min'      => 'o campo nome requer no minino 3 caracteres',
             'nome.max'      => 'o campo nome permite no maximo 40 caracteres',
             'telefone.max'  => 'o campo telefone permite no maximo 14 caracteres',
             'email.max'     => 'o campo email permite no maximo 100 caracteres',
             'email.email'   => 'email invalido',
             'mensagem.max'  => 'o campo mensagem permit no maximo 250 caracteres'
+
         ];
 
         //metodo validação

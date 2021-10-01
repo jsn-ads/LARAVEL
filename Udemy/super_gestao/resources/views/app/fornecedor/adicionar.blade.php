@@ -6,7 +6,7 @@
     <div class="conteudo-pagina">
 
         <div class="titulo-pagina-2">
-            <p>Fornecedor</p>
+            <p>Fornecedor-Adicionar</p>
         </div>
 
         @component('app.template.parcials.menuapp')
@@ -19,7 +19,7 @@
                 <input type="text" name="site" placeholder="Site" class="borda-preta">
                 <input type="text" name="uf" placeholder="UF" class="borda-preta">
                 <input type="text" name="email" placeholder="E-mail" class="borda-preta">
-                <button type="submit" class="borda-preta">Pesquisar</button>
+                <button type="submit" class="borda-preta">Cadastrar</button>
             </div>
         </div>
     </div>

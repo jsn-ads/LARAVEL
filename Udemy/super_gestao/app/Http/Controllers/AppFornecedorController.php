@@ -9,4 +9,8 @@ class AppFornecedorController extends Controller
     public function index(){
         return view('app.fornecedor.index');
     }
+
+    public function adicionar(){
+        return view('app.fornecedor.adicionar');
+    }
 }

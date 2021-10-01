@@ -8,6 +8,7 @@
             <li><a href="{{ route('inicio') }}">Principal</a></li>
             <li><a href="{{ route('sobre') }}">Sobre</a></li>
             <li><a href="{{ route('contato') }}">Contato</a></li>
+            <li><a href="{{ route('login') }}">Login</a></li>
         </ul>
     </div>
 </div>

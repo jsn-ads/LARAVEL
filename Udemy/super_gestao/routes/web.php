@@ -45,6 +45,8 @@ Route::middleware('autenticacao: padrao , usuario')->prefix('/app')->group( func
     Route::get('/', [AppHomeController::class, 'index'])->name('app');
     Route::get('/cliente', [AppClienteController::class, 'index'])->name('app.cliente');
     Route::get('/fornecedor', [AppFornecedorController::class,'index'])->name('app.fornecedor');
+    Route::get('/fornecedor/adicionar', [AppFornecedorController::class,'adicionar']  )->name('app.fornecedor.adicionar');
+
     Route::get('/produto',[AppProdutoController::class, 'index'])->name('app.produto');
     Route::get('/sair', [LoginController::class,'sair'])->name('app.sair');
 });

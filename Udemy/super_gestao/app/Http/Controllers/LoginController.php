@@ -55,7 +55,7 @@ class LoginController extends Controller
             $_SESSION['name']  = $usuario->name;
             $_SESSION['email'] = $usuario->email;
 
-            return redirect()->route('app.clientes');
+            return redirect()->route('app');
 
         }else{
             return redirect()->route('login',['valor' => 1]);
@@ -64,6 +64,7 @@ class LoginController extends Controller
     }
 
     public function sair(){
-        echo 'logout';
+        session_destroy();
+        return redirect()->route('inicio');
     }
 }

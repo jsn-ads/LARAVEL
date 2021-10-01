@@ -1,7 +1,7 @@
 @extends('app.template.basic')
 
-@section('title','Fornecedor')
+@section('title','Produto')
 
 @section('conteudo')
-    fornecedor
+    Produto
 @endsection

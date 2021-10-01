@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class AppClienteController extends Controller
 {
     public function index(){
-        echo 'bem vindo Cliente';
+        return view('app.cliente.index');
     }
 }

@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class AppProdutoController extends Controller
 {
     public function index(){
-        echo 'bem vindo Produto';
+        return view('app.produto.index');
     }
 }

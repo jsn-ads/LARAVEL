@@ -16,6 +16,7 @@
         <div class="informacao-pagina">
             <div style="width:30%;margin-left: auto;margin-right: auto;">
                 <form action="{{route('app.fornecedor.add')}}" method="post">
+
                     @csrf
 
                     <input type="hidden" name="id" value="{{$fornecedor->id ?? ''}}">
@@ -33,6 +34,7 @@
                     <div style="color:red;">{{$errors->has('email') ? $errors->first('email') :''}}</div>
 
                     <button type="submit" class="borda-preta">Cadastrar</button>
+
                 </form>
             </div>
         </div>

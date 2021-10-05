@@ -57,7 +57,11 @@ CONTROLLERS
 	php artisan make:controller "nomeController"
     
 -Criando controller com metodos e rotas ja pre definidas
-    	php artisan make:controller "nomeController" --resource
+    php artisan make:controller "nomeController" --resource
+
+-Criando Controller com metodos junto com Model
+    php artisan make:controller --resource "Nome"Controller --model "Nome"
+
 
 ----------------------------------------------------------------------------------------
 MODEL 

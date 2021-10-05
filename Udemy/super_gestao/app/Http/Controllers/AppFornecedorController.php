@@ -98,4 +98,14 @@ class AppFornecedorController extends Controller
         }
 
     }
+
+    public function excluir($id){
+
+        $msg = "Fornecedor excluido com sucesso";
+
+        Fornecedor::find($id)->delete();
+
+        return redirect()->route('app.fornecedor.listar',['msg' => $msg]);
+
+    }
 }

@@ -35,7 +35,7 @@
                                 <td>{{$fornecedor->uf}}</td>
                                 <td>{{$fornecedor->email}}</td>
                                 <td><a href="{{ route('app.fornecedor.editar', $fornecedor->id)}}">Editar</a></td>
-                                {{-- <td><a href="{{route('')}}">Excluir</a></td> --}}
+                                <td><a href="{{ route('app.fornecedor.excluir', $fornecedor->id)}}" onclick=" return confirm('deseja deletar esse registro')">Excluir</a></td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -43,7 +43,7 @@
             </div>
             {{$fornecedores->appends($request)->links('pagination::bootstrap-4')}}
             <br><br>
-            Total de Registros : {{$fornecedores->total()}}
+            Exibindo {{$fornecedores->count()}} fornecedores de {{$fornecedores->total()}} ({{$fornecedores->firstItem()}} a {{$fornecedores->lastItem()}})
         </div>
     </div>
 @endsection

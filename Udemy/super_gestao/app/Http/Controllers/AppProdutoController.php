@@ -69,18 +69,28 @@ class AppProdutoController extends Controller
     //Exibe formulário de edição do resgistro [GET|HEAD]
     public function edit(Produto $produto)
     {
-        //
+        $unidades = Unidade::all();
+
+        return view('app.produto.edit',[
+            'produto'  => $produto,
+            'unidades' => $unidades
+        ]);
     }
 
     //Recebe formulário de edição do registro [PUT|PATCH]
     public function update(Request $request, Produto $produto)
     {
-        //
+        $produto->update($request->all());
+        return redirect()->route('produto.show',[
+            'produto' => $produto->id
+        ]);
     }
 
     //Recebe dados para remoção do registro [DELETE]
     public function destroy(Produto $produto)
     {
-        //
+        $produto->delete();
+
+        return redirect()->route('produto.index');
     }
 }

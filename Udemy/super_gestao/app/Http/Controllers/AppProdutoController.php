@@ -61,7 +61,9 @@ class AppProdutoController extends Controller
     //Exibe registro específico [GET|HEAD]
     public function show(Produto $produto)
     {
-        //
+        return view('app.produto.show',[
+            'produto' =>$produto
+        ]);
     }
 
     //Exibe formulário de edição do resgistro [GET|HEAD]

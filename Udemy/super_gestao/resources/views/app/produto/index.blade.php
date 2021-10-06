@@ -26,6 +26,7 @@
                             <th>Descrição</th>
                             <th>Peso</th>
                             <th>unidade</th>
+                            <th>Status</th>
                             <th>Editar</th>
                             <th>Excluir</th>
                         </tr>
@@ -37,6 +38,7 @@
                                 <td>{{$produto->descricao}}</td>
                                 <td>{{$produto->peso}}</td>
                                 <td>{{$produto->id_unidade}}</td>
+                                <td><a href="{{ route('produto.show', $produto->id)}}">Visualizar</a></td>
                                 <td><a href="{{ route('produto.edit', $produto->id)}}">Editar</a></td>
                                 <td><a href="{{ route('produto.destroy', $produto->id)}}" onclick=" return confirm('deseja deletar esse registro')">Excluir</a></td>
                             </tr>

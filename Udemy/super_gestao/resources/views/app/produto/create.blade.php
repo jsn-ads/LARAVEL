@@ -28,10 +28,10 @@
                     <input type="number" name="peso" placeholder="Peso" value="{{$produto->peso ?? old('peso')}}" class="borda-preta">
                     <div style="color:red;">{{$errors->has('peso') ? $errors->first('peso') :''}}</div>
 
-                    <select name="id_unidade" id="id_unidade">
+                    <select name="id_unidade">
                         <option value="">Select Unidade</option>
                         @foreach ($unidades as $unidade)
-                            <option value="{{$unidade->id}} {{old('id_unidade') == $unidade->id ? 'selected':''}}">{{$unidade->unidade}}</option>
+                            <option value="{{$unidade->id}}" {{old('id_unidade') == $unidade->id ? 'selected':''}}>{{$unidade->unidade}}</option>
                         @endforeach
                     </select>
                     <div style="color:red;">{{$errors->has('id_unidade') ? $errors->first('id_unidade') :''}}</div>

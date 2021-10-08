@@ -1,5 +1,7 @@
 <?php
 
+// teste para trabalho
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;

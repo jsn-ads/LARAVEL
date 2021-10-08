@@ -4,6 +4,7 @@ use App\Http\Controllers\AppClienteController;
 use App\Http\Controllers\AppFornecedorController;
 use App\Http\Controllers\AppHomeController;
 use App\Http\Controllers\AppProdutoController;
+use App\Http\Controllers\AppProdutoDetalheController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\PrincipalController;
@@ -59,6 +60,9 @@ Route::middleware('autenticacao: padrao , usuario')->prefix('/app')->group( func
 
     // rota produto resource
     Route::resource('produto', AppProdutoController::class);
+
+    // rota produto detalhe
+    Route::resource('produto_detalhe', AppProdutoDetalheController::class);
 
     // rota login sair
     Route::get('/sair', [LoginController::class,'sair'])->name('app.sair');

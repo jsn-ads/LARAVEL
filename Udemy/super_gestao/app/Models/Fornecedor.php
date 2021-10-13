@@ -17,4 +17,9 @@ class Fornecedor extends Model
     protected $table = 'fornecedores';
 
     protected $fillable = ['nome','site','uf','email'];
+
+    //retorna dados de todos os produtos de um unico fornecedor FK , 1 para N
+    public function produto(){
+        return $this->hasMany('App\Models\Produtos','id_fornecedor','id');
+    }
 }

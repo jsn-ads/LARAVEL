@@ -6,7 +6,7 @@
     <div class="conteudo-pagina">
 
         <div class="titulo-pagina-2">
-            <p>produto_detalhe detalhe - Lista</p>
+            <p>Detalhes do Produto - Lista</p>
         </div>
 
         @component('app.template.parcials.menu_produto_detalhe')

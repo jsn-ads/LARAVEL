@@ -25,7 +25,11 @@
                             <th>Nome</th>
                             <th>Descrição</th>
                             <th>Peso</th>
-                            <th>unidade</th>
+                            <th>Unidade</th>
+                            <th>Largura</th>
+                            <th>Altura</th>
+                            <th>Comprimento</th>
+                            <th>Fornecedor</th>
                             <th>Status</th>
                             <th>Editar</th>
                             <th>Excluir</th>
@@ -38,6 +42,10 @@
                                 <td>{{$produto->descricao}}</td>
                                 <td>{{$produto->peso}}</td>
                                 <td>{{$produto->id_unidade}}</td>
+                                <td>{{$produto->produtoDetalhe->largura ?? ''}}</td>
+                                <td>{{$produto->produtoDetalhe->altura ?? ''}}</td>
+                                <td>{{$produto->produtoDetalhe->comprimento ?? ''}}</td>
+                                <td>{{$produto->fornecedor->nome}}</td>
                                 <td><a href="{{ route('produto.show', $produto->id)}}">Visualizar</a></td>
                                 <td><a href="{{ route('produto.edit', $produto->id)}}">Editar</a></td>
                                 <td>

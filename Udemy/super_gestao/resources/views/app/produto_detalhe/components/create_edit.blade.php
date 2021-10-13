@@ -6,8 +6,8 @@
 @endif
         @csrf
 
-        <input type="text" name="id_produto" placeholder="id_produto" value="{{$produto_detalhe->id_produto ?? old('id_produto')}}" class="borda-preta">
-        <div style="color:red;">{{$errors->has('nome') ? $errors->first('nome') : ''}}</div>
+        <input type="text" name="produto_id" placeholder="produto_id" value="{{$produto_detalhe->produto_id ?? old('produto_id')}}" class="borda-preta">
+        <div style="color:red;">{{$errors->has('produto_id') ? $errors->first('produto_id') : ''}}</div>
 
         <input type="text" name="largura" placeholder="largura" value="{{$produto_detalhe->largura ?? old('largura')}}" class="borda-preta">
         <div style="color:red;">{{$errors->has('largura') ? $errors->first('largura') :''}}</div>

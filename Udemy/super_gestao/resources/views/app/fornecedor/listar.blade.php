@@ -37,6 +37,31 @@
                                 <td><a href="{{ route('app.fornecedor.editar', $fornecedor->id)}}">Editar</a></td>
                                 <td><a href="{{ route('app.fornecedor.excluir', $fornecedor->id)}}" onclick=" return confirm('deseja deletar esse registro')">Excluir</a></td>
                             </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <p>Lista de produtos</p>
+                                    <table border="1" style="margin: 30px;width: 95%;">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nome</th>
+                                                <th>Descrição</th>
+                                                <th>Peso</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($fornecedor->produto as $key => $produto)
+                                            <tr>
+                                                <td>{{$produto->id}}</td>
+                                                <td>{{$produto->nome}}</td>
+                                                <td>{{$produto->descricao}}</td>
+                                                <td>{{$produto->peso}}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

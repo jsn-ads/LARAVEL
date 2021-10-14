@@ -9,7 +9,7 @@ class Produto extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome','descricao','peso','id_unidade'];
+    protected $fillable = ['nome','descricao','peso','id_unidade','id_fornecedor'];
 
     //retorna dados de produtos detalhes contido em produto pela FK , 1 para 1
     public function produtoDetalhe(){

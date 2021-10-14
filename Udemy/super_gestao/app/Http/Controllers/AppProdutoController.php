@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fornecedor;
 use App\Models\Produto;
 use App\Models\Unidade;
 
@@ -25,9 +26,11 @@ class AppProdutoController extends Controller
     public function create()
     {
         $unidades = Unidade::all();
+        $fornecedores = Fornecedor::all();
 
         return view('app.produto.create',[
-            'unidades' => $unidades
+            'unidades' => $unidades,
+            'fornecedores' => $fornecedores
         ]);
 
     }
@@ -40,15 +43,17 @@ class AppProdutoController extends Controller
             'nome'          => 'required|min:3|max:40',
             'descricao'     => 'required|min:3|max:250',
             'peso'          => 'required|integer',
-            'id_unidade'    => 'exists:unidades,id'
+            'id_unidade'    => 'exists:unidades,id',
+            'id_fornecedor' => 'exists:fornecedores,id'
         ];
 
         $feed = [
-            'required'          => 'o campo :attribute e obrigatório',
-            'nome.min'          => 'o campo nome deve ter mais 3 caracteres',
-            'nome.max'          => 'o campo nome deve ter no maximo 40 caracteres',
-            'peso.integer'      => 'o campo peso e invalido',
-            'id_unidade.exists' => 'o campo unidade e invalido'
+            'required'              => 'o campo :attribute e obrigatório',
+            'nome.min'              => 'o campo nome deve ter mais 3 caracteres',
+            'nome.max'              => 'o campo nome deve ter no maximo 40 caracteres',
+            'peso.integer'          => 'o campo peso e invalido',
+            'id_unidade.exists'     => 'o campo unidade e invalido',
+            'id_fornecedor.exists'  => 'o campo fornecedor e invalido'
         ];
 
         $request->validate($regras, $feed);
@@ -70,17 +75,40 @@ class AppProdutoController extends Controller
     public function edit(Produto $produto)
     {
         $unidades = Unidade::all();
+        $fornecedores = Fornecedor::all();
 
         return view('app.produto.edit',[
             'produto'  => $produto,
-            'unidades' => $unidades
+            'unidades' => $unidades,
+            'fornecedores' => $fornecedores
         ]);
     }
 
     //Recebe formulário de edição do registro [PUT|PATCH]
     public function update(Request $request, Produto $produto)
     {
+
+        $regras = [
+            'nome'          => 'required|min:3|max:40',
+            'descricao'     => 'required|min:3|max:250',
+            'peso'          => 'required|integer',
+            'id_unidade'    => 'exists:unidades,id',
+            'id_fornecedor' => 'exists:fornecedores,id'
+        ];
+
+        $feed = [
+            'required'              => 'o campo :attribute e obrigatório',
+            'nome.min'              => 'o campo nome deve ter mais 3 caracteres',
+            'nome.max'              => 'o campo nome deve ter no maximo 40 caracteres',
+            'peso.integer'          => 'o campo peso e invalido',
+            'id_unidade.exists'     => 'o campo unidade e invalido',
+            'id_fornecedor.exists'  => 'o campo fornecedor e invalido'
+        ];
+
+        $request->validate($regras, $feed);
+
         $produto->update($request->all());
+
         return redirect()->route('produto.show',[
             'produto' => $produto->id
         ]);

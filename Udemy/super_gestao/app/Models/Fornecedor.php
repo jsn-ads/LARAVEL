@@ -20,6 +20,6 @@ class Fornecedor extends Model
 
     //retorna dados de todos os produtos de um unico fornecedor FK , 1 para N
     public function produto(){
-        return $this->hasMany('App\Models\Produtos','id_fornecedor','id');
+        return $this->hasMany('App\Models\Produto','id_fornecedor','id');
     }
 }

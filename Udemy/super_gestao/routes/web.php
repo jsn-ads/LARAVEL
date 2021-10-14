@@ -4,6 +4,7 @@ use App\Http\Controllers\AppClienteController;
 use App\Http\Controllers\AppFornecedorController;
 use App\Http\Controllers\AppHomeController;
 use App\Http\Controllers\AppProdutoController;
+use App\Http\Controllers\AppPedidoControlller;
 use App\Http\Controllers\AppProdutoDetalheController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ContatoController;
@@ -47,9 +48,6 @@ Route::middleware('autenticacao: padrao , usuario')->prefix('/app')->group( func
     // inicio
     Route::get('/', [AppHomeController::class, 'index'])->name('app');
 
-    // rota cliente
-    Route::get('/cliente', [AppClienteController::class, 'index'])->name('app.cliente');
-
     // rota fornecedor
     Route::get('/fornecedor/', [AppFornecedorController::class,'index'])->name('app.fornecedor');
     Route::get('/fornecedor/adicionar', [AppFornecedorController::class,'adicionar'])->name('app.fornecedor.adicionar');
@@ -63,6 +61,12 @@ Route::middleware('autenticacao: padrao , usuario')->prefix('/app')->group( func
 
     // rota produto detalhe
     Route::resource('produto_detalhe', AppProdutoDetalheController::class);
+
+    // rota cliente
+    Route::resource('pedido', AppPedidoControlller::class);
+
+    // rota de pedido
+    Route::resource('cliente', AppClienteController::class);
 
     // rota login sair
     Route::get('/sair', [LoginController::class,'sair'])->name('app.sair');

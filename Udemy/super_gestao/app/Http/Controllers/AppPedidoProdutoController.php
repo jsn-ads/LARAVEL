@@ -2,28 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\ValidadorController;
-
-use App\Models\Cliente;
-
+use App\Models\PedidoProduto;
 use Illuminate\Http\Request;
 
-class AppClienteController extends Controller
+class AppPedidoProdutoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-
-        $clientes = Cliente::paginate(10);
-
-        return view('app.cliente.index',[
-            'clientes' =>  $clientes,
-            'request'  =>  $request->all()
-        ]);
+        //
     }
 
     /**
@@ -33,7 +24,7 @@ class AppClienteController extends Controller
      */
     public function create()
     {
-        return view('app.cliente.create');
+        //
     }
 
     /**
@@ -44,22 +35,16 @@ class AppClienteController extends Controller
      */
     public function store(Request $request)
     {
-
-        $request->validate(ValidadorController::regras(), ValidadorController::feed());
-
-        Cliente::create($request->all());
-
-        return redirect()->route('cliente.index');
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cliente  $cliente
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Cliente $cliente)
+    public function show(PedidoProduto $pedidoProduto)
     {
         //
     }
@@ -67,10 +52,10 @@ class AppClienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Cliente  $cliente
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cliente $cliente)
+    public function edit(PedidoProduto $pedidoProduto)
     {
         //
     }
@@ -79,10 +64,10 @@ class AppClienteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cliente  $cliente
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(Request $request, PedidoProduto $pedidoProduto)
     {
         //
     }
@@ -90,10 +75,10 @@ class AppClienteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cliente  $cliente
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cliente $cliente)
+    public function destroy(PedidoProduto $pedidoProduto)
     {
         //
     }

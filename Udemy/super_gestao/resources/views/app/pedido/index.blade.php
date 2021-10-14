@@ -1,19 +1,19 @@
 @extends('app.template.basic')
 
-@section('title','Cliente - Listar')
+@section('title','Pedidos - Listar')
 
 @section('conteudo')
     <div class="conteudo-pagina">
 
         <div class="titulo-pagina-2">
-            <p>Cliente - Lista</p>
+            <p>Pedidos - Lista</p>
         </div>
 
-        @component('app.template.parcials.menucliente')
+        @component('app.template.parcials.menupedido')
 
         @endcomponent
 
-        @if ($clientes)
+        @if ($pedidos)
 
         <div class="informacao-pagina">
             <div style="width:90%;margin-left: auto;margin-right: auto;">
@@ -22,23 +22,23 @@
                 <table border="1px solid" style="width: 100%">
                     <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>Visualizar</th>
+                            <th>id_cliente</th>
+                            <th>Status</th>
                             <th>Editar</th>
                             <th>Excluir</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($clientes as $cliente)
+                        @foreach ($pedidos as $pedido)
                             <tr>
-                                <td>{{$cliente->nome}}</td>
-                                <td><a href="{{ route('cliente.show', $cliente->id)}}">Visualizar</a></td>
-                                <td><a href="{{ route('cliente.edit', $cliente->id)}}">Editar</a></td>
+                                <td>{{$pedido->id_cliente}}</td>
+                                <td><a href="{{ route('pedido.show', $pedido->id)}}">Visualizar</a></td>
+                                <td><a href="{{ route('pedido.edit', $pedido->id)}}">Editar</a></td>
                                 <td>
-                                    <form id="form_{{$cliente->id}}" action="{{route('cliente.destroy', $cliente->id)}}" method="POST">
+                                    <form id="form_{{$pedido->id}}" action="{{route('pedido.destroy', $pedido->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <a href="#" onclick="document.getElementById('form_{{$cliente->id}}').submit()">Excluir</a>
+                                        <a href="#" onclick="document.getElementById('form_{{$pedido->id}}').submit()">Excluir</a>
                                     </form>
                                 </td>
                             </tr>
@@ -46,14 +46,14 @@
                     </tbody>
                 </table>
             </div>
-            {{$clientes->appends($request)->links('pagination::bootstrap-4')}}
+            {{$pedidos->appends($request)->links('pagination::bootstrap-4')}}
             <br><br>
-            Exibindo {{$clientes->count()}} clientes de {{$clientes->total()}} ({{$clientes->firstItem() ?? '0'}} a {{$clientes->lastItem() ?? '0'}})
+            Exibindo {{$pedidos->count()}} Produtos de {{$pedidos->total()}} ({{$pedidos->firstItem()}} a {{$pedidos->lastItem()}})
         </div>
 
         @else
             <div style="width:90%;margin-left: auto;margin-right: auto;">
-                <div style="color: green">Não Possui clientes</div>
+                <div style="color: green">Não Possui Produtos</div>
             </div>
         @endif
     </div>

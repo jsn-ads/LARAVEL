@@ -5,6 +5,7 @@ use App\Http\Controllers\AppFornecedorController;
 use App\Http\Controllers\AppHomeController;
 use App\Http\Controllers\AppProdutoController;
 use App\Http\Controllers\AppPedidoControlller;
+use App\Http\Controllers\AppPedidoProdutoController;
 use App\Http\Controllers\AppProdutoDetalheController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ContatoController;
@@ -67,6 +68,10 @@ Route::middleware('autenticacao: padrao , usuario')->prefix('/app')->group( func
 
     // rota de pedido
     Route::resource('cliente', AppClienteController::class);
+
+    // rota pedido produto customizada
+    Route::get('pedido_produto/create/{pedido}',[AppPedidoProdutoController::class,'create'])->name('pedido_produto.create');
+    Route::post('pedido_produto/store/{pedido}',[AppPedidoProdutoController::class, 'store'])->name('pedido_produto.store');
 
     // rota login sair
     Route::get('/sair', [LoginController::class,'sair'])->name('app.sair');

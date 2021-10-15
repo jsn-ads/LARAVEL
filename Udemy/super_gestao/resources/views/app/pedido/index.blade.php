@@ -23,6 +23,7 @@
                     <thead>
                         <tr>
                             <th>id_cliente</th>
+                            <th>Adicionar Produto</th>
                             <th>Status</th>
                             <th>Editar</th>
                             <th>Excluir</th>
@@ -32,6 +33,7 @@
                         @foreach ($pedidos as $pedido)
                             <tr>
                                 <td>{{$pedido->id_cliente}}</td>
+                                <td><a href="{{ route('pedido_produto.create',$pedido->id)}}">Adicionar Produto</a></td>
                                 <td><a href="{{ route('pedido.show', $pedido->id)}}">Visualizar</a></td>
                                 <td><a href="{{ route('pedido.edit', $pedido->id)}}">Editar</a></td>
                                 <td>

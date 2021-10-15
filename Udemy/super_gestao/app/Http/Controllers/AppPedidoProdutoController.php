@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\ValidadorController;
+
 use App\Models\PedidoProduto;
+use App\Models\Pedido;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class AppPedidoProdutoController extends Controller
@@ -22,9 +26,15 @@ class AppPedidoProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Pedido $pedido)
     {
-        //
+
+        $produtos = Produto::all();
+
+        return view('app.pedido_produto.create',[
+            'pedido'=>$pedido,
+            'produtos'=>$produtos
+        ]);
     }
 
     /**
@@ -33,9 +43,17 @@ class AppPedidoProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request , Pedido $pedido)
     {
-        //
+        $request->validate(ValidadorController::regras($request) , ValidadorController::feed());
+
+        $dados = new PedidoProduto();
+        $dados->id_pedido = $pedido->id;
+        $dados->id_produto = $request->get('id_produto');
+        $dados->save();
+
+        return redirect()->route('pedido_produto.create',['pedido' => $pedido->id]);
+
     }
 
     /**

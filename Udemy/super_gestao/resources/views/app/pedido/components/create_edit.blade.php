@@ -6,10 +6,18 @@
 @endif
         @csrf
 
-        <input type="text" name="nome" placeholder="Nome" value="{{$pedido->nome ?? old('nome')}}" class="borda-preta">
-        <div style="color:red;">{{$errors->has('nome') ? $errors->first('nome') : ''}}</div>
+        <select name="id_cliente" id="">
 
-        @if (isset($produto->id))
+            <option value="">--- Selecione o Cliente ---</option>
+
+            @foreach ($clientes as $cliente)
+                <option value="{{$cliente->id}}" {{$pedido->cliente ?? old('id_cliente') == $cliente->id ? 'selected' : ''}}>{{$cliente->nome}}</option>
+            @endforeach
+
+        </select>
+        <div style="color:red;">{{$errors->has('id_cliente') ? $errors->first('id_cliente') : ''}}</div>
+
+        @if (isset($pedido->id))
             <button type="submit" class="borda-preta">Atualizar</button>
         @else
             <button type="submit" class="borda-preta">Cadastrar</button>

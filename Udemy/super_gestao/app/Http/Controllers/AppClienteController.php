@@ -45,7 +45,7 @@ class AppClienteController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate(ValidadorController::regras(), ValidadorController::feed());
+        $request->validate(ValidadorController::regras($request), ValidadorController::feed());
 
         Cliente::create($request->all());
 

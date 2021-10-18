@@ -56,6 +56,13 @@
                                     </form>
                                 </td>
                             </tr>
+                            @foreach ($produto->pedidos as $pedido)
+                                <tr>
+                                    <td colspan="11">
+                                        <a href="{{route('pedido_produto.create',['pedido'=>$pedido->id])}}">pedido: {{$pedido->id}}</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         @endforeach
                     </tbody>
                 </table>

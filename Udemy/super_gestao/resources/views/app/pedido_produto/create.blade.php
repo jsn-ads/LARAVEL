@@ -22,11 +22,33 @@
 
         <div class="informacao-pagina">
             <div style="width:30%;margin-left: auto;margin-right: auto;">
+
                 @component('app.pedido_produto.components.create',[
                     'pedido' => $pedido,
                     'produtos' => $produtos
                 ])
                 @endcomponent
+
+                <h4>itens do pedido</h4>
+
+                <table border="1" width="100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome do Produto</th>
+                            <th>Data de Inclusão</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($pedido->produtos as $produto)
+                            <tr>
+                                <td>{{$produto->id}}</td>
+                                <td>{{$produto->nome}}</td>
+                                <td>{{$produto->created_at->format('d/m/Y')}}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

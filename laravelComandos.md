@@ -225,3 +225,10 @@ Factory "Classe responsavel por gerar dados em massa e passa para Seeders"
 Midddleware
     [Criando uma Middleware]
     php artisan make:middleware "nome"Middleware
+
+----------------------------------------------------------------------------------------
+NodeJS & NPM 
+    NPM e um gereciador de pacote ex: como se fosse composer , o Node e utilizado para FRONT-END [LAVAREL UI| VUE JS | ANGULAR] e BACK-END
+    [Verificando versão do NODE e NPM]
+    node -v
+    npm -v

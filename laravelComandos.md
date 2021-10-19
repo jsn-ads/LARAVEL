@@ -50,6 +50,11 @@ PAINEL
 -Instalando Painel AdminLTE 
     	composer require jeroennoten/laravel-adminlte
     	php artisan adminlte:install --force
+----------------------------------------------------------------------------------------
+LARAVEL UI
+-Instalando Laravel ui
+    composer require laravel/ui || outra versao ex: composer require laravel/ui:^3.2 
+
 
 ----------------------------------------------------------------------------------------
 CONTROLLERS

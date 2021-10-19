@@ -13,8 +13,8 @@ class Pedido extends Model
 
     // retorna os dados de relacionamento de N pra N , e quantidade de produtos para um pedido
     public function produtos(){
-
-        return $this->belongsToMany('App\Models\Produto', 'pedido_produtos','id_pedido','id_produto')->withPivot('created_at');
+        // metodo WithPivot e utilizado para acessar as colunas da tabela de pedido produtos
+        return $this->belongsToMany('App\Models\Produto','pedido_produtos','id_pedido','id_produto')->withPivot('id','created_at');
 
     }
 }

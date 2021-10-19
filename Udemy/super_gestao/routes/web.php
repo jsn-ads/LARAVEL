@@ -72,6 +72,7 @@ Route::middleware('autenticacao: padrao , usuario')->prefix('/app')->group( func
     // rota pedido produto customizada
     Route::get('pedido_produto/create/{pedido}',[AppPedidoProdutoController::class,'create'])->name('pedido_produto.create');
     Route::post('pedido_produto/store/{pedido}',[AppPedidoProdutoController::class, 'store'])->name('pedido_produto.store');
+    Route::delete('pedido_produto/destroy/{pedidoProduto}/{pedido}',[AppPedidoProdutoController::class, 'destroy'])->name('pedido_produto.destroy');
 
     // rota login sair
     Route::get('/sair', [LoginController::class,'sair'])->name('app.sair');

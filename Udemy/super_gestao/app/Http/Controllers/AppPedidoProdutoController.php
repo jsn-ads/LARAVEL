@@ -30,7 +30,6 @@ class AppPedidoProdutoController extends Controller
     {
 
         $produtos = Produto::all();
-
         return view('app.pedido_produto.create',[
             'pedido'=>$pedido,
             'produtos'=>$produtos
@@ -96,8 +95,11 @@ class AppPedidoProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PedidoProduto $pedidoProduto)
+    public function destroy(PedidoProduto $pedidoProduto , Pedido $pedido)
     {
-        //
+        $pedidoProduto->delete();
+
+        return redirect()->route('pedido_produto.create',['pedido'=>$pedido->id]);
+
     }
 }

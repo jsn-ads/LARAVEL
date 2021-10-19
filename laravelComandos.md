@@ -13,6 +13,7 @@
 
 
 ----------------------------------------------------------------------------------------
+LARAVEL CRIA PROJETOS E DICAS
 
 -Instalando Laravel global , apenas uma unica vez e necessario ter composer instalado 
     composer global require laravel/installer
@@ -44,18 +45,6 @@
 
 -Console interativo para testes
     php artisan tinker
-
-----------------------------------------------------------------------------------------
-PAINEL 
--Instalando Painel AdminLTE 
-    	composer require jeroennoten/laravel-adminlte
-    	php artisan adminlte:install --force
-----------------------------------------------------------------------------------------
-LARAVEL UI
--Instalando Laravel ui
-    composer require laravel/ui || outra versao ex: composer require laravel/ui:^3.2 
-
-
 ----------------------------------------------------------------------------------------
 CONTROLLERS
 -Criando um controller
@@ -232,8 +221,25 @@ Midddleware
     php artisan make:middleware "nome"Middleware
 
 ----------------------------------------------------------------------------------------
+PAINEL 
+-Instalando Painel AdminLTE 
+    	composer require jeroennoten/laravel-adminlte
+    	php artisan adminlte:install --force
+----------------------------------------------------------------------------------------
+LARAVEL UI
+-Instalando Laravel ui
+    composer require laravel/ui || outra versao ex: composer require laravel/ui:^3.2 
+
+-Definir um tecnologia front para o Laravel com autenticação inclusa 
+    php artisan ui "ex: bootstrap | vue | react" --auth
+
+----------------------------------------------------------------------------------------
 NodeJS & NPM 
     NPM e um gereciador de pacote ex: como se fosse composer , o Node e utilizado para FRONT-END [LAVAREL UI| VUE JS | ANGULAR] e BACK-END
     [Verificando versão do NODE e NPM]
     node -v
     npm -v
+
+-Instalando NPM 
+    npm install
+    npm run dev

@@ -56,6 +56,13 @@ CONTROLLERS
 -Criando Controller com metodos junto com Model
     php artisan make:controller --resource "Nome"Controller --model "Nome"
 
+-Criando MODEL CONTROLLER MIGRATE
+    php artisan make:model --migrate --controller --resource "Nome"  
+    php artisan make:model -mcr "Nome"
+
+-Criando MODEL CONTROLLER MIGRATE FACTORY SEEDER
+    php artisan make:model --all "Nome"
+    php artisan make:model -a "Nome"
 
 ----------------------------------------------------------------------------------------
 MODEL 
@@ -64,7 +71,7 @@ MODEL
 
 -Criando um Model com Migrations
 	php artisan make:model "nome" -m
-
+ 
 ----------------------------------------------------------------------------------------
 MIGRATES "comandos utiliados para cria tabelas no banco de dados"
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCarrosTable extends Migration
+class CreateLocacoesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreateCarrosTable extends Migration
      */
     public function up()
     {
-        Schema::create('carros', function (Blueprint $table) {
+        Schema::create('locacoes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_modelo');
-            $table->string('placa',10)->unique();
-            $table->boolean('disponivel');
-            $table->integer('km');
+            $table->unsignedBigInteger('id_cliente');
+            $table->unsignedBigInteger('id_carro');
+            $table->dateTime('data_inicio');
+            $table->dateTime('data_previsto');
+            $table->dateTime('data_final');
+            $table->float('valor_diaria');
+            $table->integer('km_inicial');
+            $table->integer('km_final');
             $table->timestamps();
-            $table->foreign('id_modelo')->references('id')->on('modelos');
         });
     }
 
@@ -32,7 +35,7 @@ class CreateCarrosTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('carros');
+        Schema::dropIfExists('locacoes');
         Schema::enableForeignKeyConstraints();
     }
 }

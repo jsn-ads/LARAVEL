@@ -60,7 +60,7 @@ CONTROLLERS
     php artisan make:model --migrate --controller --resource "Nome"  
     php artisan make:model -mcr "Nome"
 
--Criando MODEL CONTROLLER MIGRATE FACTORY SEEDER
+-Criando MODEL CONTROLLER MIGRATE FACTORY SEEDER ...
     php artisan make:model --all "Nome"
     php artisan make:model -a "Nome"
 

@@ -14,7 +14,7 @@ class TarefaController extends Controller
      */
     public function index()
     {
-        //
+        echo 'tarefas';
     }
 
     /**

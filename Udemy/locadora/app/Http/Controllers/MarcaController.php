@@ -35,7 +35,11 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $marca = new Marca();
+        $marca->nome =   $request->input('nome');
+        $marca->imagem = $request->input('imagem');
+        $resposta = $marca->save();
+        return $resposta;
     }
 
     /**
@@ -57,7 +61,7 @@ class MarcaController extends Controller
      */
     public function edit(Marca $marca)
     {
-        //
+
     }
 
     /**

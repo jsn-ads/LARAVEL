@@ -43,6 +43,12 @@ LARAVEL CRIA PROJETOS E DICAS
 -Limpando cash das views
 	php artisan view:clear
 
+-Limpando cash
+    php artisan cache:clear
+    
+-Limpando cash de configuração
+    php artisan config:clear
+
 -Console interativo para testes
     php artisan tinker
 ----------------------------------------------------------------------------------------

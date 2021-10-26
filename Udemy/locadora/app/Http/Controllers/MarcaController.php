@@ -12,9 +12,11 @@ class MarcaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $marcas = Marca::all();
+
+        return $marcas;
     }
 
     /**
@@ -50,7 +52,7 @@ class MarcaController extends Controller
      */
     public function show(Marca $marca)
     {
-        //
+        return $marca;
     }
 
     /**

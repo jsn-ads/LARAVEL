@@ -246,6 +246,12 @@ LARAVEL UI
 -Definir um tecnologia front para o Laravel com autenticação inclusa 
     php artisan ui "ex: bootstrap | vue | react" --auth
 
+	
+----------------------------------------------------------------------------------------	
+LARAVEL EMAIL
+-Criando um controller especifico para email com view
+	php artisan make:mail "Nome do Controller ex: MensagemMail" --markdown "diretorio.nome ex: emails.mensagem" 
+	
 ----------------------------------------------------------------------------------------
 NodeJS & NPM 
     NPM e um gereciador de pacote ex: como se fosse composer , o Node e utilizado para FRONT-END [LAVAREL UI| VUE JS | ANGULAR] e BACK-END

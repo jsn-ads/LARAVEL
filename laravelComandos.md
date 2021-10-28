@@ -253,6 +253,11 @@ LARAVEL EMAIL
 	php artisan make:mail "Nome do Controller ex: MensagemMail" --markdown "diretorio.nome ex: emails.mensagem" 
 	
 ----------------------------------------------------------------------------------------
+LARAVEL PUBLISH
+-Faz uma copia de uma biblioteda da pasta vendor para pasta publica para modificações no projeto
+	php artisan vendor:publish
+
+----------------------------------------------------------------------------------------
 NodeJS & NPM 
     NPM e um gereciador de pacote ex: como se fosse composer , o Node e utilizado para FRONT-END [LAVAREL UI| VUE JS | ANGULAR] e BACK-END
     [Verificando versão do NODE e NPM]

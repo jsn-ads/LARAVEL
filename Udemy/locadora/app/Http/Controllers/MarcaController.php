@@ -21,8 +21,8 @@ class MarcaController extends Controller
     public function index(Request $request)
     {
         // $marcas = Marca::all();
-        $marcas = $this->marca->all();
-        return $marcas;
+        return $this->marca->all();
+
     }
 
     /**
@@ -45,8 +45,7 @@ class MarcaController extends Controller
     {
         $this->marca->nome =   $request->input('nome');
         $this->marca->imagem = $request->input('imagem');
-        $resposta = $this->marca->save();
-        return $resposta;
+        return $this->marca->save();
     }
 
     /**
@@ -57,8 +56,7 @@ class MarcaController extends Controller
      */
     public function show($id)
     {
-        $marca = $this->marca->find($id);
-        return $marca;
+        return $this->marca->find($id);
     }
 
     /**
@@ -82,9 +80,7 @@ class MarcaController extends Controller
     public function update(Request $request, $id)
     {
 
-        $marca = $this->marca->find($id);
-
-        $marca->update($request->all());
+        $this->marca->find($id)->update($request->all());
 
         return "Atualizado com sucesso";
     }
@@ -97,9 +93,7 @@ class MarcaController extends Controller
      */
     public function destroy($id)
     {
-        $marca = $this->marca->find($id);
-
-        $marca->delete();
+        $this->marca->find($id)->delete();
 
         return ['msg' => 'a marca foi excluida com sucesso'];
     }

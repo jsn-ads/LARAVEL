@@ -256,6 +256,10 @@ LARAVEL EMAIL
 LARAVEL PUBLISH
 -Faz uma copia de uma biblioteda da pasta vendor para pasta publica para modificações no projeto
 	php artisan vendor:publish
+	
+----------------------------------------------------------------------------------------
+LARAVEL NOTIFICATION
+	php artisan make:notification "nome"Notification
 
 ----------------------------------------------------------------------------------------
 NodeJS & NPM 

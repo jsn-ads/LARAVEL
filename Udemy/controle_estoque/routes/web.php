@@ -21,11 +21,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+//Paramentro de verificação de email
+Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['verified','auth'])->get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware('auth')->resource('tarefa', TarefaController::class);
+Route::middleware(['verified','auth'])->resource('tarefa', TarefaController::class);
 
 Route::get('mensagem_email', function(){
     return new MensagemMail();

@@ -21,10 +21,14 @@ class ResetPasswordController extends Controller
 
     use ResetsPasswords;
 
-    /**
-     * Where to redirect users after resetting their password.
-     *
-     * @var string
-     */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    // Metodo de validao de confirmação de senha apos se redirecionado pelo E-Mail , esse metodo e sobre escrito de [ResetsPasswords]
+    protected function rules(){
+        return [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:4'
+        ];
+    }
 }

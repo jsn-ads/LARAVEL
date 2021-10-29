@@ -15,7 +15,7 @@ class MarcaController extends Controller
 
     public function index(Request $request)
     {
-        return $this->marca->all();
+        return response($this->marca->all(),200);
     }
 
     public function create()
@@ -27,12 +27,12 @@ class MarcaController extends Controller
     {
         $this->marca->nome =   $request->input('nome');
         $this->marca->imagem = $request->input('imagem');
-        return $this->marca->save();
+        return response($this->marca->save(),200);
     }
 
     public function show($id)
     {
-        return ($this->marca->find($id) != null) ? $this->marca->find($id) : ['erro'=>'Marca não encontrada'];
+        return ($this->marca->find($id) != null) ? response($this->marca->find($id),200) : response(['erro'=>'Marca não encontrada'],404);
     }
 
     public function edit(Marca $marca)
@@ -42,11 +42,11 @@ class MarcaController extends Controller
 
     public function update(Request $request, $id)
     {
-        return ($this->marca->find($id) != null) ? $this->marca->find($id)->update($request->all()) : ['erro'=>'Erro ao Atualizar , Marca não encontrada'];
+        return ($this->marca->find($id) != null) ? response($this->marca->find($id)->update($request->all()),200) : response(['erro'=>'Erro ao Atualizar , Marca não encontrada'],404);
     }
 
     public function destroy($id)
     {
-        return ($this->marca->find($id) != null) ? $this->marca->find($id)->delete() : ['erro'=>'Erro ao Deletar , Marca não encontrada'];
+        return ($this->marca->find($id) != null) ? response($this->marca->find($id)->delete(),200) : response(['erro'=>'Erro ao Deletar , Marca não encontrada'],404);
     }
 }

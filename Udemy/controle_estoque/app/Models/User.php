@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Notifications\RedefirSenhaNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -42,8 +44,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    // metodo utilizado para recuperar senha por email
     public function sendPasswordResetNotification($token)
     {
-        dd('Intercepitado');
+        $this->notify(new RedefirSenhaNotification($token , $this->email, $this->name));
     }
 }

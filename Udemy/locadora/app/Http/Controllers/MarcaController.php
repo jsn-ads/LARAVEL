@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Marca;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\PseudoTypes\LowercaseString;
 
 class MarcaController extends Controller
 {
@@ -25,8 +26,21 @@ class MarcaController extends Controller
 
     public function store(Request $request)
     {
-        $this->marca->nome =   $request->input('nome');
-        $this->marca->imagem = $request->input('imagem');
+        $regras = [
+            'nome'    => 'required|unique:marcas',
+            'imagem'  => 'required'
+        ];
+
+        $feedbeck = [
+            'required'    => 'o campo :attribute e obrigatório',
+            'nome.unique' => 'este nome ja esta sendo utilizado'
+        ];
+
+        $request->validate($regras,$feedbeck);
+
+        $this->marca->nome   = ucwords(strtolower($request->input('nome')));
+        $this->marca->imagem = ucwords(strtolower($request->input('imagem')));
+
         return response($this->marca->save(),200);
     }
 

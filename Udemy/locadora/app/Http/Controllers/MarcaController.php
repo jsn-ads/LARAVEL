@@ -26,17 +26,8 @@ class MarcaController extends Controller
 
     public function store(Request $request)
     {
-        $regras = [
-            'nome'    => 'required|unique:marcas',
-            'imagem'  => 'required'
-        ];
 
-        $feedbeck = [
-            'required'    => 'o campo :attribute e obrigatório',
-            'nome.unique' => 'este nome ja esta sendo utilizado'
-        ];
-
-        $request->validate($regras,$feedbeck);
+        $request->validate($this->marca->rules(),$this->marca->feedback());
 
         $this->marca->nome   = ucwords(strtolower($request->input('nome')));
         $this->marca->imagem = ucwords(strtolower($request->input('imagem')));

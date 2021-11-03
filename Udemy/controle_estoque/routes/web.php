@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\TarefaController;
 use App\Mail\MensagemMail;
+use App\Http\Controllers\Auth\LoginController;
+
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -17,11 +20,10 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LoginController::class, 'showLoginForm']);
 
 //Paramentro de verificação de email
+
 Auth::routes(['verify' => true]);
 
 Route::middleware(['verified','auth'])->get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -12,6 +12,7 @@ class MarcaController extends Controller
     public function __construct(Marca $marca)
     {
         $this->marca = $marca;
+        $this->a = $marca;
     }
 
     public function index(Request $request)
@@ -29,8 +30,8 @@ class MarcaController extends Controller
 
         $request->validate($this->marca->rules(),$this->marca->feedback());
 
-        $this->marca->nome   = ucwords(strtolower($request->input('nome')));
-        $this->marca->imagem = ucwords(strtolower($request->input('imagem')));
+        $this->marca->nome   = utf8_encode(ucwords(strtolower($request->input('nome'))));
+        $this->marca->imagem = utf8_encode(ucwords(strtolower($request->input('imagem'))));
 
         return response($this->marca->save(),200);
     }
@@ -47,7 +48,15 @@ class MarcaController extends Controller
 
     public function update(Request $request, $id)
     {
-        return ($this->marca->find($id) != null) ? response($this->marca->find($id)->update($request->all()),200) : response(['erro'=>'Erro ao Atualizar , Marca não encontrada'],404);
+
+        if($this->marca->find($id) === null){
+            return response(['erro'=>'Erro ao Atualizar , Marca não encontrada'],404);
+        }
+
+        $request->validate($this->marca->find($id)->rules(), $this->marca->find($id)->feedback());
+
+        return response($this->marca->find($id)->update($request->all()),200);
+
     }
 
     public function destroy($id)

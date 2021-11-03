@@ -14,7 +14,7 @@ class Marca extends Model
     // regras de validação
     public function rules(){
         return [
-            'nome'    => 'required|unique:marcas',
+            'nome'    => 'required|unique:marcas,nome,'.$this->id.'',
             'imagem'  => 'required'
         ];
     }

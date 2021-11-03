@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Notifications\RedefirSenhaNotification;
+use App\Notifications\VerificarEmailNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -49,5 +50,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new RedefirSenhaNotification($token , $this->email, $this->name));
+    }
+
+    public function  sendEmailVerificationNotification()
+    {
+        $this->notify(new VerificarEmailNotification($this->name));
     }
 }

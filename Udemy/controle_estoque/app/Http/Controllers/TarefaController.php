@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NotificacaoTarefa;
 use App\Models\Tarefa;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class TarefaController extends Controller
 {
 
-    public function __construct(Tarefa $tarefa)
+    public function __construct(Tarefa $tarefa , NotificacaoTarefa $notificacaoTarefa)
     {
-        $this->tarefa = $tarefa;
+        $this->dados = array();
+        $this->tarefa = $tarefa;                 //injeção Model tarefa
+        $this->notificacao = $notificacaoTarefa;   //injeção Mail Notificação de email
     }
 
     public function index(Request $resquest)
@@ -28,19 +31,28 @@ class TarefaController extends Controller
 
     public function store(Request $request)
     {
+        //recupera email do usuario logado
+        $user_email = auth()->user()->email;
+
+        //valida a requisição
         $request->validate($this->tarefa->rules(), $this->tarefa->feedback());
 
-        $this->tarefa->tarefa = utf8_decode(ucfirst(strtolower($request->input('tarefa'))));
-        $this->tarefa->data_conclusao = $request->input('data_conclusao');
-        $tarefa = $this->tarefa->save();
+        //trata os dados para persistencia
+        $this->dados['tarefa']         = utf8_decode(ucfirst(strtolower($request->input('tarefa'))));
+        $this->dados['data_conclusao'] = $request->input('data_conclusao');
+        $this->dados = $this->tarefa::create($this->dados);
 
-        return redirect()->route('tarefa.show',['tarefa'=>$tarefa]);
+        //enviar o objeto da tarefa criada para classe notificaço tarefa
+        Mail::to($user_email)->send(new NotificacaoTarefa($this->dados));
+
+        return redirect()->route('tarefa.show',['tarefa'=>$this->dados]);
+
     }
 
 
-    public function show($id)
+    public function show(Tarefa $tarefa)
     {
-        return view('tarefa.show',['id'=>$id]);
+        return view('tarefa.show',['tarefa'=> $tarefa]);
     }
 
 

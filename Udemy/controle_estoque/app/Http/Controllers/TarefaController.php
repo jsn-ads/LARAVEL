@@ -38,6 +38,7 @@ class TarefaController extends Controller
         $request->validate($this->tarefa->rules(), $this->tarefa->feedback());
 
         //trata os dados para persistencia
+        $this->dados['id_user'] = auth()->user()->id;
         $this->dados['tarefa']         = utf8_decode(ucfirst(strtolower($request->input('tarefa'))));
         $this->dados['data_conclusao'] = $request->input('data_conclusao');
         $this->dados = $this->tarefa::create($this->dados);

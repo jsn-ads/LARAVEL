@@ -59,19 +59,27 @@ class MarcaController extends Controller
             $regrasDinamicas = array();
 
             foreach($this->marca->rules() as $input => $regra){
+
                 if(array_key_exists($input, $request->all())){
+
                     $regrasDinamicas[$input] = $regra;
+
                 }
             }
 
             $request->validate($regrasDinamicas, $this->marca->find($id)->feedback());
 
-        }else{
-            $request->validate($this->marca->find($id)->rules(), $this->marca->find($id)->feedback());
-        }
+            $this->dados = $request->all();
 
-        $this->dados['nome'] = utf8_encode(ucwords(strtolower($request->input('nome'))));
-        $this->dados['marca'] = utf8_encode(ucwords(strtolower($request->input('imagem'))));
+        }else{
+
+            $this->dados['nome'] = utf8_encode(ucwords(strtolower($request->input('nome'))));
+
+            $this->dados['marca'] = utf8_encode(ucwords(strtolower($request->input('imagem'))));
+
+            $request->validate($this->marca->find($id)->rules(), $this->marca->find($id)->feedback());
+
+        }
 
         return response($this->marca->find($id)->update($this->dados),200);
 

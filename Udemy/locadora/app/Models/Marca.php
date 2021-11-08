@@ -15,7 +15,7 @@ class Marca extends Model
     public function rules(){
         return [
             'nome'    => 'required|unique:marcas,nome,'.$this->id.'',
-            'imagem'  => 'required'
+            'imagem'  => 'required|file|mimes:png'
         ];
     }
 
@@ -23,7 +23,8 @@ class Marca extends Model
     public function feedback(){
         return [
             'required'    => 'o campo :attribute e obrigatório',
-            'nome.unique' => 'este nome ja esta sendo utilizado'
+            'nome.unique' => 'este nome ja esta sendo utilizado',
+            'imagem.mimes' => 'erro ao salvar arquivo , somente arquivo png'
         ];
     }
 }

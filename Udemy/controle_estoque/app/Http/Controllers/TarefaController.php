@@ -20,6 +20,10 @@ class TarefaController extends Controller
     public function index(Request $resquest)
     {
 
+        return view('tarefa.index',[
+            'request' => $resquest,
+            'tarefas' => $this->tarefa::where('id_user',auth()->user()->id)->get()
+        ]);
     }
 
 

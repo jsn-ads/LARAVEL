@@ -13,6 +13,7 @@
                         <a href="{{route('tarefa.create')}}" title="adicionar tarefa"><img src="{{asset('img/add.png')}}" style="width: 20px"></a>
                     </div>
                 </div>
+                <div class="card-body">
                     <table class="table">
                         <thead>
                             <tr>
@@ -31,6 +32,17 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                          <li class="page-item"><a class="page-link" href="{{ $tarefas->previousPageUrl() }}">anterior</a></li>
+                          @for ($i = 1; $i <= $tarefas->lastPage(); $i++)
+                            <li class="page-item {{ $tarefas->currentPage() == $i ? 'active' : ''}}">
+                                <a class="page-link" href="{{ $tarefas->url($i) }}">{{ $i }}</a>
+                            </li>
+                          @endfor
+                          <li class="page-item"><a class="page-link" href=""{{ $tarefas->nextPageUrl() }}">proximo</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>

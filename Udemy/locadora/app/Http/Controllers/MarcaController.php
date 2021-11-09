@@ -32,7 +32,9 @@ class MarcaController extends Controller
         $request->validate($this->marca->rules(),$this->marca->feedback());
 
         $this->marca->nome   = utf8_encode(ucwords(strtolower($request->input('nome'))));
+        //recupera a imagem
         $this->marca->imagem = $request->file('imagem');
+        //salva imagem dentro de storage
         $this->marca->imagem = $this->marca->imagem->store('imagens/marca','public');
 
         return response($this->marca->save(),200);

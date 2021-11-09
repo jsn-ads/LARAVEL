@@ -22,7 +22,7 @@ class TarefaController extends Controller
 
         return view('tarefa.index',[
             'request' => $resquest,
-            'tarefas' => $this->tarefa::where('id_user',auth()->user()->id)->get()
+            'tarefas' => $this->tarefa::where('id_user',auth()->user()->id)->paginate(10)
         ]);
     }
 

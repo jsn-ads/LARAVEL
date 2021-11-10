@@ -26,7 +26,8 @@ Route::get('/', [LoginController::class, 'showLoginForm']);
 
 Auth::routes(['verify' => true]);
 
-Route::middleware(['verified','auth'])->get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Rota apos verificação do esta definido APP/Providers/RouteServiceProvider
+// Route::middleware(['verified','auth'])->get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['verified','auth'])->resource('tarefa', TarefaController::class);
 

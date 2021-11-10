@@ -63,19 +63,23 @@ class TarefaController extends Controller
 
     public function edit(Tarefa $tarefa)
     {
-        return view('tarefa.edit', [
-            'tarefa' => $this->tarefa->find($tarefa->id)
-        ]);
+        //Verifica se a tarefa pertence ao usuario logado , caso contrario e redirecionado para view de acesso negado
+        return $tarefa->id_user === auth()->user()->id ? view('tarefa.edit', ['tarefa' => $this->tarefa->find($tarefa->id)]) : view('acesso_negado');
     }
 
 
     public function update(Request $request, Tarefa $tarefa)
     {
 
+        //Verifica se a tarefa pertence ao usuario logado , caso contrario e redirecionado para view de acesso negado
+        if($tarefa->id_user != auth()->user()->id){
+            return view('acesso_negado');
+        }
+
         $request->validate($this->tarefa->rules(), $this->tarefa->feedback());
 
         $this->tarefa = $this->tarefa->find($tarefa->id);
-        $this->tarefa['id_user'] = auth()->user()->id;
+        $this->tarefa['id_user']        = auth()->user()->id;
         $this->tarefa['tarefa']         = utf8_decode(ucfirst(strtolower($request->input('tarefa'))));
         $this->tarefa['data_conclusao'] = $request->input('data_conclusao');
         $this->tarefa->save();

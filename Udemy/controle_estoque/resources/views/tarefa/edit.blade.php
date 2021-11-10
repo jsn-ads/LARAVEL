@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header" style="display: flex; justify-content: space-between">
                     <div>
-                        Nova Tarefa
+                        Atualizar Tarefa
                     </div>
                     <div>
                         <a href="{{ route('tarefa.index') }}" title="lista de tarefas"><img src="{{asset('img/lista.png')}}" style="width: 26px"></a>
@@ -15,23 +15,24 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{route('tarefa.store')}}">
+                    <form method="POST" action="{{ route('tarefa.update', ['tarefa' => $tarefa->id]) }}">
 
                         @csrf
+                        @method('PUT')
 
                         <div class="mb-3">
                           <label class="form-label">Tarefa</label>
-                          <input type="text" class="form-control" name="tarefa" value="{{old('tarefa')}}">
+                          <input type="text" class="form-control" name="tarefa" value="{{ $tarefa->tarefa }}">
                         </div>
                         <div class="mb-3" style="color: red;">{{$errors->has('tarefa') ? $errors->first('tarefa') : ''}}</div>
 
                         <div class="mb-3">
                           <label class="form-label">Data de Conclusão</label>
-                          <input type="date" class="form-control" name="data_conclusao" value="{{old('data_conclusao')}}">
+                          <input type="date" class="form-control" name="data_conclusao" value="{{ $tarefa->data_conclusao }}">
                         </div>
                         <div class="mb-3" style="color: red;">{{$errors->has('data_conclusao') ? $errors->first('data_conclusao') : ''}}</div>
 
-                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        <button type="submit" class="btn btn-success">Atualizar</button>
 
                     </form>
                 </div>

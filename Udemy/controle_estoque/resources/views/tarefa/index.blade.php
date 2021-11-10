@@ -19,7 +19,7 @@
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Nome</th>
-                                <th scope="col">Data Conclusão</th>
+                                <th scope="col" colspan='3'>Data Conclusão</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,6 +28,12 @@
                                     <th scope="row">{{$tarefa->id}}</th>
                                     <td>{{$tarefa->tarefa}}</td>
                                     <td>{{date('d/m/Y' , strtotime($tarefa->data_conclusao))}}</td>
+                                    <td><a href="{{ route('tarefa.edit' ,  $tarefa->id) }}" title="editar tarefa"><img src="{{asset('img/edit.png')}}" style="width: 15px;"></a></td>
+                                    <td>
+                                        <form action="" method="post">
+                                            <a href="http://" title="deletar tarefa"><img src="{{ asset('img/delete.png') }}" style="width: 18px;"></a>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -50,7 +50,7 @@ class TarefaController extends Controller
         //enviar o objeto da tarefa criada para classe notificaço tarefa
         Mail::to($user_email)->send(new NotificacaoTarefa($this->dados));
 
-        return redirect()->route('tarefa.show',['tarefa'=>$this->dados]);
+        return redirect()->route('tarefa.show',['tarefa'=>$this->dados->id]);
 
     }
 
@@ -63,13 +63,27 @@ class TarefaController extends Controller
 
     public function edit(Tarefa $tarefa)
     {
-        //
+        return view('tarefa.edit', [
+            'tarefa' => $this->tarefa->find($tarefa->id)
+        ]);
     }
 
 
     public function update(Request $request, Tarefa $tarefa)
     {
-        //
+
+        $request->validate($this->tarefa->rules(), $this->tarefa->feedback());
+
+        $this->tarefa = $this->tarefa->find($tarefa->id);
+        $this->tarefa['id_user'] = auth()->user()->id;
+        $this->tarefa['tarefa']         = utf8_decode(ucfirst(strtolower($request->input('tarefa'))));
+        $this->tarefa['data_conclusao'] = $request->input('data_conclusao');
+        $this->tarefa->save();
+
+        return redirect()->route('tarefa.show', [
+            'tarefa' => $this->tarefa->id
+        ]);
+
     }
 
 

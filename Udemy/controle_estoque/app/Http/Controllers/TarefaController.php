@@ -93,6 +93,6 @@ class TarefaController extends Controller
 
     public function destroy(Tarefa $tarefa)
     {
-        //
+        dd($tarefa);
     }
 }

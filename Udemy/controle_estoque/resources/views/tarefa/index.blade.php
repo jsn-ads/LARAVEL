@@ -28,10 +28,12 @@
                                     <th scope="row">{{$tarefa->id}}</th>
                                     <td>{{$tarefa->tarefa}}</td>
                                     <td>{{date('d/m/Y' , strtotime($tarefa->data_conclusao))}}</td>
-                                    <td><a href="{{ route('tarefa.edit' ,  $tarefa->id) }}" title="editar tarefa"><img src="{{asset('img/edit.png')}}" style="width: 15px;"></a></td>
+                                    <td style="width: 50px"><a href="{{ route('tarefa.edit' ,  $tarefa->id) }}" title="editar tarefa" class="btn btn-sm btn-outline-success">Editar</a></td>
                                     <td>
-                                        <form action="" method="post">
-                                            <a href="http://" title="deletar tarefa"><img src="{{ asset('img/delete.png') }}" style="width: 18px;"></a>
+                                        <form action="{{route('tarefa.destroy', $tarefa->id)}}" method="post" id="{{$tarefa->id}}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-sm btn-outline-danger" onclick="document.getElementbyId('{{$tarefa->id}}').submit()">Excluir</button>
                                         </form>
                                     </td>
                                 </tr>

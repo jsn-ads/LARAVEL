@@ -93,6 +93,13 @@ class TarefaController extends Controller
 
     public function destroy(Tarefa $tarefa)
     {
-        dd($tarefa);
+
+        if($tarefa->id_user != auth()->user()->id){
+            return view('acesso_negado');
+        }
+
+        $this->tarefa->find($tarefa->id)->delete();
+
+        return redirect()->route('tarefa.index');
     }
 }

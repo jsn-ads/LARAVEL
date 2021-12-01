@@ -21,3 +21,12 @@
     </div>
 </div>
 @endsection
+
+
+@auth
+    {{-- esta tag e utiliza para mostrar conteudo para usuarios logados --}}
+@endauth
+
+@guest
+    {{-- esta tag e utilizado para mostrar conteudo para usuarios não logados --}}
+@endguest

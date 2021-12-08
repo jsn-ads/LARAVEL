@@ -273,3 +273,45 @@ NodeJS & NPM
 -Instalando NPM 
     npm install
     npm run dev
+	
+	
+
+----------------------------------------------------------------------------------------
+LARAVEL EXCEL
+
+-instalando no projeto
+	composer require maatwebsite/excel
+
+ADICIONAR NO PROJETO
+	
+-inserindo dentro do projeto "app.config"
+		
+		Providers[ 
+			Maatwebsite\Excel\ExcelServiceProvider::class, 
+		] 
+		
+		Aliases[
+			'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+		]
+		
+		cmd : php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

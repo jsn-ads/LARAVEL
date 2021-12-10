@@ -296,8 +296,9 @@ ADICIONAR NO PROJETO
 		
 		cmd : php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config
 
+-Instalando classe e exportação
 
-
+    php artisan make:export "Nome"Export --model='model que sera utilizado ex: "User.php"'
 
 
 

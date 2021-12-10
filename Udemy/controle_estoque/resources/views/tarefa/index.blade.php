@@ -10,6 +10,7 @@
                         Tarefas
                     </div>
                     <div>
+                        <a href="{{route('tarefa.exportar')}}" title="baixar em excel"><img src="{{asset('img/download.png')}}" style="width: 20px"></a>
                         <a href="{{route('tarefa.create')}}" title="adicionar tarefa"><img src="{{asset('img/add.png')}}" style="width: 20px"></a>
                     </div>
                 </div>

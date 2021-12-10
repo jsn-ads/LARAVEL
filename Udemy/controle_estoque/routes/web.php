@@ -31,8 +31,11 @@ Auth::routes(['verify' => true]);
 
 Route::middleware(['verified','auth'])->resource('tarefa', TarefaController::class);
 
+Route::get('/exportar', [TarefaController::class , 'exportar'])->name('tarefa.exportar');
+
 Route::get('mensagem_email', function(){
     return new MensagemMail();
     // Mail::to('jsn.ads@gmail.com')->send(new MensagemMail());
     // return "Mensagem Enviada com Sucesso";
 });
+

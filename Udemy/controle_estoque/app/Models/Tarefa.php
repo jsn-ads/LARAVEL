@@ -24,4 +24,9 @@ class Tarefa extends Model
             'data_conclusao.after' => 'A data deve ser posterior a data atual'
         ];
     }
+
+    // returna  1 usuario para N tarefas
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
 }

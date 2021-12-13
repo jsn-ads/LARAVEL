@@ -10,8 +10,9 @@
                         Tarefas
                     </div>
                     <div>
-                        <a href="{{route('tarefa.exportar')}}" title="baixar em excel"><img src="{{asset('img/download.png')}}" style="width: 20px"></a>
-                        <a href="{{route('tarefa.create')}}" title="adicionar tarefa"><img src="{{asset('img/add.png')}}" style="width: 20px"></a>
+                        <a href="{{route('tarefa.exportar',['extensao' => 'csv'])}}" title="baixar em excel" class="btn btn-sm btn-outline-success" style="width: 60px;">csv</a>
+                        <a href="{{route('tarefa.exportar',['extensao' => 'xlsx'])}}" title="baixar em excel" class="btn btn-sm btn-outline-success" style="width: 60px;">xlxs</a>
+                        <a href="{{route('tarefa.create')}}" title="adicionar tarefa" class="btn btn-sm btn-outline-secondary" style="width: 30px;"> + </a>
                     </div>
                 </div>
                 <div class="card-body">

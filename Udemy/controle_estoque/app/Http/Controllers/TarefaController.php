@@ -106,7 +106,14 @@ class TarefaController extends Controller
     }
 
     // metodo para exporta excel
-    public function exportar(){
-        return Excel::download(new TarefasExport, 'Tarefas.xlsx');
+    public function exportar($extensao){
+
+        if($extensao === 'csv' || $extensao === 'xlsx'){
+            $arquivo = date('dmY-hms').'.tarefa.'.$extensao;
+        }else{
+            return redirect()->route('tarefa.index');
+        }
+
+        return Excel::download(new TarefasExport, $arquivo);
     }
 }

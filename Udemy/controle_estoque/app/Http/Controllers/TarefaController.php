@@ -108,7 +108,7 @@ class TarefaController extends Controller
     // metodo para exporta excel
     public function exportar($extensao){
 
-        if($extensao === 'csv' || $extensao === 'xlsx'){
+        if(in_array($extensao, ['csv', 'xlsx', 'pdf'])){
             $arquivo = date('dmY-hms').'.tarefa.'.$extensao;
         }else{
             return redirect()->route('tarefa.index');

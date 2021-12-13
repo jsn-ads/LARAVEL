@@ -300,9 +300,17 @@ ADICIONAR NO PROJETO
 
     php artisan make:export "Nome"Export --model='model que sera utilizado ex: "User.php"'
 
+----------------------------------------------------------------------------------------
+LARAVEL PDF
 
+-instalando no projeto
+    composer require mpdf/mpdf
 
+ADICIONAR NO PROJETO
 
+-inserindo dentro do projeto "excel.config"
+
+    'pdf'   => Excel::MPDF,
 
 
 

@@ -11,6 +11,7 @@ class Tarefa extends Model
 
     protected $fillable = ['tarefa','data_conclusao','id_user'];
 
+    //validação
     public function rules(){
         return [
             'tarefa' => 'required',
@@ -18,6 +19,7 @@ class Tarefa extends Model
         ];
     }
 
+    //senha de validação
     public function feedback(){
         return [
             'required' => 'O campo :attribute e obrigatório',

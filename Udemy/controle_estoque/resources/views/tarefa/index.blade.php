@@ -10,6 +10,7 @@
                         Tarefas
                     </div>
                     <div>
+                        <a href="{{route('tarefa.pdf')}}" title="baixar em pdf" class="btn btn-sm btn-outline-danger" style="width: 60px;">dpdf</a>
                         <a href="{{route('tarefa.exportar',['extensao' => 'pdf'])}}" title="baixar em pdf" class="btn btn-sm btn-outline-danger" style="width: 60px;">pdf</a>
                         <a href="{{route('tarefa.exportar',['extensao' => 'csv'])}}" title="baixar em excel" class="btn btn-sm btn-outline-success" style="width: 60px;">csv</a>
                         <a href="{{route('tarefa.exportar',['extensao' => 'xlsx'])}}" title="baixar em excel" class="btn btn-sm btn-outline-success" style="width: 60px;">xlxs</a>

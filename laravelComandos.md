@@ -293,15 +293,16 @@ ADICIONAR NO PROJETO
 		Aliases[
 			'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 		]
-		
-		cmd : php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config
+-instalando classe de configuração no projeto
+
+	php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config
 
 -Instalando classe e exportação
 
     php artisan make:export "Nome"Export --model='model que sera utilizado ex: "User.php"'
 
 ----------------------------------------------------------------------------------------
-LARAVEL PDF
+LARAVEL PDF (obs: esse modelo e preciso instalar Laravel excel)
 
 -instalando no projeto
     composer require mpdf/mpdf
@@ -312,10 +313,24 @@ ADICIONAR NO PROJETO
 
     'pdf'   => Excel::MPDF,
 
+----------------------------------------------------------------------------------------
+LARAVEL PDF DOMPDF
 
+-instalando no projeto 
+    composer require barryvdh/laravel-dompdf
 
+-inserindo dentro do projeto "app.config"
 
+        Providers[ 
+            Barryvdh\DomPDF\ServiceProvider::class,
+        ] 
 
+        Aliases[
+			'PDF' => Barryvdh\DomPDF\Facade::class,
+		]
+
+-instalando classe de configuração no projeto
+    php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
 
 
 

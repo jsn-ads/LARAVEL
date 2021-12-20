@@ -33,7 +33,7 @@ Route::middleware(['verified','auth'])->resource('tarefa', TarefaController::cla
 
 Route::get('/exportar/{extensao}', [TarefaController::class , 'exportar'])->name('tarefa.exportar');
 
-Route::get('/pdf',[TarefaController::class , 'pdf'])->name('tarefa.pdf');
+Route::get('/pdf',[TarefaController::class , 'pdff'])->name('tarefa.pdf');
 
 Route::get('mensagem_email', function(){
     return new MensagemMail();

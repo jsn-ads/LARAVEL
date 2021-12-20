@@ -8,7 +8,7 @@ use App\Models\Tarefa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
-use Barryvdh\DomPDF\Facades\PDF;
+use Barryvdh\DomPDF\Facade;
 
 class TarefaController extends Controller
 {
@@ -120,11 +120,11 @@ class TarefaController extends Controller
 
     // metodo para exporta pdf
 
-    public function pdf(){
+    public function pdff(){
 
         $arquivo = date('d-m-y h:m:s').'tarefa';
 
-        $pdf = PDF::loadView('tarefa.pdf', []);
+        $pdf = Facade::loadView('tarefa.pdf',[]);
 
         return $pdf->download($arquivo);
     }

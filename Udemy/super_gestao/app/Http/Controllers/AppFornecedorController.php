@@ -108,4 +108,5 @@ class AppFornecedorController extends Controller
         return redirect()->route('app.fornecedor.listar',['msg' => $msg]);
 
     }
+    
 }

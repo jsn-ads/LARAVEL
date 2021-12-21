@@ -13,8 +13,8 @@ Fone de ouvido hifi vj320
         composer init
         composer update
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-----------------------------------------------------------------------------------------
 LARAVEL CRIA PROJETOS E DICAS
 
 -Instalando Laravel global , apenas uma unica vez e necessario ter composer instalado 
@@ -53,7 +53,7 @@ LARAVEL CRIA PROJETOS E DICAS
 
 -Console interativo para testes
     php artisan tinker
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CONTROLLERS
 -Criando um controller
 	php artisan make:controller "nomeController"
@@ -72,7 +72,7 @@ CONTROLLERS
     php artisan make:model --all "Nome"
     php artisan make:model -a "Nome"
 
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 MODEL 
 -Criando um Model
     	php artisan make:model "nome do Model"
@@ -80,7 +80,7 @@ MODEL
 -Criando um Model com Migrations
 	php artisan make:model "nome" -m
  
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 MIGRATES "comandos utiliados para cria tabelas no banco de dados"
 
 -Cria uma migrate
@@ -103,7 +103,7 @@ MIGRATES "comandos utiliados para cria tabelas no banco de dados"
 
 -Deleta o banco e cria novamente
     php artisan migrate:fresh
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Eloquent ORM "Metodos"
 
     [Metodo de Salvar e Update]
@@ -133,7 +133,7 @@ Eloquent ORM "Metodos"
     $registros = Tabela::onlyTrashed()->get();
     $registros['posição do registro']->restore();
 
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Eloquent ORM Condicionais "Medotos condicionais do Eloquent"
 
     [retorna todos os dados]
@@ -184,7 +184,7 @@ Eloquent ORM Condicionais "Medotos condicionais do Eloquent"
         }
     )->get();
 
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Eloquent Collection "São Array de Objetos recuperados do bando de dados"
 >>>>>>> c2b7af313a30b595e7a73a5436570fae54e9036e
 
@@ -212,7 +212,7 @@ Eloquent Collection "São Array de Objetos recuperados do bando de dados"
     $dados->all()->pluck('email','nome');
                          [valor]  [key]
 
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Seeders "São classes que tem a função de popular o banco de dados"
 
     [Criar uma classe seeder]
@@ -224,23 +224,23 @@ Seeders "São classes que tem a função de popular o banco de dados"
     [executar uma seeder especifica]
     php artisan db:seed --class=classeSeeder
 
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Factory "Classe responsavel por gerar dados em massa e passa para Seeders"
 
     [Criando uma classe Factory]
     php artisan make:factory ClasseFactory --model=classe
 
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Midddleware
     [Criando uma Middleware]
     php artisan make:middleware "nome"Middleware
 
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 PAINEL 
 -Instalando Painel AdminLTE 
     	composer require jeroennoten/laravel-adminlte
     	php artisan adminlte:install --force
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 LARAVEL UI
 -Instalando Laravel ui
     composer require laravel/ui || outra versao ex: composer require laravel/ui:^3.2 
@@ -249,21 +249,21 @@ LARAVEL UI
     php artisan ui "ex: bootstrap | vue | react" --auth
 
 	
-----------------------------------------------------------------------------------------	
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
 LARAVEL EMAIL
 -Criando um controller especifico para email com view
 	php artisan make:mail "Nome do Controller ex: MensagemMail" --markdown "diretorio.nome ex: emails.mensagem" 
 	
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 LARAVEL PUBLISH
 -Faz uma copia de uma biblioteda da pasta vendor para pasta publica para modificações no projeto
 	php artisan vendor:publish
 	
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 LARAVEL NOTIFICATION
 	php artisan make:notification "nome"Notification
 
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 NodeJS & NPM 
     NPM e um gereciador de pacote ex: como se fosse composer , o Node e utilizado para FRONT-END [LAVAREL UI| VUE JS | ANGULAR] e BACK-END
     [Verificando versão do NODE e NPM]
@@ -274,9 +274,7 @@ NodeJS & NPM
     npm install
     npm run dev
 	
-	
-
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 LARAVEL EXCEL
 
 -instalando no projeto
@@ -301,7 +299,7 @@ ADICIONAR NO PROJETO
 
     php artisan make:export "Nome"Export --model='model que sera utilizado ex: "User.php"'
 
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 LARAVEL PDF (obs: esse modelo e preciso instalar Laravel excel)
 
 -instalando no projeto
@@ -313,11 +311,11 @@ ADICIONAR NO PROJETO
 
     'pdf'   => Excel::MPDF,
 
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 LARAVEL PDF DOMPDF
 
 -instalando no projeto 
-    composer require barryvdh/laravel-dompdf
+    composer require barryvdh/laravel-dompdf=^0.9.0
 
 -inserindo dentro do projeto "app.config"
 

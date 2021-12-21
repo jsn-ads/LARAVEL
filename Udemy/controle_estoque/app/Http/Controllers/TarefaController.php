@@ -122,7 +122,7 @@ class TarefaController extends Controller
 
     public function pdff(){
 
-        $arquivo = date('d-m-y h:m:s').'tarefa';
+        $arquivo = date('dmyhms').'_tarefa.pdf';
 
         $pdf = Facade::loadView('tarefa.pdf',[]);
 

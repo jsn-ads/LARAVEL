@@ -122,9 +122,11 @@ class TarefaController extends Controller
 
     public function pdff(){
 
+        $tarefas = auth()->user()->tarefas()->get();
+
         $arquivo = date('dmyhms').'_tarefa.pdf';
 
-        $pdf = Facade::loadView('tarefa.pdf',[]);
+        $pdf = Facade::loadView('tarefa.pdf',['tarefas' => $tarefas]);
 
         return $pdf->download($arquivo);
     }

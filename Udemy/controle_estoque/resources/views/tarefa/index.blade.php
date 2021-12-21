@@ -12,7 +12,7 @@
                     <div>
                         <a href="{{route('tarefa.pdf')}}" title="baixar em pdf" class="btn btn-sm btn-outline-danger" style="width: 60px;">pdf</a>
                         {{-- <a href="{{route('tarefa.exportar',['extensao' => 'pdf'])}}" title="baixar em pdf" class="btn btn-sm btn-outline-danger" style="width: 60px;">pdf</a> --}}
-                        <a href="{{route('tarefa.exportar',['extensao' => 'csv'])}}" title="baixar em excel" class="btn btn-sm btn-outline-success" style="width: 60px;">csv</a>
+                        {{-- <a href="{{route('tarefa.exportar',['extensao' => 'csv'])}}" title="baixar em excel" class="btn btn-sm btn-outline-success" style="width: 60px;">csv</a> --}}
                         <a href="{{route('tarefa.exportar',['extensao' => 'xlsx'])}}" title="baixar em excel" class="btn btn-sm btn-outline-success" style="width: 60px;">xlxs</a>
                         <a href="{{route('tarefa.create')}}" title="adicionar tarefa" class="btn btn-sm btn-outline-secondary" style="width: 30px;"> + </a>
                     </div>

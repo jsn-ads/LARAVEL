@@ -128,6 +128,12 @@ class TarefaController extends Controller
 
         $pdf = Facade::loadView('tarefa.pdf',['tarefas' => $tarefas]);
 
-        return $pdf->download($arquivo);
+        //landscape = 'paisagem' || portrait = 'retrato'
+        $pdf->setPaper('a4','landscape');
+
+        return $pdf->stream($arquivo);
+
+        // return $pdf->download($arquivo);
+
     }
 }

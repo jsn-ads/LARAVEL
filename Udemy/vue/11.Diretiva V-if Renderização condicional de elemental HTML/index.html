@@ -14,6 +14,7 @@
     <br>
         <div class="container-fluid">
             <div id="app">
+                
                 <div class="form-group">
                     <button class="btn btn-success" @click="status = !status">
                         <i style="margin-left: 10px;" v-if="status">Visualizar Saldo<img src="./assets/img/hidden.png" style="width: 25px; margin-left: 5px;"></i>
@@ -35,7 +36,7 @@
 
                 <div>
                     <span v-if="dados == 0"></span>
-                    <span v-else-if="dados > 0 && dados < 18    ">menor de idade</span>
+                    <span v-else-if="dados > 0 && dados < 18">menor de idade</span>
                     <span v-else>maior de idade</span>
                 </div>
 

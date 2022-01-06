@@ -18,6 +18,15 @@
                     <li v-for="(item , index ) in lista">{{index}} - {{item}}</li>
                 </ul>
 
+                <div class="form-group">
+                    <input id="cnome" class="form-control" type="text" name="cnome" placeholder="nome do curso">
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-success" @click="adicionarCurso()">Adicionar</button>
+                    <button class="btn btn-warning" @click="removerCurso()">Remover</button>
+                </div>
+
                 <br><hr><br>
 
                 <table class="table table-light">
@@ -30,14 +39,26 @@
                     </thead>
 
                     <tbody>
-                        <tr v-for="(curso , index) in cursos">
-                            <td>{{index}}</td>
+                        <tr v-for="(curso) in cursos">
+                            <td>{{curso.id}}</td>
                             <td>{{curso.nome}}</td>
                             <td>{{curso.descricao}}</td>
                         </tr>
                     </tbody>
-
                 </table>
+
+                <br><hr><br>
+
+                <div>
+                    <ul>
+                        <li v-for="item in n">{{item}}</li>
+                    </ul>
+                </div>
+
+                <br><hr><br>
+
+
+
             </div>
         </div>
     <br>

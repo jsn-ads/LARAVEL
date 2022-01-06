@@ -17,6 +17,27 @@
                 <ul>
                     <li v-for="(item , index ) in lista">{{index}} - {{item}}</li>
                 </ul>
+
+                <br><hr><br>
+
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Curso</th>
+                            <th>Descricao</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr v-for="(curso , index) in cursos">
+                            <td>{{index}}</td>
+                            <td>{{curso.nome}}</td>
+                            <td>{{curso.descricao}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
             </div>
         </div>
     <br>

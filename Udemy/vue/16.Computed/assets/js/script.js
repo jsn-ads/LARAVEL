@@ -2,7 +2,13 @@ const vm = new Vue({
     el:"#app",
     data() {
         return {
-            pacientes : []
+            pacientes : [
+                {
+                    nome : 'Jose Neto',
+                    idade : 32,
+                    plano : 'Ouro'
+                }
+            ]
         }
     },
     methods: {
@@ -12,26 +18,21 @@ const vm = new Vue({
                idade : inputIdade.value,
                plano : inputPlano.value
            });
-
-           console.log(this.pacientes)
         }
     },
     computed : {
         ultimoPaciente(){
+            
+            let i = this.pacientes.length -1
 
-            let key =  this.pacientes.lenght -1
+            let ultimo = "Paciente : "+this.pacientes[i].nome + " / Idade : " +this.pacientes[i].idade +" / Plano : "+ this.pacientes[i].plano
 
-            let paciente = array()
+            return ultimo
 
-            paciente = {
-                'nome' : this.pacientes[key].nome ,
-                'idade': this.pacientes[key].idade,
-                'plano': this.pacientes[key].plano,
-            }
+        },
+        planoOuro(){
 
-            console.log(paciente)
-
-            return paciente
+            return this.pacientes.filter(item => item.plano == 'Ouro')
 
         }
     }

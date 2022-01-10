@@ -44,12 +44,6 @@
                             <tr>
                                 <th colspan="3">Ultimo Paciente Adicionado</th>
                             </tr>
-
-                            <tr>
-                                <th>Nome</th>
-                                <th>Idade</th>
-                                <th>Plano</th>
-                            </tr>
                         </thead>
 
                         <tbody>
@@ -98,9 +92,8 @@
                         </thead>
 
                         <tbody>
-                            <tr v-for="p in pacientes">
-                                <td>{{p.plano == "Ouro" ? p.nome : ""}}</td>
-                                <td>{{p.plano == "Ouro" ? p.idade : ""}}</td>
+                            <tr v-for="p in planoOuro">
+                                <td>{{p.nome}}</td>
                             </tr>
                         </tbody>
                         

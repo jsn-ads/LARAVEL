@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Marca;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use phpDocumentor\Reflection\PseudoTypes\LowercaseString;
 
 class MarcaController extends Controller
@@ -78,11 +79,21 @@ class MarcaController extends Controller
 
             $this->dados['nome'] = utf8_encode(ucwords(strtolower($request->input('nome'))));
 
-            $this->dados['marca'] = utf8_encode(ucwords(strtolower($request->input('imagem'))));
+            $imagem = $request->file('imagem');
+
+            $this->dados['imagem'] = $imagem->store('imagens/marca','public');
 
             $request->validate($this->marca->find($id)->rules(), $this->marca->find($id)->feedback());
 
         }
+
+        if($request->file('imagem')){
+
+            $this->marca = $this->marca->find($id);
+
+            Storage::disk('public')->delete($this->marca->imagem);
+        }
+
 
         return response($this->marca->find($id)->update($this->dados),200);
 
@@ -90,6 +101,15 @@ class MarcaController extends Controller
 
     public function destroy($id)
     {
+
+        if($this->marca->find($id)){
+
+            $this->marca = $this->marca->find($id);
+
+            Storage::disk('public')->delete($this->marca->imagem);
+
+        }
+
         return ($this->marca->find($id) != null) ? response($this->marca->find($id)->delete(),200) : response(['erro'=>'Erro ao Deletar , Marca não encontrada'],404);
     }
 }

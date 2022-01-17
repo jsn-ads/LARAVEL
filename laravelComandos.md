@@ -330,8 +330,9 @@ LARAVEL PDF DOMPDF
 -instalando classe de configuração no projeto
     php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
 
-
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CRIANDO LINK do STORAGE para pasta PUBLIC 
+    php artisan storage:link
 
 
 

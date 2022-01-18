@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class ModeloController extends Controller
 {
+
+
+    public function __construct(Modelo $modelo)
+    {
+
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -19,7 +19,7 @@ class MarcaController extends Controller
 
     public function index(Request $request)
     {
-        return response($this->marca->all(),200);
+        return response($this->marca->with('modelos')->get(),200);
     }
 
     public function create()
@@ -43,7 +43,7 @@ class MarcaController extends Controller
 
     public function show($id)
     {
-        return ($this->marca->find($id) != null) ? response($this->marca->find($id),200) : response(['erro'=>'Marca não encontrada'],404);
+        return ($this->marca->find($id) != null) ? response($this->marca->with('modelos')->find($id),200) : response(['erro'=>'Marca não encontrada'],404);
     }
 
     public function edit(Marca $marca)

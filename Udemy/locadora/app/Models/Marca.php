@@ -27,4 +27,8 @@ class Marca extends Model
             'imagem.mimes' => 'erro ao salvar arquivo , somente arquivo png'
         ];
     }
+
+    public function modelos(){
+        return $this->hasMany('App\Models\Modelo' , 'id_marca');
+    }
 }

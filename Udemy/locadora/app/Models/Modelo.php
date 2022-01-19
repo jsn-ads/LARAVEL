@@ -15,6 +15,7 @@ class Modelo extends Model
     public function rules(){
         return [
             'id_marca'=> 'required',
+            'nome'    => 'required|unique:marcas,nome,'.$this->id.'',
             'imagem'  => 'required|file|mimes:png,jpeg,jpg',
             'np'      => 'required|integer|digits_between:1,5',
             'lugares' => 'required|integer|digits_between:1,5',
@@ -31,5 +32,9 @@ class Modelo extends Model
             'imagem.mimes'    => 'erro ao salvar arquivo , somente arquivo png',
             'digits_between'  => 'numero de :attribute e invalido'
         ];
+    }
+
+    public function marca(){
+        return $this->belongsTo('App\Models\Marca' , 'id_marca');
     }
 }

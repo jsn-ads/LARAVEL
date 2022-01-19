@@ -14,7 +14,7 @@ class Modelo extends Model
     // regras de validação
     public function rules(){
         return [
-            'nome'    => 'required|unique:marcas,nome,'.$this->id.'|min : 3',
+            'id_marca'=> 'required',
             'imagem'  => 'required|file|mimes:png,jpeg,jpg',
             'np'      => 'required|integer|digits_between:1,5',
             'lugares' => 'required|integer|digits_between:1,5',

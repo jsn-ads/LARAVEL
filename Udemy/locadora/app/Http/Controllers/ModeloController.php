@@ -45,9 +45,10 @@ class ModeloController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate($this->modelo->rules(), $this->modelo->feedback());
 
-        $this->modelo->id      =  $request->input('id_marca');
+        $this->modelo->id_marca     =  $request->input('id_marca');
         $this->modelo->imagem  =  $request->file('imagem');
         $this->modelo->imagem  =  $this->modelo->imagem->store('imagens/modelo','public');
         $this->modelo->np      =  $request->input('np');
@@ -55,7 +56,7 @@ class ModeloController extends Controller
         $this->modelo->air_bag =  $request->input('air_bag');
         $this->modelo->abs     =  $request->input('abs');
 
-        return response()->json($this->produto->save(),200);
+        return response()->json($this->modelo->save(),200);
 
     }
 
@@ -120,14 +121,14 @@ class ModeloController extends Controller
      */
     public function destroy($id)
     {
-        if($this->marca->find($id)){
+        if($this->modelo->find($id)){
 
-            $this->marca = $this->marca->find($id);
+            $this->modelo = $this->modelo->find($id);
 
-            Storage::disk('public')->delete($this->marca->imagem);
+            Storage::disk('public')->delete($this->modelo->imagem);
 
         }
 
-        return ($this->marca->find($id) != null) ? response()->json($this->marca->find($id)->delete(),200) : response()->json(['erro'=>'Erro ao Deletar , Marca não encontrada'],404);
+        return ($this->modelo->find($id) != null) ? response()->json($this->modelo->find($id)->delete(),200) : response()->json(['erro'=>'Erro ao Deletar , Modelo não encontrado'],404);
     }
 }

@@ -58,6 +58,7 @@ class MarcaController extends Controller
             return response(['erro'=>'Erro ao Atualizar , Marca não encontrada'],404);
         }
 
+        //Atualizaçao Parcial
         if($request->method() === 'PATCH'){
 
             $regrasDinamicas = array();
@@ -72,21 +73,14 @@ class MarcaController extends Controller
             }
 
             $request->validate($regrasDinamicas, $this->marca->find($id)->feedback());
-
-            $this->dados = $request->all();
-
+        //atualização
         }else{
-
-            $this->dados['nome'] = utf8_encode(ucwords(strtolower($request->input('nome'))));
-
-            $imagem = $request->file('imagem');
-
-            $this->dados['imagem'] = $imagem->store('imagens/marca','public');
 
             $request->validate($this->marca->find($id)->rules(), $this->marca->find($id)->feedback());
 
         }
 
+        //Caso uma nova imagem seja preenchida a anterior e deletada
         if($request->file('imagem')){
 
             $this->marca = $this->marca->find($id);
@@ -94,8 +88,12 @@ class MarcaController extends Controller
             Storage::disk('public')->delete($this->marca->imagem);
         }
 
+        $im = $request->file('imagem');
 
-        return response($this->marca->find($id)->update($this->dados),200);
+        $this->marca->fill($request->all());
+        $this->marca->imagem = $im->store('imagens/marca','public');
+
+        return response($this->marca->save(),200);
 
     }
 

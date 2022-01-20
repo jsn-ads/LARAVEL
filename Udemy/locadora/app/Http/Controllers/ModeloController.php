@@ -57,16 +57,28 @@ class ModeloController extends Controller
     public function update(Request $request, $id)
     {
 
-        $request->validate($this->modelo->rules(), $this->modelo->feedback());
-        $this->dados['id_marca'] =  $request->input('id_marca');
-        $this->modelo->nome      =  $request->input('nome');
-        $imagem  =  $request->file('imagem');
-        $this->dados['imagem']   =  $imagem->store('imagens/modelo','public');
-        $this->dados['np']       =  $request->input('np');
-        $this->dados['lugares']  =  $request->input('lugares');
-        $this->dados['air_bag']  =  $request->input('air_bag');
-        $this->dados['abs']      =  $request->input('abs');
+        if($request->method() === "PATCH"){
+            
+            $regrasDinamicas = array();
 
+            foreach($this->modelo->rules() as $input => $regra){
+
+                if(array_key_exists($input, $request->all())){
+
+                    $regrasDinamicas[$input] = $regra;
+
+                }
+            }
+
+            $request->validate($regrasDinamicas, $this->modelo->find($id)->feedback());
+
+        }else{
+
+            $request->validate($this->modelo->rules(), $this->modelo->feedback());
+
+        }
+
+    
         if($request->file('imagem')){
 
             $this->modelo = $this->modelo->find($id);
@@ -74,7 +86,12 @@ class ModeloController extends Controller
             Storage::disk('public')->delete($this->modelo->imagem);
         }
 
-        return response()->json($this->modelo->find($id)->update($this->dados),200);
+        $im = $request->file('imagem');
+
+        $this->modelo->fill($request->all());
+        $this->modelo->imagem = $im->store('imagens/modelo', 'public');
+
+        return response()->json($this->modelo->save(),200);
 
     }
 

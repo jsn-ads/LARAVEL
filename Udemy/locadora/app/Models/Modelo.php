@@ -15,7 +15,7 @@ class Modelo extends Model
     public function rules(){
         return [
             'id_marca'=> 'required',
-            'nome'    => 'required|unique:marcas,nome,'.$this->id.'',
+            'nome'    => 'required|unique:modelos,nome,'.$this->id.'',
             'imagem'  => 'required|file|mimes:png,jpeg,jpg',
             'np'      => 'required|integer|digits_between:1,5',
             'lugares' => 'required|integer|digits_between:1,5',

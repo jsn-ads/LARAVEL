@@ -58,7 +58,7 @@ class ModeloController extends Controller
     {
 
         if($request->method() === "PATCH"){
-            
+
             $regrasDinamicas = array();
 
             foreach($this->modelo->rules() as $input => $regra){
@@ -78,7 +78,7 @@ class ModeloController extends Controller
 
         }
 
-    
+
         if($request->file('imagem')){
 
             $this->modelo = $this->modelo->find($id);
@@ -90,6 +90,10 @@ class ModeloController extends Controller
 
         $this->modelo->fill($request->all());
         $this->modelo->imagem = $im->store('imagens/modelo', 'public');
+
+        if($request->input('nome')){
+            $this->modelo->nome = $request->input('nome');
+        }
 
         return response()->json($this->modelo->save(),200);
 

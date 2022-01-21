@@ -19,7 +19,25 @@ class MarcaController extends Controller
 
     public function index(Request $request)
     {
-        return response($this->marca->with('modelos')->get(),200);
+
+        $marcas = array();
+
+        $marcas = $this->marca->with('modelos')->get();
+
+        if($request->has('filtros')){
+
+            $filtros = explode(';', $request->filtros);
+
+            foreach($filtros as $key => $filtro){
+
+                $regra = explode(':', $filtro);
+
+                $marcas = $marcas->where($regra[0] , $regra[1], $regra[2]);
+            }
+
+        }
+
+        return response()->json($marcas,200);
     }
 
     public function create()

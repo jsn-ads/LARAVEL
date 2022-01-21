@@ -24,10 +24,14 @@ class ModeloController extends Controller
 
         $modelos = $this->modelo->with('marca')->get();
 
-        if($request->has('filtro')){
+        if($request->has('filtros')){
 
-            $regra = explode(':',$request->filtro);
-            $modelos = $modelos->where($regra[0], $regra[1], $regra[2]);
+           $filtros = explode(';', $request->filtros);
+
+           foreach($filtros as $key => $filtro){
+                $regra = explode(':',$filtro);
+                $modelos = $modelos->where($regra[0], $regra[1], $regra[2]);
+           }
         }
 
         return response()->json($modelos,200);

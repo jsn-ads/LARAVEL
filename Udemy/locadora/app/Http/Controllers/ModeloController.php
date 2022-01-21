@@ -18,7 +18,19 @@ class ModeloController extends Controller
 
     public function index(Request $request)
     {
-        return response()->json($this->modelo->with('marca')->get(),200);
+
+        $regra = array();
+        $modelos = array();
+
+        $modelos = $this->modelo->with('marca')->get();
+
+        if($request->has('filtro')){
+
+            $regra = explode(':',$request->filtro);
+            $modelos = $modelos->where($regra[0], $regra[1], $regra[2]);
+        }
+
+        return response()->json($modelos,200);
     }
 
     public function create()

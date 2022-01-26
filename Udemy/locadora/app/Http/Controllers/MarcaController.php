@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Marca;
+use App\Repositores\MarcaRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use phpDocumentor\Reflection\PseudoTypes\LowercaseString;
@@ -20,24 +21,18 @@ class MarcaController extends Controller
     public function index(Request $request)
     {
 
-        $marcas = array();
+        $marcasRepository = new MarcaRepository($this->marca);
 
-        $marcas = $this->marca->with('modelos')->get();
-
-        if($request->has('filtros')){
-
-            $filtros = explode(';', $request->filtros);
-
-            foreach($filtros as $key => $filtro){
-
-                $regra = explode(':', $filtro);
-
-                $marcas = $marcas->where($regra[0] , $regra[1], $regra[2]);
-            }
-
+        if($request->has('atributos')){
+            $marcasRepository->select_atributos('modelos:id,'.$request->atributos);
+        }else{
+            $marcasRepository->select_atributos('modelos');
         }
 
-        return response()->json($marcas,200);
+        if($request->has('filtro')){
+            $marcasRepository->filtro($request->filtro);
+        }
+
     }
 
     public function create()

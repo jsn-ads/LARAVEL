@@ -1,0 +1,31 @@
+<?php
+
+    namespace App\Repositores;
+
+    use Illuminate\Database\Eloquent\Model;
+
+    class MarcaRepository{
+
+        public function __construct(Model $model)
+        {
+            $this->model = $model;
+        }
+
+        public function select_atributos($atributos){
+            $this->model = $this->model->with($atributos);
+        }
+
+        public function filtro($filtros){
+
+            $filtros = explode(';', $filtros);
+
+            foreach($filtros as $key => $filtro){
+
+                $c = explode(':',$filtro);
+
+                $this->model = $this->model->where($c[0],$c[1],$c[2]);
+            }
+
+        }
+    }
+?>

@@ -12,9 +12,7 @@ Fone de ouvido hifi vj320
         composer install
         composer init
         composer update
-
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 LARAVEL CRIA PROJETOS E DICAS
 
 -Instalando Laravel global , apenas uma unica vez e necessario ter composer instalado 
@@ -71,7 +69,6 @@ CONTROLLERS
 -Criando MODEL CONTROLLER MIGRATE FACTORY SEEDER ...
     php artisan make:model --all "Nome"
     php artisan make:model -a "Nome"
-
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 MODEL 
 -Criando um Model
@@ -132,7 +129,6 @@ Eloquent ORM "Metodos"
     [metodo de restaurar o registro deletado pelo softDelete]
     $registros = Tabela::onlyTrashed()->get();
     $registros['posição do registro']->restore();
-
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Eloquent ORM Condicionais "Medotos condicionais do Eloquent"
 
@@ -183,10 +179,8 @@ Eloquent ORM Condicionais "Medotos condicionais do Eloquent"
             $query->whereIn('column',[array valor])->orWhereBetween('column',[array valor])
         }
     )->get();
-
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Eloquent Collection "São Array de Objetos recuperados do bando de dados"
->>>>>>> c2b7af313a30b595e7a73a5436570fae54e9036e
 
     $dados = valor::all();
 

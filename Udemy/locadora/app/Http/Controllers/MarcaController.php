@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Marca;
-use App\Repositores\MarcaRepository;
+use App\Repositories\MarcaRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use phpDocumentor\Reflection\PseudoTypes\LowercaseString;
+
+
 
 class MarcaController extends Controller
 {
@@ -23,15 +24,22 @@ class MarcaController extends Controller
 
         $marcasRepository = new MarcaRepository($this->marca);
 
-        if($request->has('atributos')){
-            $marcasRepository->select_atributos('modelos:id,'.$request->atributos);
+        if($request->has('atributos_modelos')){
+            $marcasRepository->select_atributos_modelos('modelos:id,'.$request->atributos_modelos);
         }else{
-            $marcasRepository->select_atributos('modelos');
+            $marcasRepository->select_atributos_modelos('modelos');
         }
 
         if($request->has('filtro')){
             $marcasRepository->filtro($request->filtro);
         }
+
+        if($request->has('atributos')){
+            $marcasRepository->atributos($request->atributos);
+        }
+
+        return response()->json($marcasRepository->get(),200);
+
 
     }
 

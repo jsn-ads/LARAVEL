@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Marca;
 use App\Repositories\MarcaRepository;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 
 

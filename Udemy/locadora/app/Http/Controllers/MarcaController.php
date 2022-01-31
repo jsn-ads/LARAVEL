@@ -25,9 +25,9 @@ class MarcaController extends Controller
         $marcasRepository = new MarcaRepository($this->marca);
 
         if($request->has('atributos_modelos')){
-            $marcasRepository->select_atributos_modelos('modelos:id,'.$request->atributos_modelos);
+            $marcasRepository->select_atributos('modelos:id,'.$request->atributos_modelos);
         }else{
-            $marcasRepository->select_atributos_modelos('modelos');
+            $marcasRepository->select_atributos('modelos');
         }
 
         if($request->has('filtro')){

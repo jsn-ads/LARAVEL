@@ -22,9 +22,9 @@ class ModeloController extends Controller
         $modeloRepository = new ModeloRepository($this->modelo);
 
         if($request->has('atributos_modelos')){
-            $modeloRepository->select_atributos_marca('marca:id,'.$request->atributos_modelos);
+            $modeloRepository->select_atributos('marca:id,'.$request->atributos_modelos);
         }else{
-            $modeloRepository->select_atributos_marca('marca');
+            $modeloRepository->select_atributos('marca');
         }
 
         if($request->has('filtro')){

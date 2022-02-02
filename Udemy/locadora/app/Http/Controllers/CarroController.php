@@ -106,6 +106,6 @@ class CarroController extends Controller
 
     public function destroy($id)
     {
-        return ($this->carro->find($id) != null) ? response($this->carro->find($id)->delete(),200) : response(['erro'=>'Erro ao Deletar, Marca não encontrada'],404);
+        return ($this->carro->find($id) != null) ? response($this->carro->find($id)->delete(),200) : response(['erro'=>'Erro ao Deletar, Cliente não encontrada'],404);
     }
 }

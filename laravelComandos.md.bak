@@ -343,7 +343,4 @@ INSTALANDO JWT
 -criando arquivo config/jwt.php
 	php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
 
--criando variavel JWT_SECRET dentro do arquivo .ENV
-	php artisan jwt:secret
-
 

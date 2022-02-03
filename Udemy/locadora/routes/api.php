@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CarroController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\LocacaoController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\ModeloController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,12 +25,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('carro',CarroController::class);
+Route::apiResource('carro',   CarroController::class);
 
-Route::apiResource('cliente',ClienteController::class);
+Route::apiResource('cliente', ClienteController::class);
 
-Route::apiResource('marca',MarcaController::class);
+Route::apiResource('marca',   MarcaController::class);
 
-Route::apiResource('modelo',ModeloController::class);
+Route::apiResource('modelo',  ModeloController::class);
 
-Route::apiResource('locacao',LocacaoController::class);
+Route::apiResource('locacao', LocacaoController::class);
+
+Route::post('login',   [AuthController::class, 'login']);
+
+Route::post('logout',  [AuthController::class, 'logout']);
+
+Route::post('refresh', [AuthController::class, 'refresh']);
+
+Route::post('me',      [AuthController::class, 'me']);
+
+

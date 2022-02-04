@@ -10,7 +10,7 @@ class AuthController extends Controller
     {
         $credenciais = $request->all(['email','password']);
 
-        //autenticando usuario
+        //autenticando
         $token = auth('api')->attempt($credenciais);
 
         return ($token) ? response()->json(['token'=>$token] , 200) : response()->json(['error' => "Usuario/Senha Invalidos"],403);

@@ -335,10 +335,12 @@ INSTALANDO JWT
 	composer require tymon/jwt-auth "1.0.2"
 
 -inserindo dentro do projeto "app.config"
-
 	Providers[
 		Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 	]
+	
+-ignorar requisitos da plataforma 
+	composer require tymon/jwt-auth --ignore-platform-reqs
 
 -criando arquivo config/jwt.php
 	php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"

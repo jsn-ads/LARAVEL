@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Client\ResponseSequence;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -11,7 +10,7 @@ class AuthController extends Controller
     {
         $credenciais = $request->all(['email','password']);
 
-        //autenticando
+        //autenticando , true => retorna um token
         $token = auth('api')->attempt($credenciais);
 
         return ($token) ? response()->json(['token'=>$token] , 200) : response()->json(['error' => "Usuario/Senha Invalidos"],403);
@@ -20,12 +19,16 @@ class AuthController extends Controller
 
     public function logout()
     {
-        return "logout";
+        auth('api')->logout();
+
+        return response()->json(['msg'=>'Logout foi realizado com sucesso']);
     }
 
     public function refresh()
     {
-        return "refresh";
+        $token = auth('api')->refresh();
+
+        return response()->json(['token' => $token]);
     }
 
     public function me()

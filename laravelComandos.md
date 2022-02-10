@@ -296,6 +296,9 @@ NodeJS & NPM
 -Lista os pacotes e suas versoes e mostra se esta desatualizado 
 	npm outdated
 	
+-Comando para atualizar automanticamente a pagina front 
+	npm run watch
+	
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 LARAVEL EXCEL
 

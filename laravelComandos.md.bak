@@ -70,6 +70,7 @@ LARAVEL CRIA PROJETOS E DICAS
 
 -Console interativo para testes
     php artisan tinker
+	
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CONTROLLERS
 -Criando um controller
@@ -88,6 +89,7 @@ CONTROLLERS
 -Criando MODEL CONTROLLER MIGRATE FACTORY SEEDER ...
     php artisan make:model --all "Nome"
     php artisan make:model -a "Nome"
+	
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 MODEL 
 -Criando um Model
@@ -119,6 +121,7 @@ MIGRATES "comandos utiliados para cria tabelas no banco de dados"
 
 -Deleta o banco e cria novamente
     php artisan migrate:fresh
+	
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Eloquent ORM "Metodos"
 
@@ -148,6 +151,7 @@ Eloquent ORM "Metodos"
     [metodo de restaurar o registro deletado pelo softDelete]
     $registros = Tabela::onlyTrashed()->get();
     $registros['posição do registro']->restore();
+	
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Eloquent ORM Condicionais "Medotos condicionais do Eloquent"
 
@@ -198,6 +202,7 @@ Eloquent ORM Condicionais "Medotos condicionais do Eloquent"
             $query->whereIn('column',[array valor])->orWhereBetween('column',[array valor])
         }
     )->get();
+	
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Eloquent Collection "São Array de Objetos recuperados do bando de dados"
 
@@ -286,6 +291,9 @@ NodeJS & NPM
 -Instalando NPM 
     npm install
     npm run dev
+	
+-Lista os pacotes e suas versoes e mostra se esta desatualizado 
+	npm outdated
 	
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 LARAVEL EXCEL

@@ -12,6 +12,25 @@ Fone de ouvido hifi vj320
         composer install
         composer init
         composer update
+		
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+PASSO PARA INICIAR UM PROJETO
+
+1.INICIAR O PORJETO LARAVEL 
+	laravel new "nome do projeto" --auth
+
+2.INSTALAR O PACOTE UI
+	composer require laravel/ui || outra versao ex: composer require laravel/ui:^3.2 
+	
+3.GERAR O ESQUELETO DO PROJETO DE ACORDO COM A TECNOLOGIA FRONT-END
+	php artisan ui "ex: bootstrap | vue | react" --auth
+
+4.BAIXAR AS DEPENDENCIAS DO FRONT-END
+	npm install
+		
+5.PRODUZINDO O BUNDLE DE FRONT-END 
+	npm run dev
+	
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 LARAVEL CRIA PROJETOS E DICAS
 
@@ -268,6 +287,9 @@ NodeJS & NPM
     npm install
     npm run dev
 	
+-Lista os pacotes e suas versoes e mostra se esta desatualizado 
+	npm outdated
+	
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 LARAVEL EXCEL
 
@@ -347,5 +369,6 @@ INSTALANDO JWT
 
 -criando variavel JWT_SECRET dentro do arquivo .ENV
 	php artisan jwt:secret
+
 
 

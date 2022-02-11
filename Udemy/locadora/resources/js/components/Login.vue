@@ -11,7 +11,7 @@
 
                     <div class="card-body">
 
-                        <form method="POST" action="">
+                        <form method="POST" action="" @submit.prevent="login($event)">
 
                             <input type="hidden" name="_token" :value="csrf_token">
 
@@ -19,7 +19,7 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email" value="" required autocomplete="email" autofocus>
+                                    <input id="email" type="email" class="form-control" name="email" required autocomplete="email" autofocus v-model="email">
                                 </div>
                             </div>
 
@@ -27,7 +27,7 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required>
+                                    <input id="password" type="password" class="form-control" name="password" required v-model="password">
                                 </div>
                             </div>
 
@@ -64,6 +64,36 @@
 
 <script>
     export default{
-        props: ['csrf_token']
+        props: ['csrf_token'],
+        data(){
+            return{
+                email : "",
+                password : ""
+            }
+        },
+        methods:{
+
+            // metodo de login vue api
+
+            login(event){
+                let url = 'http://127.0.0.1:8000/api/login'
+                let config = {
+                    method: 'post',
+                    body: new URLSearchParams({
+                        'email': this.email,
+                        'password': this.password
+                    })
+                }
+
+                fetch(url, config)
+                .then(response => response.json())
+                .then(data => {
+                    if(data.token){
+                        document.cookie = 'token='+data.token
+                    }
+                    event.target.submit()
+                })
+            }
+        }
     }
 </script>

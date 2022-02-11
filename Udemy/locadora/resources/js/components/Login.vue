@@ -13,6 +13,8 @@
 
                         <form method="POST" action="">
 
+                            <input type="hidden" name="_token" :value="csrf_token">
+
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail</label>
 
@@ -61,5 +63,7 @@
 </template>
 
 <script>
-
+    export default{
+        props: ['csrf_token']
+    }
 </script>

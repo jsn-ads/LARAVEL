@@ -47,7 +47,7 @@
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="">Modelo</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="">Marca</a>
+                                    <a class="dropdown-item" href="{{ route('marcas') }}">Marca</a>
                                 </div>
                             </li>
                         @endauth

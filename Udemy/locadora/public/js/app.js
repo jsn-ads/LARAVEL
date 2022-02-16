@@ -2249,6 +2249,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
@@ -38270,17 +38283,70 @@ var staticRenderFns = [
             _c("div", { staticClass: "card-header" }, [_vm._v("Marcas")]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "alert alert-success",
-                  attrs: { role: "alert" },
-                },
-                [
-                  _vm._v(
-                    "\n                        Marcas\n                    "
+              _c("div", { staticClass: "form-row" }, [
+                _c("div", { staticClass: "col mb-3" }, [
+                  _c(
+                    "label",
+                    { staticClass: "form-label", attrs: { for: "inputId" } },
+                    [_vm._v("ID")]
                   ),
-                ]
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "number",
+                      id: "inputId",
+                      "aria-describedby": "idHelp",
+                      placeholder: "ID",
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "form-text text-muted",
+                      attrs: { id: "inputId" },
+                    },
+                    [_vm._v("Opcional. Informe o ID")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col mb-3" }, [
+                  _c(
+                    "label",
+                    { staticClass: "form-label", attrs: { for: "inputMarca" } },
+                    [_vm._v("Marca")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "inputMarca",
+                      placeholder: "Marca",
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "form-text text-muted",
+                      attrs: { id: "inputMarca" },
+                    },
+                    [_vm._v("Opcional. Informe o a Marca")]
+                  ),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary btn-sm float-right",
+                  attrs: { type: "submit" },
+                },
+                [_vm._v("Pesquisar")]
               ),
             ]),
           ]),

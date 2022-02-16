@@ -29,6 +29,9 @@ Vue.component('home-component', require('./components/Home.vue').default);
 
 Vue.component('marca-component', require('./components/Marca.vue').default);
 
+Vue.component('input-container-component', require('./components/inputContainer.vue').default);
+
+
 
 
 /**

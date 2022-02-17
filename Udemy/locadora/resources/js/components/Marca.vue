@@ -4,10 +4,8 @@
             <div class="col-md-8">
 
                 <!-- card pesquisa ini -->
-                <div class="card mb-3">
-                    <div class="card-header">Marcas</div>
-
-                    <div class="card-body">
+                <card-component titulo="Pesquisar Marcas">
+                    <template v-slot:conteudo>
                         <div class="form-row">
                             <div class="col mb-3">
                                 <input-container-component id="inputId" titulo="ID" id-help="idHelp" texto-ajuda="Opcional. Informe o ID" >
@@ -20,54 +18,24 @@
                                 </input-container-component>
                             </div>
                         </div>
-                    </div>
+                    </template>
 
-                    <div class="card-footer">
-                         <button type="submit" class="btn btn-primary btn-sm float-right">Pesquisar</button>
-                    </div>
-                </div>
+                    <template v-slot:rodape>
+                        <button type="submit" class="btn btn-primary btn-sm float-right">Pesquisar</button>
+                    </template>
+                </card-component>
                 <!-- card pesquisa end -->
 
                 <!-- card tabela ini -->
-                <div class="card">
-                    <div class="card-header">Tabela de Marcas</div>
+                <card-component titulo="Tabela de Marcas">
+                    <template v-slot:conteudo>
+                        <tabela-component></tabela-component>
+                    </template>
 
-                    <div class="card-body">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                                </tr>
-                                <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>@twitter</td>
-                                </tr>
-                            </tbody>
-                         </table>
-                    </div>
-
-                    <div class="card-footer">
-                         <button type="submit" class="btn btn-primary btn-sm float-right">Adicionar</button>
-                    </div>
-                </div>
+                    <template v-slot:rodape>
+                        <button type="submit" class="btn btn-primary btn-sm float-right">Adicionar</button>
+                    </template>
+                </card-component>
                 <!-- card tabela end -->
 
             </div>

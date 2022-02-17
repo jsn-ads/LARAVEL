@@ -31,7 +31,9 @@ Vue.component('marca-component', require('./components/Marca.vue').default);
 
 Vue.component('input-container-component', require('./components/inputContainer.vue').default);
 
+Vue.component('tabela-component', require('./components/Tabela.vue').default);
 
+Vue.component('card-component', require('./components/Card.vue').default);
 
 
 /**

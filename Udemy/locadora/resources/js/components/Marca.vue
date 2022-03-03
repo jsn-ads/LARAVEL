@@ -12,11 +12,13 @@
                                     <input type="number" class="form-control" id="inputId" aria-describedby="idHelp" placeholder="ID">
                                 </input-container-component>
                             </div>
+
                             <div class="col mb-3">
                                 <input-container-component id="inputMarca" titulo="Marca" id-help="idHelp" texto-ajuda="Opcional. Informe a Marca" >
                                     <input type="text" class="form-control" id="inputMarca" placeholder="Marca">
                                 </input-container-component>
                             </div>
+
                         </div>
                     </template>
 
@@ -43,13 +45,13 @@
 
                         <div class="form-group">
                             <input-container-component id="inputNovoMarca" titulo="Marca" id-help="idMarcaHelp" texto-ajuda="Insira uma nova Marca" >
-                                <input type="text" class="form-control" id="inputNovoMarca" placeholder="Adicionar Marca">
+                                <input type="text" class="form-control" id="inputNovoMarca" placeholder="Adicionar Marca" v-model="nomeMarca">
                             </input-container-component>
                         </div>
 
                         <div class="form-group">
                             <input-container-component id="inputImagemMarca" titulo="Imagem" id-help="idImagemHelp" texto-ajuda="Insira uma Imagem PNG" >
-                                <input type="file" class="form-control-file" id="inputImagemMarca">
+                                <input type="file" class="form-control-file" id="inputImagemMarca" @change="carregarImagem($event)">
                             </input-container-component>
                         </div>
 
@@ -57,7 +59,7 @@
 
                     <template v-slot:rodape>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-primary">Salvar</button>
+                        <button type="button" class="btn btn-primary" @click="salvar()">Salvar</button>
                     </template>
                 </modal-component>
             </div>
@@ -66,5 +68,45 @@
 </template>
 
 <script>
+import axios from "axios"
 
+    export default{
+        data (){
+            return {
+                urlBase : 'http://localhost:8000/api/lc/marca',
+                nomeMarca : '',
+                arquivoImagem : []
+            }
+        },
+        methods: {
+            carregarImagem(e){
+                this.arquivoImagem = e.target.files
+            },
+            salvar(){
+
+                //formulario de envio para API
+
+                let formData = new FormData();
+
+                formData.append('nome', this.nomeMarca)
+                formData.append('imagem', this.arquivoImagem[0])
+
+                //Cabeçario
+                let config = {
+                    headers:{
+                        'Content-Type': 'multipart/form-data',
+                        'Accept': 'application/json',
+                        // 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY0NjMzNjc5MiwiZXhwIjoxNjQ2MzQzOTkyLCJuYmYiOjE2NDYzMzY3OTIsImp0aSI6Imx0REVRRXlldUp3SldrcEkiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.JhZEQPtbJUxZl6NYGbZuIqSVTI3G_5o9-vE004YJeHg'
+                    }
+                }
+
+                axios.post(this.urlBase , formData , config)
+                    .then( response => {
+                        console.log(response)
+                    }).catch( errors => {
+                        console.log(errors)
+                    })
+            }
+        }
+    }
 </script>

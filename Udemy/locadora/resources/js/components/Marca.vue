@@ -38,7 +38,28 @@
                 </card-component>
                 <!-- card tabela end -->
 
-                <modal-component id="modal_marca" titulo="Adicionar Marca"></modal-component>
+                <modal-component id="modal_marca" titulo="Adicionar Marca">
+                    <template v-slot:conteudo>
+
+                        <div class="form-group">
+                            <input-container-component id="inputNovoMarca" titulo="Marca" id-help="idMarcaHelp" texto-ajuda="Insira uma nova Marca" >
+                                <input type="text" class="form-control" id="inputNovoMarca" placeholder="Adicionar Marca">
+                            </input-container-component>
+                        </div>
+
+                        <div class="form-group">
+                            <input-container-component id="inputImagemMarca" titulo="Imagem" id-help="idImagemHelp" texto-ajuda="Insira uma Imagem PNG" >
+                                <input type="file" class="form-control-file" id="inputImagemMarca">
+                            </input-container-component>
+                        </div>
+
+                    </template>
+
+                    <template v-slot:rodape>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-primary">Salvar</button>
+                    </template>
+                </modal-component>
             </div>
         </div>
     </div>

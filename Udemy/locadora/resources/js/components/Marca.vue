@@ -68,7 +68,8 @@
 </template>
 
 <script>
-import axios from "axios"
+
+    import axios from "axios"
 
     export default{
         data (){
@@ -76,6 +77,18 @@ import axios from "axios"
                 urlBase : 'http://localhost:8000/api/lc/marca',
                 nomeMarca : '',
                 arquivoImagem : []
+            }
+        },
+        computed:{
+            token(){
+                let token = document.cookie.split(';').find(indice =>{
+                    return indice.includes('token=')
+                })
+
+                token = token.split('=')[1]
+                token = 'Bearer' + token
+                return token
+
             }
         },
         methods: {
@@ -96,7 +109,7 @@ import axios from "axios"
                     headers:{
                         'Content-Type': 'multipart/form-data',
                         'Accept': 'application/json',
-                        // 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY0NjMzNjc5MiwiZXhwIjoxNjQ2MzQzOTkyLCJuYmYiOjE2NDYzMzY3OTIsImp0aSI6Imx0REVRRXlldUp3SldrcEkiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.JhZEQPtbJUxZl6NYGbZuIqSVTI3G_5o9-vE004YJeHg'
+                        'Authorization': this.token
                     }
                 }
 

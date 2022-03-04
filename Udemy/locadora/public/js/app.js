@@ -2351,6 +2351,16 @@ __webpack_require__.r(__webpack_exports__);
       arquivoImagem: []
     };
   },
+  computed: {
+    token: function token() {
+      var token = document.cookie.split(';').find(function (indice) {
+        return indice.includes('token=');
+      });
+      token = token.split('=')[1];
+      token = 'Bearer' + token;
+      return token;
+    }
+  },
   methods: {
     carregarImagem: function carregarImagem(e) {
       this.arquivoImagem = e.target.files;
@@ -2364,8 +2374,8 @@ __webpack_require__.r(__webpack_exports__);
       var config = {
         headers: {
           'Content-Type': 'multipart/form-data',
-          'Accept': 'application/json' // 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY0NjMzNjc5MiwiZXhwIjoxNjQ2MzQzOTkyLCJuYmYiOjE2NDYzMzY3OTIsImp0aSI6Imx0REVRRXlldUp3SldrcEkiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.JhZEQPtbJUxZl6NYGbZuIqSVTI3G_5o9-vE004YJeHg'
-
+          'Accept': 'application/json',
+          'Authorization': this.token
         }
       };
       axios__WEBPACK_IMPORTED_MODULE_0___default().post(this.urlBase, formData, config).then(function (response) {

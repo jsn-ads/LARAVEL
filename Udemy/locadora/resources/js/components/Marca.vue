@@ -47,11 +47,11 @@
                 <modal-component id="modal_marca" titulo="Adicionar Marca">
 
                     <template v-slot:alertas>
-                        <alert-component tipo="danger" msg="perigo">
+                        <alert-component tipo="danger" :msg="alertMensagem" titulo="Erro ao adicionar" v-if="alertStatus == 'erro'">
 
                         </alert-component>
 
-                        <alert-component tipo="success" msg="adicionado com sucesso">
+                        <alert-component tipo="success" :msg="alertMensagem" titulo="Adicionado com sucesso" v-if="alertStatus == 'sucesso'">
 
                         </alert-component>
                     </template>
@@ -93,7 +93,9 @@
             return {
                 urlBase : 'http://localhost:8000/api/lc/marca',
                 nomeMarca : '',
-                arquivoImagem : []
+                arquivoImagem : [],
+                alertStatus : '',
+                alertMensagem : ''
             }
         },
         computed:{
@@ -132,8 +134,11 @@
 
                 axios.post(this.urlBase , formData , config)
                     .then( response => {
+                        this.alertStatus = 'sucesso'
                         console.log(response)
                     }).catch( errors => {
+                        this.alertStatus = 'erro'
+                        this.alertMensagem = errors.response
                         console.log(errors)
                     })
             }

@@ -25,11 +25,13 @@
                     <template v-slot:rodape>
                         <button type="submit" class="btn btn-primary btn-sm float-right">Pesquisar</button>
                     </template>
+
                 </card-component>
                 <!-- card pesquisa end -->
 
                 <!-- card tabela ini -->
                 <card-component titulo="Tabela de Marcas">
+
                     <template v-slot:conteudo>
                         <tabela-component></tabela-component>
                     </template>
@@ -37,10 +39,23 @@
                     <template v-slot:rodape>
                         <button type="submit" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#modal_marca">Adicionar</button>
                     </template>
+
                 </card-component>
                 <!-- card tabela end -->
 
+                <!-- modal init -->
                 <modal-component id="modal_marca" titulo="Adicionar Marca">
+
+                    <template v-slot:alertas>
+                        <alert-component tipo="danger" msg="perigo">
+
+                        </alert-component>
+
+                        <alert-component tipo="success" msg="adicionado com sucesso">
+
+                        </alert-component>
+                    </template>
+
                     <template v-slot:conteudo>
 
                         <div class="form-group">
@@ -61,7 +76,9 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                         <button type="button" class="btn btn-primary" @click="salvar()">Salvar</button>
                     </template>
+
                 </modal-component>
+                <!-- modal end  -->
             </div>
         </div>
     </div>

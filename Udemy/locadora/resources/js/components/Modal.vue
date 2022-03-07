@@ -10,6 +10,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <slot name="alertas"></slot>
                     <slot name="conteudo"></slot>
                 </div>
                 <div class="modal-footer">
@@ -21,7 +22,9 @@
 </template>
 
 <script>
+import Alert from './Alert.vue'
     export default {
+  components: { Alert },
         props : ['id','titulo']
     }
 </script>

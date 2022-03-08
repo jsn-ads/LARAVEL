@@ -95,7 +95,7 @@
                 nomeMarca : '',
                 arquivoImagem : [],
                 alertStatus : '',
-                alertMensagem : ''
+                alertMensagem : {}
             }
         },
         computed:{
@@ -139,8 +139,10 @@
                         console.log(response)
                     }).catch( errors => {
                         this.alertStatus = 'erro'
-                        this.alertMensagem = errors.response
-                        // console.log(errors)
+                        this.alertMensagem = {
+                            mensagem : errors.response.data.message,
+                            dados : errors.response.data.errors
+                        }
                     })
             }
         }

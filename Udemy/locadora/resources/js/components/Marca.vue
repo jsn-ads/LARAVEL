@@ -51,7 +51,7 @@
 
                         </alert-component>
 
-                        <alert-component tipo="success" :msg="alertMensagem" titulo="Adicionado com sucesso" v-if="alertStatus == 'sucesso'">
+                        <alert-component tipo="success" :msg="alertMensagem" titulo="Registro adicionado com sucesso" v-if="alertStatus == 'sucesso'">
 
                         </alert-component>
                     </template>
@@ -135,11 +135,12 @@
                 axios.post(this.urlBase , formData , config)
                     .then( response => {
                         this.alertStatus = 'sucesso'
+                        this.alertMensagem = response
                         console.log(response)
                     }).catch( errors => {
                         this.alertStatus = 'erro'
                         this.alertMensagem = errors.response
-                        console.log(errors)
+                        // console.log(errors)
                     })
             }
         }

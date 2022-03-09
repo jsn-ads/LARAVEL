@@ -95,7 +95,8 @@
                 nomeMarca : '',
                 arquivoImagem : [],
                 alertStatus : '',
-                alertMensagem : {}
+                alertMensagem : {},
+                marcas : []
             }
         },
         computed:{
@@ -111,6 +112,15 @@
             }
         },
         methods: {
+            carregarLista(){
+                axios.get(this.urlBase)
+                    .then(response=>{
+                        this.marcas = response.data
+                    })
+                    .catch( errors =>{
+                        console.log(errors)
+                    })
+            },
             carregarImagem(e){
                 this.arquivoImagem = e.target.files
             },
@@ -145,6 +155,9 @@
                         }
                     })
             }
+        },
+        mounted(){
+            this.carregarLista()
         }
     }
 </script>

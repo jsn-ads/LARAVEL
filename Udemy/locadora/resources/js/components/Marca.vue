@@ -96,7 +96,14 @@
                 arquivoImagem : [],
                 alertStatus : '',
                 alertMensagem : {},
-                marcas : []
+                marcas : [],
+                config : {
+                    headers:{
+                        'Content-Type': 'multipart/form-data',
+                        'Accept': 'application/json',
+                        'Authorization': this.token
+                    }
+                }
             }
         },
         computed:{
@@ -113,9 +120,10 @@
         },
         methods: {
             carregarLista(){
-                axios.get(this.urlBase)
+                axios.get(this.urlBase , this.config)
                     .then(response=>{
                         this.marcas = response.data
+                        console.log(response.data)
                     })
                     .catch( errors =>{
                         console.log(errors)
@@ -133,20 +141,11 @@
                 formData.append('nome', this.nomeMarca)
                 formData.append('imagem', this.arquivoImagem[0])
 
-                //Cabeçario
-                let config = {
-                    headers:{
-                        'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
-                    }
-                }
-
-                axios.post(this.urlBase , formData , config)
+                axios.post(this.urlBase , formData , this.config)
                     .then( response => {
                         this.alertStatus = 'sucesso'
                         this.alertMensagem = response
-                        console.log(response)
+
                     }).catch( errors => {
                         this.alertStatus = 'erro'
                         this.alertMensagem = {

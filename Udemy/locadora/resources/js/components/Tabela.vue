@@ -7,7 +7,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="obj in dados" :key=obj.id>
+                <tr v-for="obj , key in dados" :key="key">
+                    <td></td>
+                </tr>
+
+                <!-- <tr v-for="obj in dados" :key=obj.id>
                     <td v-for="valor , chave in obj" :key="chave">
                         <div v-if="titulo.includes(chave)">
                             <span v-if="chave == 'imagem'">
@@ -18,7 +22,7 @@
                             </span>
                         </div>
                     </td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
     </div>
@@ -26,6 +30,21 @@
 
 <script>
     export default {
-        props:['dados','titulo']
+        props:['dados','titulo'],
+        computed:{
+            dadosFiltrados(){
+
+                let campos = Object.keys(this.titulo)
+
+                this.dados.map((item, chave) =>{
+                    let itemFiltrado = {}
+                    campos.forEach(campo =>{
+                        itemFiltrado[campo] = item[campo]
+                    })
+                })
+
+                return ''
+            }
+        }
     }
 </script>

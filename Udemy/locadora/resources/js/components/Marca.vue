@@ -33,7 +33,10 @@
                 <card-component titulo="Tabela de Marcas">
 
                     <template v-slot:conteudo>
-                        <tabela-component></tabela-component>
+                        <tabela-component
+                            :dados="marcas"
+                            :titulo="['ID','Marca','Imagem']">
+                        </tabela-component>
                     </template>
 
                     <template v-slot:rodape>
@@ -123,7 +126,6 @@
                 axios.get(this.urlBase , this.config)
                     .then(response=>{
                         this.marcas = response.data
-                        console.log(response.data)
                     })
                     .catch( errors =>{
                         console.log(errors)

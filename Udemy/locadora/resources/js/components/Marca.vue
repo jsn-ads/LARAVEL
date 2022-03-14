@@ -9,13 +9,13 @@
                         <div class="form-row">
                             <div class="col mb-3">
                                 <input-container-component id="inputId" titulo="ID" id-help="idHelp" texto-ajuda="Opcional. Informe o ID" >
-                                    <input type="number" class="form-control" id="inputId" aria-describedby="idHelp" placeholder="ID">
+                                    <input type="number" class="form-control" id="inputId" aria-describedby="idHelp" placeholder="ID" v-model="buscar.id">
                                 </input-container-component>
                             </div>
 
                             <div class="col mb-3">
                                 <input-container-component id="inputMarca" titulo="Marca" id-help="idHelp" texto-ajuda="Opcional. Informe a Marca" >
-                                    <input type="text" class="form-control" id="inputMarca" placeholder="Marca">
+                                    <input type="text" class="form-control" id="inputMarca" placeholder="Marca" v-model="buscar.nome">
                                 </input-container-component>
                             </div>
 
@@ -23,7 +23,7 @@
                     </template>
 
                     <template v-slot:rodape>
-                        <button type="submit" class="btn btn-primary btn-sm float-right">Pesquisar</button>
+                        <button type="submit" class="btn btn-primary btn-sm float-right" @click="pesquisar()">Pesquisar</button>
                     </template>
 
                 </card-component>
@@ -132,6 +132,7 @@
                 alertStatus : '',
                 alertMensagem : {},
                 marcas : { data: []},
+                buscar : { id : '', nome : ''},
                 config : {
                     headers:{
                         'Content-Type': 'multipart/form-data',
@@ -154,6 +155,21 @@
             }
         },
         methods: {
+            pesquisar(){
+                let filtro = ''
+
+                for(let item in this.buscar){
+                    if(this.buscar[item]){
+                        if( filtro != ''){
+                            filtro += ";"
+                        }
+
+                        filtro += item + ':like:' + this.buscar[item]
+                    }
+                }
+
+                console.log(filtro)
+            },
             //Metodo para carrega lista de Marcas
             carregarLista(){
                 axios.get(this.urlBase , this.config)

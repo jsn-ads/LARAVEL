@@ -39,5 +39,9 @@
         {
             return $this->model->get();
         }
+
+        public function paginacao($p){
+            return $this->model->paginate($p);
+        }
     }
 ?>

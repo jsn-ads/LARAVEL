@@ -34,7 +34,7 @@
 
                     <template v-slot:conteudo>
                         <tabela-component
-                            :dados="marcas"
+                            :dados="marcas.data"
                             :titulo="{
                                 id:{
                                     titulo: 'ID',
@@ -56,9 +56,24 @@
                         </tabela-component>
                     </template>
 
+                    <!-- rodape init -->
                     <template v-slot:rodape>
-                        <button type="submit" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#modal_marca">Adicionar</button>
+                        <div class="row">
+                            <div class="col-10">
+                                <paginacao-component>
+                                    <ul class="pagination">
+                                        <li class="page-item" v-for="m , key in marcas.links" :key=key @click="paginacao(m)" :class="m.active ? 'page-item active':'page-item'">
+                                            <a class="page-link" v-html="m.label"></a>
+                                        </li>
+                                    </ul>
+                                </paginacao-component>
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#modal_marca">Adicionar</button>
+                            </div>
+                        </div>
                     </template>
+                    <!-- rodape end -->
 
                 </card-component>
                 <!-- card tabela end -->
@@ -116,7 +131,7 @@
                 arquivoImagem : [],
                 alertStatus : '',
                 alertMensagem : {},
-                marcas : [],
+                marcas : { data: []},
                 config : {
                     headers:{
                         'Content-Type': 'multipart/form-data',
@@ -139,18 +154,29 @@
             }
         },
         methods: {
+            //Metodo para carrega lista de Marcas
             carregarLista(){
                 axios.get(this.urlBase , this.config)
                     .then(response=>{
                         this.marcas = response.data
+                        console.log(this.marcas)
                     })
                     .catch( errors =>{
                         console.log(errors)
                     })
             },
+            // Metodo para carregar conteudo da paginação
+            paginacao(m){
+                if(m.url){
+                    this.urlBase = m.url
+                    this.carregarLista()
+                }
+            },
+            //Metodo para carrega imagem ao salvar Marca
             carregarImagem(e){
                 this.arquivoImagem = e.target.files
             },
+            //Metodo para salvar Marca
             salvar(){
 
                 //formulario de envio para API

@@ -39,6 +39,9 @@ Vue.component('modal-component', require('./components/Modal.vue').default);
 
 Vue.component('alert-component', require('./components/Alert.vue').default);
 
+Vue.component('paginacao-component', require('./components/Paginacao.vue').default);
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

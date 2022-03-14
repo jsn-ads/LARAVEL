@@ -3,26 +3,19 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col" class="text-uppercase" v-for="t , key in titulo" :key="key"><span class="strong">{{t}}</span></th>
+                    <th scope="col" v-for="t , key in titulo" :key="key"><span class="strong">{{t.titulo}}</span></th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="obj , key in dados" :key="key">
-                    <td></td>
-                </tr>
-
-                <!-- <tr v-for="obj in dados" :key=obj.id>
+                <tr v-for="obj , key in dadosFiltrados" :key="key">
                     <td v-for="valor , chave in obj" :key="chave">
-                        <div v-if="titulo.includes(chave)">
-                            <span v-if="chave == 'imagem'">
-                                <img :src="'/storage/'+valor" alt="" width="40px" height="40px">
-                            </span>
-                            <span v-else>
-                                {{valor}}
-                            </span>
-                        </div>
+                        <span v-if="titulo[chave].tipo == 'texto'">{{valor}}</span>
+                        <span v-if="titulo[chave].tipo == 'data'">{{'...'+valor}}</span>
+                        <span v-if="titulo[chave].tipo == 'imagem'">
+                            <img :src="'/storage/'+valor" width="40px" height="40px">
+                        </span>
                     </td>
-                </tr> -->
+                </tr>
             </tbody>
         </table>
     </div>
@@ -34,6 +27,8 @@
         computed:{
             dadosFiltrados(){
 
+                let dadosFiltrados = [];
+
                 let campos = Object.keys(this.titulo)
 
                 this.dados.map((item, chave) =>{
@@ -41,9 +36,11 @@
                     campos.forEach(campo =>{
                         itemFiltrado[campo] = item[campo]
                     })
+
+                    dadosFiltrados.push(itemFiltrado)
                 })
 
-                return ''
+                return dadosFiltrados
             }
         }
     }

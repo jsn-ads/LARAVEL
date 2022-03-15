@@ -127,6 +127,8 @@
         data (){
             return {
                 urlBase : 'http://localhost:8000/api/lc/marca',
+                urlPaginacao : '',
+                urlFiltro : '',
                 nomeMarca : '',
                 arquivoImagem : [],
                 alertStatus : '',
@@ -155,7 +157,9 @@
             }
         },
         methods: {
+            // Metodo para pesquisar marca
             pesquisar(){
+
                 let filtro = ''
 
                 for(let item in this.buscar){
@@ -168,14 +172,26 @@
                     }
                 }
 
-                console.log(filtro)
+                if(filtro !=''){
+                   this.urlPaginacao = 'page=1'
+                   this.urlFiltro = '&filtro='+filtro
+                }else{
+                   this.urlFiltro = '';
+                }
+
+                this.carregarLista();
+
             },
             //Metodo para carrega lista de Marcas
             carregarLista(){
-                axios.get(this.urlBase , this.config)
+
+                let url = this.urlBase +'?'+ this.urlPaginacao + this.urlFiltro
+
+                console.log(url);
+
+                axios.get(url , this.config)
                     .then(response=>{
                         this.marcas = response.data
-                        console.log(this.marcas)
                     })
                     .catch( errors =>{
                         console.log(errors)
@@ -184,7 +200,9 @@
             // Metodo para carregar conteudo da paginação
             paginacao(m){
                 if(m.url){
-                    this.urlBase = m.url
+
+                    this.urlPaginacao = m.url.split('?')[1];
+
                     this.carregarLista()
                 }
             },

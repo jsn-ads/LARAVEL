@@ -4,6 +4,7 @@
             <thead>
                 <tr>
                     <th scope="col" v-for="t , key in titulo" :key="key"><span class="strong">{{t.titulo}}</span></th>
+                    <th v-if="(visualizar || editar || excluir)"></th>
                 </tr>
             </thead>
             <tbody>
@@ -15,6 +16,11 @@
                             <img :src="'/storage/'+valor" width="40px" height="40px">
                         </span>
                     </td>
+                    <td v-if="(visualizar || editar || excluir)">
+                        <button class="btn btn-outline-primary btn-sm" v-if="(visualizar)">visualizar</button>
+                        <button class="btn btn-outline-success btn-sm" v-if="(editar)">editar</button>
+                        <button class="btn btn-outline-danger btn-sm" v-if="(excluir)">excluir</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -23,7 +29,7 @@
 
 <script>
     export default {
-        props:['dados','titulo'],
+        props:['dados','titulo','visualizar','editar','excluir'],
         computed:{
             dadosFiltrados(){
 

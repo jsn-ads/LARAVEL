@@ -52,7 +52,11 @@
                                     titulo: 'Data de criação',
                                     tipo:   'data'
                                 }
-                            }">
+                            }"
+                            :visualizar="true"
+                            :editar="true"
+                            :excluir="true"
+                        >
                         </tabela-component>
                     </template>
 

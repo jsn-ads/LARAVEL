@@ -118,6 +118,24 @@
 
                 </modal-component>
                 <!-- modal end  -->
+
+                <!-- modal visualizar init -->
+                <modal-component id="modal_marca_visualizar" titulo="Visualizar Marca">
+
+                    <template v-slot:alertas>
+
+                    </template>
+
+                    <template v-slot:conteudo>
+                        teste
+                    </template>
+
+                    <template v-slot:rodape>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </template>
+
+                </modal-component>
+                <!-- modal visualizar end  -->
             </div>
         </div>
     </div>

@@ -17,7 +17,7 @@
                         </span>
                     </td>
                     <td v-if="(visualizar || editar || excluir)">
-                        <button class="btn btn-outline-primary btn-sm" v-if="(visualizar)">visualizar</button>
+                        <button class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal_marca_visualizar" v-if="(visualizar)">visualizar</button>
                         <button class="btn btn-outline-success btn-sm" v-if="(editar)">editar</button>
                         <button class="btn btn-outline-danger btn-sm" v-if="(excluir)">excluir</button>
                     </td>

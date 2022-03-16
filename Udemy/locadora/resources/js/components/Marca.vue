@@ -53,7 +53,11 @@
                                     tipo:   'data'
                                 }
                             }"
-                            :visualizar="true"
+                            :visualizar="{
+                                visivel: true ,
+                                dataToggle: 'modal',
+                                dataTarget: '#modal_marca_visualizar'
+                            }"
                             :editar="true"
                             :excluir="true"
                         >

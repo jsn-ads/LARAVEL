@@ -31,6 +31,9 @@ PASSO PARA INICIAR UM PROJETO
 5.PRODUZINDO O BUNDLE DE FRONT-END 
 	npm run dev
 	
+6.BAIXAR DEPENDENCIAS VUEEX (CASO UTILIZE VUE)
+    npm install vuex || npm install vuex@3.6.2 (configuração estara na parte de npm)
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 LARAVEL CRIA PROJETOS E DICAS
 
@@ -298,6 +301,30 @@ NodeJS & NPM
 	
 -Comando para atualizar automanticamente a pagina front 
 	npm run watch
+
+-Instalando VUE EX
+    npm install vuex || npm install vuex@3.6.2 (configuração estara na parte de npm)
+
+-Inserindo VUE EX no projeto (obs: projeto ja deve ter definido LARAVEL UI vue)
+    [dentro de APP.JS] 
+
+    import Vue from 'vue';
+
+    import Vuex from 'Vuex';
+
+    Vue.use(Vuex)
+
+    const store = new Vuex.Store({
+        state:{}
+    })
+
+    inserir dentro de da instancia de app
+    
+    const app = new Vue({
+        el: '#app',
+        state
+    });
+
 	
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 LARAVEL EXCEL

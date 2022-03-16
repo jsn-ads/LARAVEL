@@ -126,12 +126,11 @@
                 <!-- modal visualizar init -->
                 <modal-component id="modal_marca_visualizar" titulo="Visualizar Marca">
 
-                    <template v-slot:alertas>
-
-                    </template>
-
                     <template v-slot:conteudo>
-                        teste
+                            <!-- {{$store.state.item.id}} -->
+                            <input-container-component titulo="">
+                                <!-- <input type="text" class="form-control" :value="$store.state.item.nome" disabled> -->
+                            </input-container-component>
                     </template>
 
                     <template v-slot:rodape>

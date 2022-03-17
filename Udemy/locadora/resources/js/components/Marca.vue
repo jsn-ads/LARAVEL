@@ -59,7 +59,11 @@
                                 dataTarget: '#modal_marca_visualizar'
                             }"
                             :editar="true"
-                            :excluir="true"
+                            :excluir="{
+                                visivel: true ,
+                                dataToggle: 'modal',
+                                dataTarget: '#modal_marca_excluir'
+                            }"
                         >
                         </tabela-component>
                     </template>
@@ -146,6 +150,28 @@
 
                 </modal-component>
                 <!-- modal visualizar end  -->
+
+                <!-- modal excluir init -->
+                <modal-component id="modal_marca_excluir" :titulo="'EXCLUIR MARCA ID : '+$store.state.item.id+' ?'">
+
+                    <template v-slot:conteudo>
+                            <input-container-component titulo="Imagem">
+                                <img :src="'/storage/'+$store.state.item.imagem" alt="" v-if=($store.state.item.imagem)>
+                            </input-container-component>
+
+                            <input-container-component titulo="Marca">
+                                <input type="text" class="form-control" :value="$store.state.item.nome" disabled>
+                            </input-container-component>
+
+                    </template>
+
+                    <template v-slot:rodape>
+                        <button type="button" class="btn btn-danger" @click="excluir()">Excluir</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </template>
+
+                </modal-component>
+                <!-- modal excluir end  -->
             </div>
         </div>
     </div>
@@ -189,6 +215,9 @@
             }
         },
         methods: {
+            excluir(){
+                console.log('marca excluida');
+            },
             // Metodo para pesquisar marca
             pesquisar(){
 

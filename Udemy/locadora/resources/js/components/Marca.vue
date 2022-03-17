@@ -124,12 +124,19 @@
                 <!-- modal end  -->
 
                 <!-- modal visualizar init -->
-                <modal-component id="modal_marca_visualizar" titulo="Visualizar Marca">
+                <modal-component id="modal_marca_visualizar" :titulo="'ID : '+$store.state.item.id">
 
                     <template v-slot:conteudo>
-                            <!-- {{$store.state.item.id}} -->
-                            <input-container-component titulo="">
-                                <!-- <input type="text" class="form-control" :value="$store.state.item.nome" disabled> -->
+                            <input-container-component titulo="Imagem">
+                                <img :src="'/storage/'+$store.state.item.imagem" alt="" v-if=($store.state.item.imagem)>
+                            </input-container-component>
+
+                            <input-container-component titulo="Marca">
+                                <input type="text" class="form-control" :value="$store.state.item.nome" disabled>
+                            </input-container-component>
+
+                            <input-container-component titulo="Data de Criação">
+                                <input type="text" class="form-control" :value="$store.state.item.created_at" disabled>
                             </input-container-component>
                     </template>
 

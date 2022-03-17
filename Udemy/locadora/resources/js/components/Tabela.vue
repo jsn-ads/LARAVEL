@@ -51,8 +51,7 @@
         },
         methods:{
             setStore(obj){
-                this.store.item = obj;
-                console.log(this.store.item)
+                this.$store.state.item = obj
             }
         }
     }

@@ -215,8 +215,32 @@
             }
         },
         methods: {
+            // Metodo para excluir marca
             excluir(){
-                console.log('marca excluida');
+                let confirmacao = confirm('Tem certeza que deseja excluir a marca : '+this.$store.state.item.nome)
+
+                if(!confirmacao){
+                    return false;
+                }
+
+                let formData = new FormData()
+
+                formData.append('_method','delete')
+
+                let url = this.urlBase+'/'+this.$store.state.item.id
+
+                console.log(url)
+
+                axios.post(url,formData,this.config)
+                    .then(response => {
+                        console.log('Registro deletado com sucesso')
+                        this.carregarLista()
+                    })
+                    .catch(errors =>{
+                        console.log('Houve um erro na tentativa de remoção do registro')
+                    })
+
+
             },
             // Metodo para pesquisar marca
             pesquisar(){

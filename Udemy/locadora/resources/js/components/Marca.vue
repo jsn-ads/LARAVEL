@@ -152,16 +152,32 @@
                 <!-- modal visualizar end  -->
 
                 <!-- modal excluir init -->
-                <modal-component id="modal_marca_excluir" :titulo="'EXCLUIR MARCA ID : '+$store.state.item.id+' ?'">
+                <modal-component id="modal_marca_excluir" :titulo="'EXCLUIR MARCA ID ?'">
+
+                    <template v-slot:alertas>
+                        <alert-component tipo="success" titulo="ok" :msg="{mensagem:''}" v-if="$store.state.att.status == 'sucesso'"></alert-component>
+                        <alert-component tipo="danger" titulo="erro" :msg="{mensagem:''}" v-if="$store.state.att.status == 'erro'"></alert-component>
+                    </template>
 
                     <template v-slot:conteudo>
-                            <input-container-component titulo="Imagem">
-                                <img :src="'/storage/'+$store.state.item.imagem" alt="" v-if=($store.state.item.imagem)>
-                            </input-container-component>
 
-                            <input-container-component titulo="Marca">
-                                <input type="text" class="form-control" :value="$store.state.item.nome" disabled>
-                            </input-container-component>
+                        <div class="row">
+                            <div class="col">
+                                <input-container-component titulo="ID">
+                                    <input type="text" class="form-control" :value="$store.state.item.id" disabled>
+                                </input-container-component>
+                            </div>
+                            <div class="col">
+                                <input-container-component titulo="Imagem">
+                                    <img :src="'/storage/'+$store.state.item.imagem" alt="" v-if=($store.state.item.imagem)>
+                                </input-container-component>
+                            </div>
+                            </div>
+                        </div>
+
+                        <input-container-component titulo="Marca">
+                            <input type="text" class="form-control" :value="$store.state.item.nome" disabled>
+                        </input-container-component>
 
                     </template>
 
@@ -209,7 +225,7 @@
                 })
 
                 token = token.split('=')[1]
-                token = 'Bearer' + token
+                token = 'Bearer ' + token
                 return token
 
             }
@@ -272,7 +288,7 @@
 
                 let url = this.urlBase +'?'+ this.urlPaginacao + this.urlFiltro
 
-                console.log(url);
+                console.log(this.$store.state.att);
 
                 axios.get(url , this.config)
                     .then(response=>{

@@ -155,23 +155,22 @@
                 <modal-component id="modal_marca_excluir" :titulo="'EXCLUIR MARCA ID ?'">
 
                     <template v-slot:alertas>
-                        <alert-component tipo="success" titulo="ok" :msg="{mensagem:''}" v-if="$store.state.att.status == 'sucesso'"></alert-component>
-                        <alert-component tipo="danger" titulo="erro" :msg="{mensagem:''}" v-if="$store.state.att.status == 'erro'"></alert-component>
+                        <alert-component tipo="success" :titulo="$store.state.att.mensagem" :msg="{mensagem:  $store.state.att.mensagem}" v-if="$store.state.att.status == 'sucesso'"></alert-component>
+                        <alert-component tipo="danger" :titulo="$store.state.att.mensagem" :msg="{mensagem: $store.state.att.mensagem}" v-if="$store.state.att.status == 'erro'"></alert-component>
                     </template>
 
-                    <template v-slot:conteudo>
+                    <template v-slot:conteudo v-if="$store.state.att.status != 'sucesso'">
 
                         <div class="row">
-                            <div class="col">
+                            <div class="col-3">
                                 <input-container-component titulo="ID">
-                                    <input type="text" class="form-control" :value="$store.state.item.id" disabled>
+                                    <input type="text" class="form-control" :value="$store.state.item.id" disabled style="text-align: center;">
                                 </input-container-component>
                             </div>
                             <div class="col">
-                                <input-container-component titulo="Imagem">
+                                <input-container-component titulo="">
                                     <img :src="'/storage/'+$store.state.item.imagem" alt="" v-if=($store.state.item.imagem)>
                                 </input-container-component>
-                            </div>
                             </div>
                         </div>
 
@@ -182,7 +181,7 @@
                     </template>
 
                     <template v-slot:rodape>
-                        <button type="button" class="btn btn-danger" @click="excluir()">Excluir</button>
+                        <button v-if="$store.state.att.status != 'sucesso'" type="button" class="btn btn-danger" @click="excluir()">Excluir</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     </template>
 
@@ -245,15 +244,15 @@
 
                 let url = this.urlBase+'/'+this.$store.state.item.id
 
-                console.log(url)
-
                 axios.post(url,formData,this.config)
                     .then(response => {
-                        console.log('Registro deletado com sucesso')
+                        this.$store.state.att.status = 'sucesso'
+                        this.$store.state.att.mensagem = 'Marca excluida com sucesso'
                         this.carregarLista()
                     })
                     .catch(errors =>{
-                        console.log('Houve um erro na tentativa de remoção do registro')
+                        this.$store.state.att.status = 'erro'
+                        this.$store.state.att.mensagem = errors.response.data.erro
                     })
 
 
@@ -288,8 +287,6 @@
 
                 let url = this.urlBase +'?'+ this.urlPaginacao + this.urlFiltro
 
-                console.log(this.$store.state.att);
-
                 axios.get(url , this.config)
                     .then(response=>{
                         this.marcas = response.data
@@ -297,6 +294,8 @@
                     .catch( errors =>{
                         console.log(errors)
                     })
+
+                       console.log(this.$store.state.att);
             },
             // Metodo para carregar conteudo da paginação
             paginacao(m){

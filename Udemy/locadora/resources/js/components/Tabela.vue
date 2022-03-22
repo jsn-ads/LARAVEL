@@ -51,6 +51,8 @@
         },
         methods:{
             setStore(obj){
+                this.$store.state.att.status = ''
+                this.$store.state.att.mensagem = ''
                 this.$store.state.item = obj
             }
         }

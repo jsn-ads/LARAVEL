@@ -58,7 +58,11 @@
                                 dataToggle: 'modal',
                                 dataTarget: '#modal_marca_visualizar'
                             }"
-                            :editar="true"
+                            :editar="{
+                                visivel: true,
+                                dataToggle: 'modal',
+                                dataTarget: '#modal_marca_editar'
+                            }"
                             :excluir="{
                                 visivel: true ,
                                 dataToggle: 'modal',
@@ -81,7 +85,7 @@
                                 </paginacao-component>
                             </div>
                             <div class="col">
-                                <button type="submit" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#modal_marca">Adicionar</button>
+                                <button type="submit" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#modal_marca_adicionar">Adicionar</button>
                             </div>
                         </div>
                     </template>
@@ -91,7 +95,7 @@
                 <!-- card tabela end -->
 
                 <!-- modal init -->
-                <modal-component id="modal_marca" titulo="Adicionar Marca">
+                <modal-component id="modal_marca_adicionar" titulo="Adicionar Marca">
 
                     <template v-slot:alertas>
                         <alert-component tipo="danger" :msg="alertMensagem" titulo="Erro ao adicionar" v-if="alertStatus == 'erro'">
@@ -187,6 +191,43 @@
 
                 </modal-component>
                 <!-- modal excluir end  -->
+
+                <!-- modal editar -->
+                <modal-component id="modal_marca_editar" titulo="Editar Marca">
+
+                    <template v-slot:alertas>
+                        <alert-component tipo="danger" msg="" titulo="" v-if="alertStatus == 'erro'">
+
+                        </alert-component>
+
+                        <alert-component tipo="success" msg="" titulo="" v-if="alertStatus == 'sucesso'">
+
+                        </alert-component>
+                    </template>
+
+                    <template v-slot:conteudo>
+
+                        <div class="form-group">
+                            <input-container-component id="inputEditarMarca" titulo="Marca" id-help="idEditarMarcaHelp" texto-ajuda="Insira uma nova Marca" >
+                                <input type="text" class="form-control" id="inputEditarMarca" placeholder="Adicionar Marca" v-model="nomeMarca">
+                            </input-container-component>
+                        </div>
+
+                        <div class="form-group">
+                            <input-container-component id="inputEditarImagemMarca" titulo="Imagem" id-help="idEditarImagemHelp" texto-ajuda="Insira uma Imagem PNG" >
+                                <input type="file" class="form-control-file" id="inputImagemMarca" @change="carregarImagem($event)">
+                            </input-container-component>
+                        </div>
+
+                    </template>
+
+                    <template v-slot:rodape>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-primary" @click="editar()">Atualizar</button>
+                    </template>
+
+                </modal-component>
+                <!-- modal editar  -->
             </div>
         </div>
     </div>
@@ -230,6 +271,9 @@
             }
         },
         methods: {
+            editar(){
+                console.log('teste')
+            },
             // Metodo para excluir marca
             excluir(){
                 let confirmacao = confirm('Tem certeza que deseja excluir a marca : '+this.$store.state.item.nome)

@@ -18,7 +18,7 @@
                     </td>
                     <td v-if="(visualizar.visivel || editar || excluir.visivel)">
                         <button class="btn btn-outline-primary btn-sm" :data-toggle="visualizar.dataToggle" :data-target="visualizar.dataTarget" v-if="(visualizar.visivel)" @click="setStore(obj)">visualizar</button>
-                        <button class="btn btn-outline-success btn-sm" :data-toggle="editar.dataToggle" :data-target="editar.dataTarget" v-if="(editar.visivel)">editar</button>
+                        <button class="btn btn-outline-success btn-sm" :data-toggle="editar.dataToggle" :data-target="editar.dataTarget" v-if="(editar.visivel)" @click="setStore(obj)">editar</button>
                         <button class="btn btn-outline-danger btn-sm" :data-toggle="excluir.dataToggle" :data-target="excluir.dataTarget" v-if="(excluir.visivel)" @click="setStore(obj)">excluir</button>
                     </td>
                 </tr>

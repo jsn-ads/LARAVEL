@@ -272,7 +272,7 @@
         },
         methods: {
             editar(){
-                console.log('teste')
+                console.log(this.$store.state.item);
             },
             // Metodo para excluir marca
             excluir(){

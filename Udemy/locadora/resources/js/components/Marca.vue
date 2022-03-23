@@ -271,18 +271,19 @@
                 let formData = new FormData();
 
                 formData.append('nome', this.$store.state.item.nome)
-                formData.append('imagem', this.arquivoImagem[0])
                 formData.append('_method','patch')
+
+                if(this.arquivoImagem[0]){
+                    formData.append('imagem', this.arquivoImagem[0])
+                }
 
                 let url = this.urlBase + '/' + this.$store.state.item.id
 
                 axios.post(url, formData, this.config)
                             .then( response => {
-
-                                console.log(this.$store.state.att.status)
-
                                 this.$store.state.att.status = 'sucesso'
                                 this.$store.state.att.mensagem = 'Marca Atualizada  com sucesso'
+                                inputImagemMarca.value = ''
                                 this.carregarLista()
                             })
                             .catch( errors => {

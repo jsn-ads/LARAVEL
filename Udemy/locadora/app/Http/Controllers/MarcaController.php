@@ -94,27 +94,30 @@ class MarcaController extends Controller
             }
 
             $request->validate($regrasDinamicas, $this->marca->find($id)->feedback());
-        //atualização
+        //Atualização
         }else{
 
             $request->validate($this->marca->find($id)->rules(), $this->marca->find($id)->feedback());
 
         }
 
+        $this->marca = $this->marca->find($id);
+
+        $this->marca->fill($request->all());
+
         //Caso uma nova imagem seja preenchida a anterior e deletada
         if($request->file('imagem')){
 
-            $this->marca = $this->marca->find($id);
-
             Storage::disk('public')->delete($this->marca->imagem);
+
+            //Adiciona uma nova imagem
+
+            $im = $request->file('imagem');
+
+            $this->marca->imagem = $im->store('imagens/marca','public');
         }
 
-        $im = $request->file('imagem');
-
-        $this->marca->fill($request->all());
-        $this->marca->imagem = $im->store('imagens/marca','public');
-
-        return response($this->marca->save(),200);
+        return response()->json($this->marca->save(),200);
 
     }
 

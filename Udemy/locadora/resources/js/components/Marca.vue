@@ -196,20 +196,15 @@
                 <modal-component id="modal_marca_editar" titulo="Editar Marca">
 
                     <template v-slot:alertas>
-                        <alert-component tipo="danger" msg="" titulo="" v-if="alertStatus == 'erro'">
-
-                        </alert-component>
-
-                        <alert-component tipo="success" msg="" titulo="" v-if="alertStatus == 'sucesso'">
-
-                        </alert-component>
+                       <alert-component tipo="success" :titulo="$store.state.att.mensagem" :msg="{mensagem:  $store.state.att.mensagem}" v-if="$store.state.att.status == 'sucesso'"></alert-component>
+                        <alert-component tipo="danger" :titulo="$store.state.att.mensagem" :msg="{mensagem: $store.state.att.mensagem}" v-if="$store.state.att.status == 'erro'"></alert-component>
                     </template>
 
-                    <template v-slot:conteudo>
+                    <template v-slot:conteudo v-if="$store.state.att.status != 'sucesso'">
 
                         <div class="form-group">
                             <input-container-component id="inputEditarMarca" titulo="Marca" id-help="idEditarMarcaHelp" texto-ajuda="Insira uma nova Marca" >
-                                <input type="text" class="form-control" id="inputEditarMarca" placeholder="Adicionar Marca" v-model="nomeMarca">
+                                <input type="text" class="form-control" id="inputEditarMarca" placeholder="Adicionar Marca" v-model="$store.state.item.nome">
                             </input-container-component>
                         </div>
 
@@ -223,7 +218,7 @@
 
                     <template v-slot:rodape>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-primary" @click="editar()">Atualizar</button>
+                        <button type="button" class="btn btn-primary" @click="editar()" v-if="$store.state.att.status != 'sucesso'">Atualizar</button>
                     </template>
 
                 </modal-component>
@@ -272,7 +267,29 @@
         },
         methods: {
             editar(){
-                console.log(this.$store.state.item);
+
+                let formData = new FormData();
+
+                formData.append('nome', this.$store.state.item.nome)
+                formData.append('imagem', this.arquivoImagem[0])
+                formData.append('_method','patch')
+
+                let url = this.urlBase + '/' + this.$store.state.item.id
+
+                axios.post(url, formData, this.config)
+                            .then( response => {
+
+                                console.log(this.$store.state.att.status)
+
+                                this.$store.state.att.status = 'sucesso'
+                                this.$store.state.att.mensagem = 'Marca Atualizada  com sucesso'
+                                this.carregarLista()
+                            })
+                            .catch( errors => {
+                                this.$store.state.att.status = 'erro'
+                                this.$store.state.att.mensagem = errors.response.data.erro
+                            })
+
             },
             // Metodo para excluir marca
             excluir(){

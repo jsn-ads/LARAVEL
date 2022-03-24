@@ -282,13 +282,13 @@
                 axios.post(url, formData, this.config)
                             .then( response => {
                                 this.$store.state.att.status = 'sucesso'
-                                this.$store.state.att.mensagem = 'Marca Atualizada  com sucesso'
+                                this.$store.state.att.mensagem = 'Marca Atualizada com sucesso'
                                 inputImagemMarca.value = ''
                                 this.carregarLista()
                             })
                             .catch( errors => {
                                 this.$store.state.att.status = 'erro'
-                                this.$store.state.att.mensagem = errors.response.data.erro
+                                this.$store.state.att.mensagem = errors.response.data.errors.nome[0]
                             })
 
             },

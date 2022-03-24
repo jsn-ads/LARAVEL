@@ -64,6 +64,28 @@ Vue.component('paginacao-component', require('./components/Paginacao.vue').defau
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.filter('formataDataTempoGlobal', function(e){
+
+    if(!e) return ''
+
+    e = e.split('T')
+
+    let data = e[0];
+    let tempo = e[1];
+
+    //formatando data
+
+    data = data.split('-')
+    data = data[2]+ '/' +data[1]+ '/' +data[0]
+
+    //formatando tempo
+
+    tempo = tempo.split('.')
+    tempo = tempo[0]
+
+    return data + ' ' + tempo
+})
+
 const app = new Vue({
     el: '#app',
     store

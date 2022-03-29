@@ -29,8 +29,6 @@ Route::middleware('jwt.auth')->prefix('lc')->group( function()
     {
         Route::post('me', [AuthController::class, 'me']);
 
-        Route::post('refresh', [AuthController::class, 'refresh']);
-
         Route::post('logout',  [AuthController::class, 'logout']);
 
         Route::apiResource('carro',   CarroController::class);
@@ -47,6 +45,8 @@ Route::middleware('jwt.auth')->prefix('lc')->group( function()
 
 
 Route::post('login',   [AuthController::class, 'login']);
+
+Route::post('refresh', [AuthController::class, 'refresh']);
 
 
 

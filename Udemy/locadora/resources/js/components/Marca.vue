@@ -247,22 +247,8 @@
                 config : {
                     headers:{
                         'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
                     }
                 }
-            }
-        },
-        computed:{
-            token(){
-                let token = document.cookie.split(';').find(indice =>{
-                    return indice.includes('token=')
-                })
-
-                token = token.split('=')[1]
-                token = 'Bearer ' + token
-                return token
-
             }
         },
         methods: {
@@ -306,7 +292,7 @@
 
                 let url = this.urlBase+'/'+this.$store.state.item.id
 
-                axios.post(url,formData,this.config)
+                axios.post(url,formData)
                     .then(response => {
                         this.$store.state.att.status = 'sucesso'
                         this.$store.state.att.mensagem = 'Marca excluida com sucesso'

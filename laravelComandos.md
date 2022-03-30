@@ -12,8 +12,11 @@ Fone de ouvido hifi vj320
         composer install
         composer init
         composer update
+    
+    atuliazar a versão do composer    
+        composer self-update
 		
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------D
 PASSO PARA INICIAR UM PROJETO
 
 1.INICIAR O PORJETO LARAVEL 
@@ -35,6 +38,20 @@ PASSO PARA INICIAR UM PROJETO
     npm install vuex || npm install vuex@3.6.2 (configuração estara na parte de npm)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+LARAVEL DEBUG
+
+-Instalando debuger no projeto
+
+    composer require barryvdh/laravel-debugbar --dev || omposer require barryvdh/laravel-debugbar=v3.6.2 --dev
+
+-Configurando no projeto 
+
+    config\app.php
+         'aliases' => [
+             'Debugbar' => Barryvdh\Debugbar\Facade::class
+         ]
+
 LARAVEL CRIA PROJETOS E DICAS
 
 -Instalando Laravel global , apenas uma unica vez e necessario ter composer instalado 

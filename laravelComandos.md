@@ -20,19 +20,22 @@ Fone de ouvido hifi vj320
 PASSO PARA INICIAR UM PROJETO
 
 1.INICIAR O PORJETO LARAVEL 
-	laravel new "nome do projeto" --auth
+	composer create-project --prefer-dist laravel/laravel "nome do projeto"
 
 2.INSTALAR O PACOTE UI
 	composer require laravel/ui || outra versao ex: composer require laravel/ui:^3.2 
 	
 3.GERAR O ESQUELETO DO PROJETO DE ACORDO COM A TECNOLOGIA FRONT-END
-	php artisan ui "ex: bootstrap | vue | react" --auth
+	php artisan ui "ex: bootstrap --auth | vue --auth | react" --auth
 
 4.BAIXAR AS DEPENDENCIAS DO FRONT-END
 	npm install
 		
 5.PRODUZINDO O BUNDLE DE FRONT-END 
 	npm run dev
+
+    CASO TENHA ERRO : 
+        npm update vue-load
 	
 6.BAIXAR DEPENDENCIAS VUEEX (CASO UTILIZE VUE)
     npm install vuex || npm install vuex@3.6.2 (configuração estara na parte de npm)
@@ -285,7 +288,7 @@ LARAVEL UI
     composer require laravel/ui || outra versao ex: composer require laravel/ui:^3.2 
 
 -Definir um tecnologia front para o Laravel com autenticação inclusa 
-    php artisan ui "ex: bootstrap | vue | react" --auth
+    php artisan ui "ex: bootstrap --auth| vue --auth | react" --auth
 
 	
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	

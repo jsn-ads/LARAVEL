@@ -20,7 +20,11 @@ Fone de ouvido hifi vj320
 PASSO PARA INICIAR UM PROJETO
 
 1.INICIAR O PORJETO LARAVEL 
+<<<<<<< HEAD
 	composer create-project --prefer-dist laravel/laravel "nome do projeto"
+=======
+	composer create-project laravel/laravel@"version" "Projeto"
+>>>>>>> 0989a0b93bc3dc4b1e2cba9b72b16b0230db7ac3
 
 2.INSTALAR O PACOTE UI
 	composer require laravel/ui || outra versao ex: composer require laravel/ui:^3.2 

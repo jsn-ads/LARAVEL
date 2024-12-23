@@ -1,49 +1,77 @@
--Instalando Composer
-crie um arquivo dentro do projeto com nome:
-composer.json
-{
-"require":{
+==================================================INSTALAÇÃO==============================================
 
-            }
-        }
-    apos isso digite no terminal na raiz do projeto
-        composer install
+
+== 1.Composer :
+
+    Baixe e instale Composer
+
+    CMD raiz do projeto :
+
+        @REM Inicializa o Composer 
         composer init
+        
+        @REM Atualiza as dependencias
         composer update
 
-    atuliazar a versão do composer
+        @REM Visualiza versão
+        composer --version
+
+        @REM Caso ja tenha Composer instalado , atualizar a versão do composer :
         composer self-update
 
+        @REM Rollback version anterior
+        composer self-update --rollback
 
----
+        @REM Rollback version especifica
+        composer self-update "2.4.1"
 
-PASSO PARA INICIAR UM PROJETO
 
-1.INICIAR O PORJETO LARAVEL
-<<<<<<< HEAD
-composer create-project --prefer-dist laravel/laravel "nome do projeto"
-=======
-composer create-project laravel/laravel@"version" "Projeto"
+==================================================START====================================================
 
-> > > > > > > 0989a0b93bc3dc4b1e2cba9b72b16b0230db7ac3
+== 1.INICIAR O PROJETO LARAVEL
+        
+        @REM Cria o Projeto na ultima versão do Laravel
+        composer create-project --prefer-dist laravel/laravel "nome do projeto"
+
+        @REM Cria o Projeto na versao especifica 
+        composer create-project laravel/laravel@"version" "Projeto"
+
+==================================================ARTISAN==================================================
+
+== 1.Comandos Basicos 
+
+    @REM Startando o projeto 
+    php artisan serve
+
+==========================================================================================================
+
 
 2.INSTALAR O PACOTE UI
-composer require laravel/ui || outra versao ex: composer require laravel/ui:^3.2
+
+        composer require laravel/ui || outra versao ex: composer require laravel/ui:^3.2
+
 3.GERAR O ESQUELETO DO PROJETO DE ACORDO COM A TECNOLOGIA FRONT-END
-php artisan ui "ex: bootstrap --auth | vue --auth | react" --auth
+
+        php artisan ui "ex: bootstrap --auth | vue --auth | react" --auth
 
 4.BAIXAR AS DEPENDENCIAS DO FRONT-END
-npm install
+        
+        npm install
+
 5.PRODUZINDO O BUNDLE DE FRONT-END
-npm run dev
+    
+        npm run dev
 
     CASO TENHA ERRO :
+
         npm update vue-load
 
 6.BAIXAR DEPENDENCIAS VUEEX (CASO UTILIZE VUE)
-npm install vuex || npm install vuex@3.6.2 (configuração estara na parte de npm)
+        
+        npm install vuex || npm install vuex@3.6.2 (configuração estara na parte de npm)
 
----
+==================================================DEBUG======================================================
+
 
 LARAVEL DEBUG
 

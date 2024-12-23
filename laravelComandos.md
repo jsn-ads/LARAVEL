@@ -1,10 +1,8 @@
-Fone de ouvido hifi vj320
-
 -Instalando Composer
-    crie um arquivo dentro do projeto com nome:
-        composer.json 
-        {
-            "require":{
+crie um arquivo dentro do projeto com nome:
+composer.json
+{
+"require":{
 
             }
         }
@@ -12,39 +10,40 @@ Fone de ouvido hifi vj320
         composer install
         composer init
         composer update
-    
-    atuliazar a versão do composer    
+
+    atuliazar a versão do composer
         composer self-update
-		
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------D
+
+
+---
+
 PASSO PARA INICIAR UM PROJETO
 
-1.INICIAR O PORJETO LARAVEL 
+1.INICIAR O PORJETO LARAVEL
 <<<<<<< HEAD
-	composer create-project --prefer-dist laravel/laravel "nome do projeto"
+composer create-project --prefer-dist laravel/laravel "nome do projeto"
 =======
-	composer create-project laravel/laravel@"version" "Projeto"
->>>>>>> 0989a0b93bc3dc4b1e2cba9b72b16b0230db7ac3
+composer create-project laravel/laravel@"version" "Projeto"
+
+> > > > > > > 0989a0b93bc3dc4b1e2cba9b72b16b0230db7ac3
 
 2.INSTALAR O PACOTE UI
-	composer require laravel/ui || outra versao ex: composer require laravel/ui:^3.2 
-	
+composer require laravel/ui || outra versao ex: composer require laravel/ui:^3.2
 3.GERAR O ESQUELETO DO PROJETO DE ACORDO COM A TECNOLOGIA FRONT-END
-	php artisan ui "ex: bootstrap --auth | vue --auth | react" --auth
+php artisan ui "ex: bootstrap --auth | vue --auth | react" --auth
 
 4.BAIXAR AS DEPENDENCIAS DO FRONT-END
-	npm install
-		
-5.PRODUZINDO O BUNDLE DE FRONT-END 
-	npm run dev
+npm install
+5.PRODUZINDO O BUNDLE DE FRONT-END
+npm run dev
 
-    CASO TENHA ERRO : 
+    CASO TENHA ERRO :
         npm update vue-load
-	
-6.BAIXAR DEPENDENCIAS VUEEX (CASO UTILIZE VUE)
-    npm install vuex || npm install vuex@3.6.2 (configuração estara na parte de npm)
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+6.BAIXAR DEPENDENCIAS VUEEX (CASO UTILIZE VUE)
+npm install vuex || npm install vuex@3.6.2 (configuração estara na parte de npm)
+
+---
 
 LARAVEL DEBUG
 
@@ -52,7 +51,7 @@ LARAVEL DEBUG
 
     composer require barryvdh/laravel-debugbar --dev || omposer require barryvdh/laravel-debugbar=v3.6.2 --dev
 
--Configurando no projeto 
+-Configurando no projeto
 
     config\app.php
          'aliases' => [
@@ -61,95 +60,99 @@ LARAVEL DEBUG
 
 LARAVEL CRIA PROJETOS E DICAS
 
--Instalando Laravel global , apenas uma unica vez e necessario ter composer instalado 
-    composer global require laravel/installer
+-Instalando Laravel global , apenas uma unica vez e necessario ter composer instalado
+composer global require laravel/installer
 
 -criando um projeto
-    laravel new "nome do projeto" --auth
+laravel new "nome do projeto" --auth
 
 -verificando verão do laravel
-    php artisan -V
+php artisan -V
 
--alerando a porta 
-    php artisan serve --port=9000
+-alerando a porta
+php artisan serve --port=9000
 
 -criando key do banco de dados no arquivo (.env)
-    php artisan key:generate
+php artisan key:generate
 
 - Caso o Laravel nao tenha Auth na Pasta controller faça esse comando
-    composer require laravel/ui
-    php artisan ui vue --auth
+  composer require laravel/ui
+  php artisan ui vue --auth
 
 -start no projeto
-    php artisan serve
- 
+php artisan serve
+
 -Visualizando Rotas do projeto
-     php artisan route:list
+php artisan route:list
 
 -Limpando cash das views
-	php artisan view:clear
+php artisan view:clear
 
 -Limpando cash
-    php artisan cache:clear
-    
+php artisan cache:clear
+
 -Limpando cash de configuração
-    php artisan config:clear
+php artisan config:clear
 
 -Console interativo para testes
-    php artisan tinker
-	
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+php artisan tinker
+
+---
+
 CONTROLLERS
 -Criando um controller
-	php artisan make:controller "nomeController"
-    
+php artisan make:controller "nomeController"
+
 -Criando controller com metodos e rotas ja pre definidas
-    php artisan make:controller "nomeController" --resource
+php artisan make:controller "nomeController" --resource
 
 -Criando Controller com metodos junto com Model
-    php artisan make:controller --resource "Nome"Controller --model "Nome"
+php artisan make:controller --resource "Nome"Controller --model "Nome"
 
 -Criando MODEL CONTROLLER MIGRATE
-    php artisan make:model --migrate --controller --resource "Nome"  
-    php artisan make:model -mcr "Nome"
+php artisan make:model --migrate --controller --resource "Nome"  
+ php artisan make:model -mcr "Nome"
 
 -Criando MODEL CONTROLLER MIGRATE FACTORY SEEDER ...
-    php artisan make:model --all "Nome"
-    php artisan make:model -a "Nome"
-	
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-MODEL 
+php artisan make:model --all "Nome"
+php artisan make:model -a "Nome"
+
+---
+
+MODEL
 -Criando um Model
-    	php artisan make:model "nome do Model"
+php artisan make:model "nome do Model"
 
 -Criando um Model com Migrations
-	php artisan make:model "nome" -m
- 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+php artisan make:model "nome" -m
+
+---
+
 MIGRATES "comandos utiliados para cria tabelas no banco de dados"
 
 -Cria uma migrate
-    php artisan make:migration | (create"_nome_"table) (update"_nome_"table)
+php artisan make:migration | (create"_nome_"table) (update"_nome_"table)
 
 -Executado a migrate para cria as tabelas nos bancos
-    php artisan migrate
+php artisan migrate
 
 -Voltando estado anterior desfazendo o ultimo migrate
-    php artisan migrate:rollback
+php artisan migrate:rollback
 
 -Visualiza o status da Migrations ex: se ja foi executado no banco ou se esta pendente
-    php artisan migrate:status
+php artisan migrate:status
 
 -Remover todas a tabelas do banco
-    php artisan migrate:reset
+php artisan migrate:reset
 
 -Recriar o banco de dados limpo sem informaçoes
-    php artisan migrate:refresh
+php artisan migrate:refresh
 
 -Deleta o banco e cria novamente
-    php artisan migrate:fresh
-	
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+php artisan migrate:fresh
+
+---
+
 Eloquent ORM "Metodos"
 
     [Metodo de Salvar e Update]
@@ -178,8 +181,9 @@ Eloquent ORM "Metodos"
     [metodo de restaurar o registro deletado pelo softDelete]
     $registros = Tabela::onlyTrashed()->get();
     $registros['posição do registro']->restore();
-	
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---
+
 Eloquent ORM Condicionais "Medotos condicionais do Eloquent"
 
     [retorna todos os dados]
@@ -229,8 +233,9 @@ Eloquent ORM Condicionais "Medotos condicionais do Eloquent"
             $query->whereIn('column',[array valor])->orWhereBetween('column',[array valor])
         }
     )->get();
-	
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---
+
 Eloquent Collection "São Array de Objetos recuperados do bando de dados"
 
     $dados = valor::all();
@@ -257,7 +262,8 @@ Eloquent Collection "São Array de Objetos recuperados do bando de dados"
     $dados->all()->pluck('email','nome');
                          [valor]  [key]
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
+
 Seeders "São classes que tem a função de popular o banco de dados"
 
     [Criar uma classe seeder]
@@ -265,72 +271,77 @@ Seeders "São classes que tem a função de popular o banco de dados"
 
     [executar todas seeders]
     php artisan db:seed
-    
+
     [executar uma seeder especifica]
     php artisan db:seed --class=classeSeeder
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
+
 Factory "Classe responsavel por gerar dados em massa e passa para Seeders"
 
     [Criando uma classe Factory]
     php artisan make:factory ClasseFactory --model=classe
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Midddleware
-    [Criando uma Middleware]
-    php artisan make:middleware "nome"Middleware
+---
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-PAINEL 
--Instalando Painel AdminLTE 
-    	composer require jeroennoten/laravel-adminlte
-    	php artisan adminlte:install --force
-		
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Midddleware
+[Criando uma Middleware]
+php artisan make:middleware "nome"Middleware
+
+---
+
+PAINEL
+-Instalando Painel AdminLTE
+composer require jeroennoten/laravel-adminlte
+php artisan adminlte:install --force
+
+---
+
 LARAVEL UI
 -Instalando Laravel ui
-    composer require laravel/ui || outra versao ex: composer require laravel/ui:^3.2 
+composer require laravel/ui || outra versao ex: composer require laravel/ui:^3.2
 
--Definir um tecnologia front para o Laravel com autenticação inclusa 
-    php artisan ui "ex: bootstrap --auth| vue --auth | react" --auth
+-Definir um tecnologia front para o Laravel com autenticação inclusa
+php artisan ui "ex: bootstrap --auth| vue --auth | react" --auth
 
-	
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+---
+
 LARAVEL EMAIL
 -Criando um controller especifico para email com view
-	php artisan make:mail "Nome do Controller ex: MensagemMail" --markdown "diretorio.nome ex: emails.mensagem" 
-	
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+php artisan make:mail "Nome do Controller ex: MensagemMail" --markdown "diretorio.nome ex: emails.mensagem"
+
+---
+
 LARAVEL PUBLISH
 -Faz uma copia de uma biblioteda da pasta vendor para pasta publica para modificações no projeto
-	php artisan vendor:publish
-	
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+php artisan vendor:publish
+
+---
+
 LARAVEL NOTIFICATION
-	php artisan make:notification "nome"Notification
+php artisan make:notification "nome"Notification
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-NodeJS & NPM 
-    NPM e um gereciador de pacote ex: como se fosse composer , o Node e utilizado para FRONT-END [LAVAREL UI| VUE JS | ANGULAR] e BACK-END
-    [Verificando versão do NODE e NPM]
-    node -v
-    npm -v
+---
 
--Instalando NPM 
-    npm install
-    npm run dev
-	
--Lista os pacotes e suas versoes e mostra se esta desatualizado 
-	npm outdated
-	
--Comando para atualizar automanticamente a pagina front 
-	npm run watch
+NodeJS & NPM
+NPM e um gereciador de pacote ex: como se fosse composer , o Node e utilizado para FRONT-END [LAVAREL UI| VUE JS | ANGULAR] e BACK-END
+[Verificando versão do NODE e NPM]
+node -v
+npm -v
+
+-Instalando NPM
+npm install
+npm run dev
+-Lista os pacotes e suas versoes e mostra se esta desatualizado
+npm outdated
+-Comando para atualizar automanticamente a pagina front
+npm run watch
 
 -Instalando VUE EX
-    npm install vuex || npm install vuex@3.6.2 (configuração estara na parte de npm)
+npm install vuex || npm install vuex@3.6.2 (configuração estara na parte de npm)
 
 -Inserindo VUE EX no projeto (obs: projeto ja deve ter definido LARAVEL UI vue)
-    [dentro de APP.JS] 
+[dentro de APP.JS]
 
     import Vue from 'vue';
 
@@ -343,43 +354,41 @@ NodeJS & NPM
     })
 
     inserir dentro de da instancia de app
-    
+
     const app = new Vue({
         el: '#app',
         state
     });
 
-	
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
+
 LARAVEL EXCEL
 
 -instalando no projeto
-	composer require maatwebsite/excel
+composer require maatwebsite/excel
 
 ADICIONAR NO PROJETO
-	
 -inserindo dentro do projeto "app.config"
-		
-		Providers[ 
-			Maatwebsite\Excel\ExcelServiceProvider::class, 
-		] 
-		
-		Aliases[
-			'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-		]
+Providers[
+Maatwebsite\Excel\ExcelServiceProvider::class,
+]
+Aliases[
+'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+]
 -instalando classe de configuração no projeto
 
-	php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config
+    php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config
 
 -Instalando classe e exportação
 
     php artisan make:export "Nome"Export --model='model que sera utilizado ex: "User.php"'
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
+
 LARAVEL PDF (obs: esse modelo e preciso instalar Laravel excel)
 
 -instalando no projeto
-    composer require mpdf/mpdf
+composer require mpdf/mpdf
 
 ADICIONAR NO PROJETO
 
@@ -387,48 +396,47 @@ ADICIONAR NO PROJETO
 
     'pdf'   => Excel::MPDF,
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
+
 LARAVEL PDF DOMPDF
 
--instalando no projeto 
-    composer require barryvdh/laravel-dompdf=^0.9.0
+-instalando no projeto
+composer require barryvdh/laravel-dompdf=^0.9.0
 
 -inserindo dentro do projeto "app.config"
 
-        Providers[ 
+        Providers[
             Barryvdh\DomPDF\ServiceProvider::class,
-        ] 
+        ]
 
         Aliases[
-			'PDF' => Barryvdh\DomPDF\Facade::class,
-		]
+    		'PDF' => Barryvdh\DomPDF\Facade::class,
+    	]
 
 -instalando classe de configuração no projeto
-    php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
+php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-CRIANDO LINK do STORAGE para pasta PUBLIC 
-    php artisan storage:link
+---
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+CRIANDO LINK do STORAGE para pasta PUBLIC
+php artisan storage:link
+
+---
+
 INSTALANDO JWT
 
 -instalado no projeto
-	composer require tymon/jwt-auth "1.0.2"
+composer require tymon/jwt-auth "1.0.2"
 
 -inserindo dentro do projeto "app.config"
-	Providers[
-		Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
-	]
-	
--ignorar requisitos da plataforma 
-	composer require tymon/jwt-auth --ignore-platform-reqs
+Providers[
+Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+]
+-ignorar requisitos da plataforma
+composer require tymon/jwt-auth --ignore-platform-reqs
 
 -criando arquivo config/jwt.php
-	php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
 
 -criando variavel JWT_SECRET dentro do arquivo .ENV
-	php artisan jwt:secret
-
-
-
+php artisan jwt:secret

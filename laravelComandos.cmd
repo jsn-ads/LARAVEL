@@ -44,11 +44,12 @@
 
 ================================================ARTISAN====================================================
 
-== 1.Inicializando Projeto
     @REM Startando o projeto 
     php artisan serve
 
-== 1.Renovar APP_KEY (SEGURANÇA)
+    @REM Criando um Controller
+    php artisan make:controller "NomeController"
+
     @REM APP_KEY e uma key utilizada no projeto para validar sessões entre outros para não permitir inserção de arquivos externos
     php artisan key:generate
 
@@ -116,9 +117,6 @@ php artisan key:generate
   composer require laravel/ui
   php artisan ui vue --auth
 
--start no projeto
-php artisan serve
-
 -Visualizando Rotas do projeto
 php artisan route:list
 
@@ -137,8 +135,6 @@ php artisan tinker
 ---
 
 CONTROLLERS
--Criando um controller
-php artisan make:controller "nomeController"
 
 -Criando controller com metodos e rotas ja pre definidas
 php artisan make:controller "nomeController" --resource

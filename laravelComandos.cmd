@@ -34,14 +34,23 @@
         composer create-project --prefer-dist laravel/laravel "nome do projeto"
 
         @REM Cria o Projeto na versao especifica 
-        composer create-project laravel/laravel@"version" "Projeto"
+        composer create-project laravel/laravel:^"version ex:9.0" "nome do projeto"
 
 ==================================================START====================================================
 
-== 1.Comandos Basicos 
-
+== 1.Inicializando Projeto
     @REM Startando o projeto 
     php artisan serve
+
+================================================ARTISAN====================================================
+
+== 1.Inicializando Projeto
+    @REM Startando o projeto 
+    php artisan serve
+
+== 1.Renovar APP_KEY (SEGURANÇA)
+    @REM APP_KEY e uma key utilizada no projeto para validar sessões entre outros para não permitir inserção de arquivos externos
+    php artisan key:generate
 
 ==========================================================================================================
 

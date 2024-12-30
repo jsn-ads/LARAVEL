@@ -9,12 +9,7 @@
 </head>
 
 <body>
-    <h1>Bem Vindo</h1>
-
-    <ul>
-        <li>Usuario : {{ $usuario }}</li>
-        <li>idade : {{ $idade }}</li>
-    </ul>
+    <h1>Total de usuarios : {{ $amount }}</h1>
 </body>
 
 </html>

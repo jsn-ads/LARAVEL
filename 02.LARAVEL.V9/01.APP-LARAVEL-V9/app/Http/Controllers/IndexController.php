@@ -9,6 +9,15 @@ class IndexController extends Controller
 {
     public function index()
     {
-        return view('index');
+
+        $nome = "Neto";
+        $idade = 35;
+
+        $data = [
+            "usuario" => $nome,
+            "idade" => $idade
+        ];
+
+        return view('index', $data);
     }
 }

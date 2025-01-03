@@ -9,8 +9,17 @@
 </head>
 
 <body>
-    <h1>Bem vindo {{ $name }}</h1>
-    <p>Imprimindo codigo no blade : {!! $codigo !!}</p>
+
+    <h2>E administrador ? {{ $name === 'Neto' ? 'Sim' : 'Não' }}</h2>
+
+    @if ($name == 'Neto')
+        <h1>Bem vindo {{ $name }}</h1>
+        <p>Imprimindo codigo no blade : {!! $codigo !!}</p>
+    @else
+        <h1>Bem Vindo Usuario</h1>
+    @endif
+
+
 </body>
 
 </html>

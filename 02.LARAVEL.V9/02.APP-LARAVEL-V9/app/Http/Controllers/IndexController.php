@@ -20,4 +20,20 @@ class IndexController extends Controller
 
         return view('index', $data);
     }
+
+    public function repeat_loops(){
+
+        $data = [
+            'lista' => [
+                'item A',
+                'item B',
+                'item C',
+                'item D'
+            ]
+        ];
+
+
+        return view('lacosrepeticoes',$data);
+    }
+
 }

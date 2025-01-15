@@ -47,6 +47,9 @@
     @REM Startando o projeto 
     php artisan serve
 
+    @REM Limpando cache
+    php artisan cache:clear 
+
     @REM Criando um Controller
     php artisan make:controller "NomeController"
 
@@ -122,9 +125,6 @@ php artisan route:list
 
 -Limpando cash das views
 php artisan view:clear
-
--Limpando cash
-php artisan cache:clear
 
 -Limpando cash de configuração
 php artisan config:clear

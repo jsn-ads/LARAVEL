@@ -25,16 +25,13 @@
 
         main {
             display: flex;
-            justify-content: center
+            justify-content: center;
         }
 
         section {
             width: 70%;
             display: flex;
-        }
-
-        main section div {
-            flex: 1;
+            justify-content: center;
         }
     </style>
 </head>
@@ -42,17 +39,27 @@
 <body>
     <header>
         <nav>
-            <h1>Talvez você conheça</h1>
+            <h1>TALVEZ VOCÊ CONHEÇA ???</h1>
         </nav>
     </header>
     <main>
         <section>
             @foreach ($pessoas as $pessoa)
                 @component('components.peoplecard')
-                    <img src="{{ $pessoa['image'] }}" alt="">
-                    {{ $pessoa['name'] }}
-                    {{ $pessoa['age'] }}
-                    {{ $pessoa['birthdate'] }}
+                    <div style="text-align: center; padding: 10% 0%">
+                        <img src="{{ $pessoa['image'] }}" alt="" width="90%;">
+                    </div>
+                    <div style="font-size: 30px; padding: 0% 10%">
+                        <strong>{{ $pessoa['name'] }}</strong>
+                    </div>
+
+                    <div style="font-size: 20px; padding: 10% 10%">
+                        {{ $pessoa['age'] }} Anos
+                    </div>
+
+                    <div style="padding: 0% 10%">
+                        Nasceu em : {{ $pessoa['birthdate'] }}
+                    </div>
                 @endcomponent
             @endforeach
         </section>

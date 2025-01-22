@@ -51,4 +51,18 @@ class ComponentController extends Controller
 
         return view('pessoas', $data);
     }
+
+    public function group()
+    {
+        $array = [];
+
+        for ($i = 0; $i < 50; $i++) {
+            $array[$i] = ['img' => 'https://i.pravatar.cc/150?img=' . rand(0, 50)];
+        }
+
+        $data['group'] = $array;
+
+
+        return view('grupos', $data);
+    }
 }

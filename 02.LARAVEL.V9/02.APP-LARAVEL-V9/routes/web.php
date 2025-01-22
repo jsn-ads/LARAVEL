@@ -12,3 +12,5 @@ Route::get('/lacosrepeticoes', [IndexController::class, 'repeat_loops']);
 Route::get('/componentes', [ComponentController::class, 'index']);
 
 Route::get('/pessoas', [ComponentController::class, 'people']);
+
+Route::get('/grupos', [ComponentController::class, 'group']);

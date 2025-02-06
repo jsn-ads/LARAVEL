@@ -10,6 +10,11 @@
 
 <body>
     <h1>Includes Vs Componentes</h1>
+
+    @foreach ($people as $p)
+        @include('components.people', $p)
+    @endforeach
+
 </body>
 
 </html>

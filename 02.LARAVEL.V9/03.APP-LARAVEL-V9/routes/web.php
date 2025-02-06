@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/md4_10', [IndexController::class, 'md4_10']);
+
+Route::get('/md4_12',[IndexController::class, 'md4_12']);

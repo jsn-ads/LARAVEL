@@ -14,13 +14,13 @@ class IndexController extends Controller
             [
                 'name' => 'Jose Neto',
                 'age' => 35,
-                'bithdate' => '20/11/1989',
+                'birthdate' => '20/11/1989',
                 'city' => 'Goiânia'
             ],
             [
                 'name' => 'Cristina Monik',
                 'age' => 37,
-                'bithdate' => '11/12/1987',
+                'birthdate' => '11/12/1987',
                 'city' => 'Israelandia'
             ]
 
@@ -29,5 +29,12 @@ class IndexController extends Controller
         $dados['people'] = $people;
 
         return view('md4_10', $dados);
+    }
+
+    public function md4_12(){
+
+        $data = [];
+
+        return view('md4_12',$data);
     }
 }
